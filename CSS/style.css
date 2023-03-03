@@ -31,19 +31,19 @@ h1{
     width:50%;
 }
 
-#input{
+input[type=text]{
     background-color: #2f3136;
     border: solid black;
     border-radius: 5px;
+    margin:1px;
     color:white;
     width:75%;
     padding:12px;
     -webkit-transition: 0.5s;
     transition: 0.5s;
-    outline:none;
 }
-#input:focus{
-    border:green;
+input[type=text]:focus{
+    border:solid #5865F2;
 }
 input[type=submit]{
     background-color: #5865F2;
