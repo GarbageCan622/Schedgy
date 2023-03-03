@@ -30,3 +30,24 @@ h1{
     float:left;
     width:50%;
 }
+
+#input{
+    background-color: #2f3136;
+    border: solid black;
+    border-radius: 5px;
+    color:white;
+    width:75%;
+    padding:12px;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline:none;
+}
+#input:focus{
+    border:green;
+}
+input[type=submit]{
+    background-color: #5865F2;
+    border-radius: 5px;
+    width:100%;
+    color:white;
+}
