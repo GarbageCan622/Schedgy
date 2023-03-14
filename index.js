@@ -11,7 +11,7 @@ app.get('/', (request, response) => {
 });
 
 app.get('/auth/discord', (request, response) => {
-	return response.sendFile('dashboard.html', { root: '.' });
+	return response.sendFile('index.html', { root: '.' });
 });
 
 const port = '53134';
