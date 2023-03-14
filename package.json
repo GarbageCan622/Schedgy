@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "bot.js",
+  "jest": {
+    "verbose": true
+  },
   "scripts": {
     "test": "jest --config=jest.config.js"
   },
