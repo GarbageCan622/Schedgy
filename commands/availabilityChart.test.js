@@ -58,8 +58,8 @@ describe("Availability Chart", () => {
         chart1 = new AvailabilityChart(start, end);
         chart1.markAvailable(1,1,123);
         chart1.markUnavailable(1,1,123);
-        //chart2 = makeArray(5,2);
-        //chart2[1][1].howMany--;
+        chart2 = makeArray(5,2);
+        chart2[1][1].howMany--;
         expect(chart1.chart).toStrictEqual(chart2); 
     });
 });
