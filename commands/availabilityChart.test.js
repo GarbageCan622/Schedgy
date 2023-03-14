@@ -1,4 +1,4 @@
-const AvailabilityChart = require("./AvailabilityChart");
+const AvailabilityChart = require("./AvailabilityChart.js");
 
 function makeArray(w, h, val) {
     var arr = [];
