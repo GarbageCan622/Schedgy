@@ -4,7 +4,8 @@
   "description": "",
   "main": "bot.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest --config=jest.config.js"
+
   },
   "keywords": [],
   "author": "",
