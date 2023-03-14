@@ -1,5 +1,6 @@
 const AvailabilityChart = require("./availabilityChart.js");
 
+
 function makeArray(w, h, val) {
     var arr = [];
     for(let i = 0; i < h; i++) {

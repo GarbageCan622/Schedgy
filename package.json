@@ -5,6 +5,7 @@
   "main": "bot.js",
   "scripts": {
     "test": "jest --config=jest.config.js"
+
   },
   "keywords": [],
   "author": "",

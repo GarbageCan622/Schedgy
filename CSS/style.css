@@ -41,6 +41,16 @@ h1{
     margin-right: auto;
   }
 
+
+  #discordInstLogin{
+    width:50%;   
+  }
+
+  #discordInstLoginDiv{
+    margin-top: 10%;
+  }
+
+
 input[type=text]{
     background-color: #2f3136;
     border: solid black;
