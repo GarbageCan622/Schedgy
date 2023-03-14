@@ -11,134 +11,282 @@
         <form>
             <table width="100%" cellpadding="0" cellspacing="0">
                 <tbody>
+                    
+                    <div>
+                        <tr>
+                            <td align="center" colspan="2">
+                                <div id="NewEvent" style="width:100%; margin:20px 0px 20px 0px;">
+                                    <input style='font-size:22px; text-align: center;' type=text id="NewEventName" name="NewEventName" value="New Event Name" >
+                                </div>
+                            </td>
+                        </tr>
+                    </div>
+                
                     <tr>
-                        <td align="center" colspan="2">
-                            <div id="NewEvent" style="width:100%; margin:20px 0px 20px 0px;">
-                                <input style='font-size:22px; text-align: center;' type=text id="NewEventName" name="NewEventName" value="New Event Name" >
+                        <td align=center valign=top rowspan=2>
+                            <div id="WhatDates" style=" color:white; font-size:18px; text-align: center; width: 50%; min-width:305px;">
+                                What dates might work?
+                            </div>    
+                            
+                            <div style="color:white; font-size:15px;line-height:1.5; margin: 10px 0px 10px 0px;">
+                                Click and drag dates to choose possibilities.<br>
+                                Click and drag labels to shift the calendar.<br>
+                                    Survey using: 
+                                <select id="DateTypes" name="DateTypes" onchange="DateTypesChanged()">
+                                    <option value="SpecificDates">Specific Dates</option>
+                                    <option value="DaysOfTheWeek">Days of the Week</option>
+                                </select>
+                            </div>
+
+                            <div id="Calendar" style="color:white;font-size:14px; margin: 0px auto 0px auto; width: 305px" onselectstart="return false" onmousedown="return false" onmousewheel=wheel>
+                    
+                                <div style='float:left; width:60px; padding: 4px 5px 4px 0px;'></div>
+                    
+                                <div style='float:left; line-height: 1.0; width:17px; vertical-align:middle; padding: 0px 3px 0px 3px; margin:1px; text-align:center; cursor: move;' id='DayOfWeek-1' onmousedown='javascript:MouseDownTopLabel();'>S</div>  
+                                <div style='float:left; line-height: 1.0; width:17px; vertical-align:middle; padding: 0px 3px 0px 3px; margin:1px; text-align:center; cursor: move;' id='DayOfWeek-2' onmousedown='javascript:MouseDownTopLabel();'>M</div>  <div style='float:left; line-height: 1.0; width:17px; vertical-align:middle; padding: 0px 3px 0px 3px; margin:1px; text-align:center; cursor: move;' id='DayOfWeek-3' onmousedown='javascript:MouseDownTopLabel();'>T</div>  <div style='float:left; line-height: 1.0; width:17px; vertical-align:middle; padding: 0px 3px 0px 3px; margin:1px; text-align:center; cursor: move;' id='DayOfWeek-4' onmousedown='javascript:MouseDownTopLabel();'>W</div>  <div style='float:left; line-height: 1.0; width:17px; vertical-align:middle; padding: 0px 3px 0px 3px; margin:1px; text-align:center; cursor: move;' id='DayOfWeek-5' onmousedown='javascript:MouseDownTopLabel();'>T</div>  <div style='float:left; line-height: 1.0; width:17px; vertical-align:middle; padding: 0px 3px 0px 3px; margin:1px; text-align:center; cursor: move;' id='DayOfWeek-6' onmousedown='javascript:MouseDownTopLabel();'>F</div>  <div style='float:left; line-height: 1.0; width:17px; vertical-align:middle; padding: 0px 3px 0px 3px; margin:1px; text-align:center; cursor: move;' id='DayOfWeek-7' onmousedown='javascript:MouseDownTopLabel();'>S</div>
+                                <br clear=all>
+                    
+                                <script>
+                                    var DateLoaded='2023-03-14';
+                                </script>
+                                
+                                <div id='SpecificDates'>
+                                    <div style='padding:0px;' id='Row1';>
+                                        <div style='float:left; width:60px; padding: 4px 5px 4px 0px;height: 17px;text-align: right; vertical-align:baseline; cursor: move;' id='Month-1' onmousedown='javascript:MouseDownSideLabel();'><b>Mar</b></div>
+                                        <div style='line-height: 1.0; width:17px; vertical-align:middle;height: 17px; float: left; border:solid 1px black; padding: 2px; margin:1px; text-align:center; cursor: pointer; cursor: hand; background-color:#36393F;' onmouseover='javascript:MouseOverDate(1,1);' onmousedown='javascript:MouseDownDate(1,1);' id='Day-1-1'>12</div>
+                                            <input type=hidden id='DateOf-1-1' value='2023-03-12'>
+                                                <div style='line-height: 1.0; width:17px; vertical-align:middle;height: 17px; float: left; border:solid 1px black; padding: 2px; margin:1px; text-align:center; cursor: pointer; cursor: hand; background-color:#36393F;' onmouseover='javascript:MouseOverDate(1,2);' onmousedown='javascript:MouseDownDate(1,2);' id='Day-1-2'>13</div>
+                                            <input type=hidden id='DateOf-1-2' value='2023-03-13'>
+                                                <div style='line-height: 1.0; width:17px; vertical-align:middle;height: 17px; float: left; border:solid 1px black; padding: 2px; margin:1px; text-align:center; cursor: pointer; cursor: hand; background-color:#36393F; font-weight: bold;' onmouseover='javascript:MouseOverDate(1,3);' onmousedown='javascript:MouseDownDate(1,3);' id='Day-1-3'>14</div>
+                                            <input type=hidden id='DateOf-1-3' value='2023-03-14'>
+                                                <div style='line-height: 1.0; width:17px; vertical-align:middle;height: 17px; float: left; border:solid 1px black; padding: 2px; margin:1px; text-align:center; cursor: pointer; cursor: hand; background-color:#36393F;' onmouseover='javascript:MouseOverDate(1,4);' onmousedown='javascript:MouseDownDate(1,4);' id='Day-1-4'>15</div>
+                                            <input type=hidden id='DateOf-1-4' value='2023-03-15'>
+                                                <div style='line-height: 1.0; width:17px; vertical-align:middle;height: 17px; float: left; border:solid 1px black; padding: 2px; margin:1px; text-align:center; cursor: pointer; cursor: hand; background-color:#36393F;' onmouseover='javascript:MouseOverDate(1,5);' onmousedown='javascript:MouseDownDate(1,5);' id='Day-1-5'>16</div>
+                                            <input type=hidden id='DateOf-1-5' value='2023-03-16'>
+                                                <div style='line-height: 1.0; width:17px; vertical-align:middle;height: 17px; float: left; border:solid 1px black; padding: 2px; margin:1px; text-align:center; cursor: pointer; cursor: hand; background-color:#36393F;' onmouseover='javascript:MouseOverDate(1,6);' onmousedown='javascript:MouseDownDate(1,6);' id='Day-1-6'>17</div>
+                                            <input type=hidden id='DateOf-1-6' value='2023-03-17'>
+                                                <div style='line-height: 1.0; width:17px; vertical-align:middle;height: 17px; float: left; border:solid 1px black; padding: 2px; margin:1px; text-align:center; cursor: pointer; cursor: hand; background-color:#36393F;' onmouseover='javascript:MouseOverDate(1,7);' onmousedown='javascript:MouseDownDate(1,7);' id='Day-1-7'>18</div>
+                                            <input type=hidden id='DateOf-1-7' value='2023-03-18'>
+                                                <div style='padding:1px; float:left; width:60px; padding: 4px 0px 4px 5px;height: 17px;text-align: left; vertical-align:baseline; cursor: move;' id='Year-1' onmousedown='javascript:MouseDownSideLabel();'>
+                                                    <b>2023</b>
+                                                </div>
+                                    </div>
+                                    <br clear=all>
+                                    
+                                    <div style='padding:0px;' id='Row2';>
+                                        <div style='float:left; width:60px; padding: 4px 5px 4px 0px;height: 17px;text-align: right; vertical-align:baseline; cursor: move;' id='Month-2' onmousedown='javascript:MouseDownSideLabel();'>Mar</div>
+                                            <div style='line-height: 1.0; width:17px; vertical-align:middle;height: 17px; float: left; border:solid 1px black; padding: 2px; margin:1px; text-align:center; cursor: pointer; cursor: hand; background-color:#36393F;' onmouseover='javascript:MouseOverDate(2,1);' onmousedown='javascript:MouseDownDate(2,1);' id='Day-2-1'>19</div>
+                                            
+                                            <input type=hidden id='DateOf-2-1' value='2023-03-19'>
+                                            <div style='line-height: 1.0; width:17px; vertical-align:middle;height: 17px; float: left; border:solid 1px black; padding: 2px; margin:1px; text-align:center; cursor: pointer; cursor: hand; background-color:#36393F;' onmouseover='javascript:MouseOverDate(2,2);' onmousedown='javascript:MouseDownDate(2,2);' id='Day-2-2'>20</div>
+                                            
+                                            <input type=hidden id='DateOf-2-2' value='2023-03-20'>
+                                            <div style='line-height: 1.0; width:17px; vertical-align:middle;height: 17px; float: left; border:solid 1px black; padding: 2px; margin:1px; text-align:center; cursor: pointer; cursor: hand; background-color:#36393F;' onmouseover='javascript:MouseOverDate(2,3);' onmousedown='javascript:MouseDownDate(2,3);' id='Day-2-3'>21</div>
+                                            
+                                            <input type=hidden id='DateOf-2-3' value='2023-03-21'>
+                                            <div style='line-height: 1.0; width:17px; vertical-align:middle;height: 17px; float: left; border:solid 1px black; padding: 2px; margin:1px; text-align:center; cursor: pointer; cursor: hand; background-color:#36393F;' onmouseover='javascript:MouseOverDate(2,4);' onmousedown='javascript:MouseDownDate(2,4);' id='Day-2-4'>22</div>
+                                            
+                                            <input type=hidden id='DateOf-2-4' value='2023-03-22'>
+                                            <div style='line-height: 1.0; width:17px; vertical-align:middle;height: 17px; float: left; border:solid 1px black; padding: 2px; margin:1px; text-align:center; cursor: pointer; cursor: hand; background-color:#36393F;' onmouseover='javascript:MouseOverDate(2,5);' onmousedown='javascript:MouseDownDate(2,5);' id='Day-2-5'>23</div>
+                    
+                                            <input type=hidden id='DateOf-2-5' value='2023-03-23'>
+                                            <div style='line-height: 1.0; width:17px; vertical-align:middle;height: 17px; float: left; border:solid 1px black; padding: 2px; margin:1px; text-align:center; cursor: pointer; cursor: hand; background-color:#36393F;' onmouseover='javascript:MouseOverDate(2,6);' onmousedown='javascript:MouseDownDate(2,6);' id='Day-2-6'>24</div>
+                    
+                                            <input type=hidden id='DateOf-2-6' value='2023-03-24'>
+                                            <div style='line-height: 1.0; width:17px; vertical-align:middle;height: 17px; float: left; border:solid 1px black; padding: 2px; margin:1px; text-align:center; cursor: pointer; cursor: hand; background-color:#36393F;' onmouseover='javascript:MouseOverDate(2,7);' onmousedown='javascript:MouseDownDate(2,7);' id='Day-2-7'>25</div>
+                    
+                                            <input type=hidden id='DateOf-2-7' value='2023-03-25'>
+                                            <div style='padding:1px; float:left; width:60px; padding: 4px 0px 4px 5px;height: 17px;text-align: left; vertical-align:baseline; cursor: move;' id='Year-2' onmousedown='javascript:MouseDownSideLabel();'>2023</div>
+
+                                    </div>
+                                    <br clear=all>
+                                    
+                                    <div style='padding:0px;' id='Row3';>
+                                        <div style='float:left; width:60px; padding: 4px 5px 4px 0px;height: 17px;text-align: right; vertical-align:baseline; cursor: move;' id='Month-3' onmousedown='javascript:MouseDownSideLabel();'>Mar/Apr</div>
+                                        <div style='line-height: 1.0; width:17px; vertical-align:middle;height: 17px; float: left; border:solid 1px black; padding: 2px; margin:1px; text-align:center; cursor: pointer; cursor: hand; background-color:#36393F;' onmouseover='javascript:MouseOverDate(3,1);' onmousedown='javascript:MouseDownDate(3,1);' id='Day-3-1'>26</div>
+                    
+                                        <input type=hidden id='DateOf-3-1' value='2023-03-26'><div style='line-height: 1.0; width:17px; vertical-align:middle;height: 17px; float: left; border:solid 1px black; padding: 2px; margin:1px; text-align:center; cursor: pointer; cursor: hand; background-color:#36393F;' onmouseover='javascript:MouseOverDate(3,2);' onmousedown='javascript:MouseDownDate(3,2);' id='Day-3-2'>27</div>
+                    
+                                        <input type=hidden id='DateOf-3-2' value='2023-03-27'><div style='line-height: 1.0; width:17px; vertical-align:middle;height: 17px; float: left; border:solid 1px black; padding: 2px; margin:1px; text-align:center; cursor: pointer; cursor: hand; background-color:#36393F;' onmouseover='javascript:MouseOverDate(3,3);' onmousedown='javascript:MouseDownDate(3,3);' id='Day-3-3'>28</div>
+                    
+                                        <input type=hidden id='DateOf-3-3' value='2023-03-28'><div style='line-height: 1.0; width:17px; vertical-align:middle;height: 17px; float: left; border:solid 1px black; padding: 2px; margin:1px; text-align:center; cursor: pointer; cursor: hand; background-color:#36393F;' onmouseover='javascript:MouseOverDate(3,4);' onmousedown='javascript:MouseDownDate(3,4);' id='Day-3-4'>29</div>
+                    
+                                        <input type=hidden id='DateOf-3-4' value='2023-03-29'><div style='line-height: 1.0; width:17px; vertical-align:middle;height: 17px; float: left; border:solid 1px black; padding: 2px; margin:1px; text-align:center; cursor: pointer; cursor: hand; background-color:#36393F;' onmouseover='javascript:MouseOverDate(3,5);' onmousedown='javascript:MouseDownDate(3,5);' id='Day-3-5'>30</div>
+                    
+                                        <input type=hidden id='DateOf-3-5' value='2023-03-30'><div style='line-height: 1.0; width:17px; vertical-align:middle;height: 17px; float: left; border:solid 1px black; padding: 2px; margin:1px; text-align:center; cursor: pointer; cursor: hand; background-color:#36393F;' onmouseover='javascript:MouseOverDate(3,6);' onmousedown='javascript:MouseDownDate(3,6);' id='Day-3-6'>31</div>
+                    
+                                        <input type=hidden id='DateOf-3-6' value='2023-03-31'><div style='line-height: 1.0; width:17px; vertical-align:middle;height: 17px; float: left; border:solid 1px black; padding: 2px; margin:1px; text-align:center; cursor: pointer; cursor: hand; background-color:#36393F;' onmouseover='javascript:MouseOverDate(3,7);' onmousedown='javascript:MouseDownDate(3,7);' id='Day-3-7'>1</div>
+                    
+                                        <input type=hidden id='DateOf-3-7' value='2023-04-01'><div style='padding:1px; float:left; width:60px; padding: 4px 0px 4px 5px;height: 17px;text-align: left; vertical-align:baseline; cursor: move;' id='Year-3' onmousedown='javascript:MouseDownSideLabel();'>2023</div>
+                                    </div>
+                                    <br clear=all>
+                                    
+                                    <div style='padding:0px;' id='Row4';>
+                                        <div style='float:left; width:60px; padding: 4px 5px 4px 0px;height: 17px;text-align: right; vertical-align:baseline; cursor: move;' id='Month-4' onmousedown='javascript:MouseDownSideLabel();'>Apr</div>
+                                        <div style='line-height: 1.0; width:17px; vertical-align:middle;height: 17px; float: left; border:solid 1px black; padding: 2px; margin:1px; text-align:center; cursor: pointer; cursor: hand; background-color:#36393F;' onmouseover='javascript:MouseOverDate(4,1);' onmousedown='javascript:MouseDownDate(4,1);' id='Day-4-1'>2</div>
+                    
+                                        <input type=hidden id='DateOf-4-1' value='2023-04-02'><div style='line-height: 1.0; width:17px; vertical-align:middle;height: 17px; float: left; border:solid 1px black; padding: 2px; margin:1px; text-align:center; cursor: pointer; cursor: hand; background-color:#36393F;' onmouseover='javascript:MouseOverDate(4,2);' onmousedown='javascript:MouseDownDate(4,2);' id='Day-4-2'>3</div>
+                    
+                                        <input type=hidden id='DateOf-4-2' value='2023-04-03'><div style='line-height: 1.0; width:17px; vertical-align:middle;height: 17px; float: left; border:solid 1px black; padding: 2px; margin:1px; text-align:center; cursor: pointer; cursor: hand; background-color:#36393F;' onmouseover='javascript:MouseOverDate(4,3);' onmousedown='javascript:MouseDownDate(4,3);' id='Day-4-3'>4</div>
+                    
+                                        <input type=hidden id='DateOf-4-3' value='2023-04-04'><div style='line-height: 1.0; width:17px; vertical-align:middle;height: 17px; float: left; border:solid 1px black; padding: 2px; margin:1px; text-align:center; cursor: pointer; cursor: hand; background-color:#36393F;' onmouseover='javascript:MouseOverDate(4,4);' onmousedown='javascript:MouseDownDate(4,4);' id='Day-4-4'>5</div>
+                    
+                                        <input type=hidden id='DateOf-4-4' value='2023-04-05'><div style='line-height: 1.0; width:17px; vertical-align:middle;height: 17px; float: left; border:solid 1px black; padding: 2px; margin:1px; text-align:center; cursor: pointer; cursor: hand; background-color:#36393F;' onmouseover='javascript:MouseOverDate(4,5);' onmousedown='javascript:MouseDownDate(4,5);' id='Day-4-5'>6</div>
+                    
+                                        <input type=hidden id='DateOf-4-5' value='2023-04-06'><div style='line-height: 1.0; width:17px; vertical-align:middle;height: 17px; float: left; border:solid 1px black; padding: 2px; margin:1px; text-align:center; cursor: pointer; cursor: hand; background-color:#36393F;' onmouseover='javascript:MouseOverDate(4,6);' onmousedown='javascript:MouseDownDate(4,6);' id='Day-4-6'>7</div>
+                    
+                                        <input type=hidden id='DateOf-4-6' value='2023-04-07'><div style='line-height: 1.0; width:17px; vertical-align:middle;height: 17px; float: left; border:solid 1px black; padding: 2px; margin:1px; text-align:center; cursor: pointer; cursor: hand; background-color:#36393F;' onmouseover='javascript:MouseOverDate(4,7);' onmousedown='javascript:MouseDownDate(4,7);' id='Day-4-7'>8</div>
+                    
+                                        <input type=hidden id='DateOf-4-7' value='2023-04-08'><div style='padding:1px; float:left; width:60px; padding: 4px 0px 4px 5px;height: 17px;text-align: left; vertical-align:baseline; cursor: move;' id='Year-4' onmousedown='javascript:MouseDownSideLabel();'>2023</div>
+                                    </div>
+                                    <br clear=all>
+                                    
+                                    <div style='padding:0px;' id='Row5';>
+                                        <div style='float:left; width:60px; padding: 4px 5px 4px 0px;height: 17px;text-align: right; vertical-align:baseline; cursor: move;' id='Month-5' onmousedown='javascript:MouseDownSideLabel();'>Apr</div>
+                                        <div style='line-height: 1.0; width:17px; vertical-align:middle;height: 17px; float: left; border:solid 1px black; padding: 2px; margin:1px; text-align:center; cursor: pointer; cursor: hand; background-color:#36393F;' onmouseover='javascript:MouseOverDate(5,1);' onmousedown='javascript:MouseDownDate(5,1);' id='Day-5-1'>9</div>
+                    
+                                        <input type=hidden id='DateOf-5-1' value='2023-04-09'><div style='line-height: 1.0; width:17px; vertical-align:middle;height: 17px; float: left; border:solid 1px black; padding: 2px; margin:1px; text-align:center; cursor: pointer; cursor: hand; background-color:#36393F;' onmouseover='javascript:MouseOverDate(5,2);' onmousedown='javascript:MouseDownDate(5,2);' id='Day-5-2'>10</div>
+                    
+                                        <input type=hidden id='DateOf-5-2' value='2023-04-10'><div style='line-height: 1.0; width:17px; vertical-align:middle;height: 17px; float: left; border:solid 1px black; padding: 2px; margin:1px; text-align:center; cursor: pointer; cursor: hand; background-color:#36393F;' onmouseover='javascript:MouseOverDate(5,3);' onmousedown='javascript:MouseDownDate(5,3);' id='Day-5-3'>11</div>
+                    
+                                        <input type=hidden id='DateOf-5-3' value='2023-04-11'><div style='line-height: 1.0; width:17px; vertical-align:middle;height: 17px; float: left; border:solid 1px black; padding: 2px; margin:1px; text-align:center; cursor: pointer; cursor: hand; background-color:#36393F;' onmouseover='javascript:MouseOverDate(5,4);' onmousedown='javascript:MouseDownDate(5,4);' id='Day-5-4'>12</div>
+                    
+                                        <input type=hidden id='DateOf-5-4' value='2023-04-12'><div style='line-height: 1.0; width:17px; vertical-align:middle;height: 17px; float: left; border:solid 1px black; padding: 2px; margin:1px; text-align:center; cursor: pointer; cursor: hand; background-color:#36393F;' onmouseover='javascript:MouseOverDate(5,5);' onmousedown='javascript:MouseDownDate(5,5);' id='Day-5-5'>13</div>
+                    
+                                        <input type=hidden id='DateOf-5-5' value='2023-04-13'><div style='line-height: 1.0; width:17px; vertical-align:middle;height: 17px; float: left; border:solid 1px black; padding: 2px; margin:1px; text-align:center; cursor: pointer; cursor: hand; background-color:#36393F;' onmouseover='javascript:MouseOverDate(5,6);' onmousedown='javascript:MouseDownDate(5,6);' id='Day-5-6'>14</div>
+                    
+                                        <input type=hidden id='DateOf-5-6' value='2023-04-14'><div style='line-height: 1.0; width:17px; vertical-align:middle;height: 17px; float: left; border:solid 1px black; padding: 2px; margin:1px; text-align:center; cursor: pointer; cursor: hand; background-color:#36393F;' onmouseover='javascript:MouseOverDate(5,7);' onmousedown='javascript:MouseDownDate(5,7);' id='Day-5-7'>15</div>
+                    
+                                        <input type=hidden id='DateOf-5-7' value='2023-04-15'><div style='padding:1px; float:left; width:60px; padding: 4px 0px 4px 5px;height: 17px;text-align: left; vertical-align:baseline; cursor: move;' id='Year-5' onmousedown='javascript:MouseDownSideLabel();'>2023</div>
+                                    </div>
+                                    <br clear=all>
+                                </div>
+                                
+                                <div id='DaysOfTheWeek' style='display:none;'>
+                                    <div style='padding:0px;' id='Row6';>
+                                        <div style='float:left; width:60px; padding: 4px 5px 4px 0px;height: 117px;text-align: right; vertical-align:baseline; cursor: move;' id='Month-6' onmousedown='javascript:MouseDownSideLabel();'></div>
+                                        
+                                        <div style='line-height: 1.0; width:17px; vertical-align:middle;height: 117px; float: left; border:solid 1px black; padding: 2px; margin:1px; text-align:center; cursor: pointer; cursor: hand; background-color:#36393F;' onmouseover='javascript:MouseOverDate(6,1);' onmousedown='javascript:MouseDownDate(6,1);' id='Day-6-1'></div>
+                    
+                                        <input type=hidden id='DateOf-6-1' value='0'><div style='line-height: 1.0; width:17px; vertical-align:middle;height: 117px; float: left; border:solid 1px black; padding: 2px; margin:1px; text-align:center; cursor: pointer; cursor: hand; background-color:#36393F;' onmouseover='javascript:MouseOverDate(6,2);' onmousedown='javascript:MouseDownDate(6,2);' id='Day-6-2'></div>
+                    
+                                        <input type=hidden id='DateOf-6-2' value='1'><div style='line-height: 1.0; width:17px; vertical-align:middle;height: 117px; float: left; border:solid 1px black; padding: 2px; margin:1px; text-align:center; cursor: pointer; cursor: hand; background-color:#36393F;' onmouseover='javascript:MouseOverDate(6,3);' onmousedown='javascript:MouseDownDate(6,3);' id='Day-6-3'></div>
+                    
+                                        <input type=hidden id='DateOf-6-3' value='2'><div style='line-height: 1.0; width:17px; vertical-align:middle;height: 117px; float: left; border:solid 1px black; padding: 2px; margin:1px; text-align:center; cursor: pointer; cursor: hand; background-color:#36393F;' onmouseover='javascript:MouseOverDate(6,4);' onmousedown='javascript:MouseDownDate(6,4);' id='Day-6-4'></div>
+                    
+                                        <input type=hidden id='DateOf-6-4' value='3'><div style='line-height: 1.0; width:17px; vertical-align:middle;height: 117px; float: left; border:solid 1px black; padding: 2px; margin:1px; text-align:center; cursor: pointer; cursor: hand; background-color:#36393F;' onmouseover='javascript:MouseOverDate(6,5);' onmousedown='javascript:MouseDownDate(6,5);' id='Day-6-5'></div>
+                    
+                                        <input type=hidden id='DateOf-6-5' value='4'><div style='line-height: 1.0; width:17px; vertical-align:middle;height: 117px; float: left; border:solid 1px black; padding: 2px; margin:1px; text-align:center; cursor: pointer; cursor: hand; background-color:#36393F;' onmouseover='javascript:MouseOverDate(6,6);' onmousedown='javascript:MouseDownDate(6,6);' id='Day-6-6'></div>
+                    
+                                        <input type=hidden id='DateOf-6-6' value='5'><div style='line-height: 1.0; width:17px; vertical-align:middle;height: 117px; float: left; border:solid 1px black; padding: 2px; margin:1px; text-align:center; cursor: pointer; cursor: hand; background-color:#36393F;' onmouseover='javascript:MouseOverDate(6,7);' onmousedown='javascript:MouseDownDate(6,7);' id='Day-6-7'></div>
+                    
+                                        <input type=hidden id='DateOf-6-7' value='6'><div style='padding:1px; float:left; width:60px; padding: 4px 0px 4px 5px;height: 117px;text-align: left; vertical-align:baseline; cursor: move;' id='Year-6' onmousedown='javascript:MouseDownSideLabel();'></div>
+                                    
+                                    </div>
+                                    <br clear=all>
+                                </div>
+
+                                <div style="margin:5px; height:20px;">
+                                    <input type=button id="Today" value="Today"ontouchstart="ShiftToDate('2023-03-14',false)" onclick="ShiftToDate('2023-03-14',false)">
+                                </div>
+                            </div>
+
+                            <div style="display:none">
+                                <input id=PossibleDates name=PossibleDates>
+                                <input id=TopLeftDate value="2023-03-12">
+                            </div>
+                        </td>
+
+                        <td align=center valign=top>
+                            <div id="WhatTimes" style="color:white;font-size:20px;text-align: center; width: 50%; min-width:305px;">
+                                What times might work?
+                            </div>
+                            <div style="font-size:12px;line-height:1.5; margin: 10px 0px 10px 0px;">
+                                <!-- <input type=checkbox name="AllDayEvent"> All-day event -->&nbsp;
+                            </div>
+
+                            <div style="color:white;font-size:15px;line-height:1.5; margin: 10px 0px 10px 0px;">
+                                No earlier than: 
+                                <select name="NoEarlierThan">
+                                    <option value=0>12:00  AM</option>  
+                                    <option value=1>1:00  AM</option>  
+                                    <option value=2>2:00  AM</option>  
+                                    <option value=3>3:00  AM</option>  
+                                    <option value=4>4:00  AM</option>  
+                                    <option value=5>5:00  AM</option>  
+                                    <option value=6>6:00  AM</option>  
+                                    <option value=7>7:00  AM</option>  
+                                    <option value=8>8:00  AM</option>  
+                                    <option selected value=9>9:00  AM</option>  
+                                    <option value=10>10:00  AM</option>  
+                                    <option value=11>11:00  AM</option>  
+                                    <option value=12>12:00  PM</option>  
+                                    <option value=13>1:00  PM</option>  
+                                    <option value=14>2:00  PM</option>  
+                                    <option value=15>3:00  PM</option>  
+                                    <option value=16>4:00  PM</option>  
+                                    <option value=17>5:00  PM</option>  
+                                    <option value=18>6:00  PM</option>  
+                                    <option value=19>7:00  PM</option>  
+                                    <option value=20>8:00  PM</option>  
+                                    <option value=21>9:00  PM</option>  
+                                    <option value=22>10:00  PM</option>  
+                                    <option value=23>11:00  PM</option>  
+                                    <option value=0>12:00  AM</option>
+                                </select>
+                            </div>
+                        
+                            <div style="color:white;font-size:15px;line-height:1.5; margin: 10px 0px 10px 0px;">
+                                No later than: 
+                                <select name="NoLaterThan">
+                                    <option value=0>12:00  AM</option>  
+                                    <option value=1>1:00  AM</option>  
+                                    <option value=2>2:00  AM</option>  
+                                    <option value=3>3:00  AM</option>  
+                                    <option value=4>4:00  AM</option>  
+                                    <option value=5>5:00  AM</option>  
+                                    <option value=6>6:00  AM</option>  
+                                    <option value=7>7:00  AM</option>  
+                                    <option value=8>8:00  AM</option>  
+                                    <option value=9>9:00  AM</option>  
+                                    <option value=10>10:00  AM</option>  
+                                    <option value=11>11:00  AM</option>  
+                                    <option value=12>12:00  PM</option>  
+                                    <option value=13>1:00  PM</option>  
+                                    <option value=14>2:00  PM</option>  
+                                    <option value=15>3:00  PM</option>  
+                                    <option value=16>4:00  PM</option>  
+                                    <option selected value=17>5:00  PM</option>  
+                                    <option value=18>6:00  PM</option>  
+                                    <option value=19>7:00  PM</option>  
+                                    <option value=20>8:00  PM</option>  
+                                    <option value=21>9:00  PM</option>  
+                                    <option value=22>10:00  PM</option>  
+                                    <option value=23>11:00  PM</option>  
+                                    <option value=0>12:00  AM</option>
+                                </select>
+                            </div>
+                        
+                            <div style="color:white;font-size:16px;line-height:1.5; margin: 10px 0px 10px 0px;" id="TimeZoneTextAndSelect">
+                                Time Zone:  
+                                <select name=TimeZone id=TimeZone></select>
+                            </div>
+                        
+                            <div style="display: none; font-size:12px;line-height:1.5; margin: 10px 0px 10px 0px; width: 200px;" id="NoTimeZoneSelect">
+                                For "Days of the Week" events, it is expected that all participants are in a single time zone.
+                            </div>
+                        
+                            <div style="font-size:12px;line-height:1.5; margin: 10px 0px 10px 0px">
+                                &nbsp;
                             </div>
                         </td>
                     </tr>
-                </div>
-            </td></tr>
-            <tr>
-                <td align=center valign=top rowspan=2>
-                    <div id="WhatDates" style="text-align: center; width: 50%; min-width:305px;">
-                        What dates might work?
-                    <div style="font-size:12px;line-height:1.5; margin: 10px 0px 10px 0px;">
-                    <nobr>Click and drag dates to choose possibilities.</nobr><br>
-                    <nobr>Click and drag labels to shift the calendar.</nobr><br>
-                        Survey using: <select id="DateTypes" name="DateTypes" onchange="DateTypesChanged()">
-                            <option value="SpecificDates">Specific Dates</option>
-                            <option value="DaysOfTheWeek">Days of the Week</option>
-                        </select>
-                    </div>
 
-                    <div id="Calendar" style="font-size:14px; margin: 0px auto 0px auto; width: 305px" onselectstart="return false" onmousedown="return false" onmousewheel=wheel>
-                    
-                    <div style='float:left; width:60px; padding: 4px 5px 4px 0px;'></div>
-                    
-                    <div style='float:left; line-height: 1.0; width:17px; vertical-align:middle; padding: 0px 3px 0px 3px; margin:1px; text-align:center; cursor: move;' id='DayOfWeek-1' onmousedown='javascript:MouseDownTopLabel();'>S</div>  <div style='float:left; line-height: 1.0; width:17px; vertical-align:middle; padding: 0px 3px 0px 3px; margin:1px; text-align:center; cursor: move;' id='DayOfWeek-2' onmousedown='javascript:MouseDownTopLabel();'>M</div>  <div style='float:left; line-height: 1.0; width:17px; vertical-align:middle; padding: 0px 3px 0px 3px; margin:1px; text-align:center; cursor: move;' id='DayOfWeek-3' onmousedown='javascript:MouseDownTopLabel();'>T</div>  <div style='float:left; line-height: 1.0; width:17px; vertical-align:middle; padding: 0px 3px 0px 3px; margin:1px; text-align:center; cursor: move;' id='DayOfWeek-4' onmousedown='javascript:MouseDownTopLabel();'>W</div>  <div style='float:left; line-height: 1.0; width:17px; vertical-align:middle; padding: 0px 3px 0px 3px; margin:1px; text-align:center; cursor: move;' id='DayOfWeek-5' onmousedown='javascript:MouseDownTopLabel();'>T</div>  <div style='float:left; line-height: 1.0; width:17px; vertical-align:middle; padding: 0px 3px 0px 3px; margin:1px; text-align:center; cursor: move;' id='DayOfWeek-6' onmousedown='javascript:MouseDownTopLabel();'>F</div>  <div style='float:left; line-height: 1.0; width:17px; vertical-align:middle; padding: 0px 3px 0px 3px; margin:1px; text-align:center; cursor: move;' id='DayOfWeek-7' onmousedown='javascript:MouseDownTopLabel();'>S</div><br clear=all>
-                    
-                    <script>
-                        var DateLoaded='2023-03-14';
-                    </script>
-                    <div id='SpecificDates'><div style='padding:0px;' id='Row1';><div style='float:left; width:60px; padding: 4px 5px 4px 0px;height: 17px;text-align: right; vertical-align:baseline; cursor: move;' id='Month-1' onmousedown='javascript:MouseDownSideLabel();'><b>Mar</b></div><div style='line-height: 1.0; width:17px; vertical-align:middle;height: 17px; float: left; border:solid 1px black; padding: 2px; margin:1px; text-align:center; cursor: pointer; cursor: hand; background-color:#ffdede;' onmouseover='javascript:MouseOverDate(1,1);' onmousedown='javascript:MouseDownDate(1,1);' id='Day-1-1'>12</div>
-                    <input type=hidden id='DateOf-1-1' value='2023-03-12'><div style='line-height: 1.0; width:17px; vertical-align:middle;height: 17px; float: left; border:solid 1px black; padding: 2px; margin:1px; text-align:center; cursor: pointer; cursor: hand; background-color:#ffdede;' onmouseover='javascript:MouseOverDate(1,2);' onmousedown='javascript:MouseDownDate(1,2);' id='Day-1-2'>13</div>
-                    <input type=hidden id='DateOf-1-2' value='2023-03-13'><div style='line-height: 1.0; width:17px; vertical-align:middle;height: 17px; float: left; border:solid 1px black; padding: 2px; margin:1px; text-align:center; cursor: pointer; cursor: hand; background-color:#ffdede; font-weight: bold;' onmouseover='javascript:MouseOverDate(1,3);' onmousedown='javascript:MouseDownDate(1,3);' id='Day-1-3'>14</div>
-                    <input type=hidden id='DateOf-1-3' value='2023-03-14'><div style='line-height: 1.0; width:17px; vertical-align:middle;height: 17px; float: left; border:solid 1px black; padding: 2px; margin:1px; text-align:center; cursor: pointer; cursor: hand; background-color:#ffdede;' onmouseover='javascript:MouseOverDate(1,4);' onmousedown='javascript:MouseDownDate(1,4);' id='Day-1-4'>15</div>
-                    <input type=hidden id='DateOf-1-4' value='2023-03-15'><div style='line-height: 1.0; width:17px; vertical-align:middle;height: 17px; float: left; border:solid 1px black; padding: 2px; margin:1px; text-align:center; cursor: pointer; cursor: hand; background-color:#ffdede;' onmouseover='javascript:MouseOverDate(1,5);' onmousedown='javascript:MouseDownDate(1,5);' id='Day-1-5'>16</div>
-                    <input type=hidden id='DateOf-1-5' value='2023-03-16'><div style='line-height: 1.0; width:17px; vertical-align:middle;height: 17px; float: left; border:solid 1px black; padding: 2px; margin:1px; text-align:center; cursor: pointer; cursor: hand; background-color:#ffdede;' onmouseover='javascript:MouseOverDate(1,6);' onmousedown='javascript:MouseDownDate(1,6);' id='Day-1-6'>17</div>
-                    <input type=hidden id='DateOf-1-6' value='2023-03-17'><div style='line-height: 1.0; width:17px; vertical-align:middle;height: 17px; float: left; border:solid 1px black; padding: 2px; margin:1px; text-align:center; cursor: pointer; cursor: hand; background-color:#ffdede;' onmouseover='javascript:MouseOverDate(1,7);' onmousedown='javascript:MouseDownDate(1,7);' id='Day-1-7'>18</div>
-                    <input type=hidden id='DateOf-1-7' value='2023-03-18'><div style='padding:1px; float:left; width:60px; padding: 4px 0px 4px 5px;height: 17px;text-align: left; vertical-align:baseline; cursor: move;' id='Year-1' onmousedown='javascript:MouseDownSideLabel();'>
-                    <b>2023</b></div></div><br clear=all><div style='padding:0px;' id='Row2';><div style='float:left; width:60px; padding: 4px 5px 4px 0px;height: 17px;text-align: right; vertical-align:baseline; cursor: move;' id='Month-2' onmousedown='javascript:MouseDownSideLabel();'>Mar</div><div style='line-height: 1.0; width:17px; vertical-align:middle;height: 17px; float: left; border:solid 1px black; padding: 2px; margin:1px; text-align:center; cursor: pointer; cursor: hand; background-color:#ffdede;' onmouseover='javascript:MouseOverDate(2,1);' onmousedown='javascript:MouseDownDate(2,1);' id='Day-2-1'>19</div>
-                    <input type=hidden id='DateOf-2-1' value='2023-03-19'><div style='line-height: 1.0; width:17px; vertical-align:middle;height: 17px; float: left; border:solid 1px black; padding: 2px; margin:1px; text-align:center; cursor: pointer; cursor: hand; background-color:#ffdede;' onmouseover='javascript:MouseOverDate(2,2);' onmousedown='javascript:MouseDownDate(2,2);' id='Day-2-2'>20</div>
-                    <input type=hidden id='DateOf-2-2' value='2023-03-20'><div style='line-height: 1.0; width:17px; vertical-align:middle;height: 17px; float: left; border:solid 1px black; padding: 2px; margin:1px; text-align:center; cursor: pointer; cursor: hand; background-color:#ffdede;' onmouseover='javascript:MouseOverDate(2,3);' onmousedown='javascript:MouseDownDate(2,3);' id='Day-2-3'>21</div>
-                    <input type=hidden id='DateOf-2-3' value='2023-03-21'><div style='line-height: 1.0; width:17px; vertical-align:middle;height: 17px; float: left; border:solid 1px black; padding: 2px; margin:1px; text-align:center; cursor: pointer; cursor: hand; background-color:#ffdede;' onmouseover='javascript:MouseOverDate(2,4);' onmousedown='javascript:MouseDownDate(2,4);' id='Day-2-4'>22</div>
-                    <input type=hidden id='DateOf-2-4' value='2023-03-22'><div style='line-height: 1.0; width:17px; vertical-align:middle;height: 17px; float: left; border:solid 1px black; padding: 2px; margin:1px; text-align:center; cursor: pointer; cursor: hand; background-color:#ffdede;' onmouseover='javascript:MouseOverDate(2,5);' onmousedown='javascript:MouseDownDate(2,5);' id='Day-2-5'>23</div>
-                    <input type=hidden id='DateOf-2-5' value='2023-03-23'><div style='line-height: 1.0; width:17px; vertical-align:middle;height: 17px; float: left; border:solid 1px black; padding: 2px; margin:1px; text-align:center; cursor: pointer; cursor: hand; background-color:#ffdede;' onmouseover='javascript:MouseOverDate(2,6);' onmousedown='javascript:MouseDownDate(2,6);' id='Day-2-6'>24</div>
-                    <input type=hidden id='DateOf-2-6' value='2023-03-24'><div style='line-height: 1.0; width:17px; vertical-align:middle;height: 17px; float: left; border:solid 1px black; padding: 2px; margin:1px; text-align:center; cursor: pointer; cursor: hand; background-color:#ffdede;' onmouseover='javascript:MouseOverDate(2,7);' onmousedown='javascript:MouseDownDate(2,7);' id='Day-2-7'>25</div>
-                    <input type=hidden id='DateOf-2-7' value='2023-03-25'><div style='padding:1px; float:left; width:60px; padding: 4px 0px 4px 5px;height: 17px;text-align: left; vertical-align:baseline; cursor: move;' id='Year-2' onmousedown='javascript:MouseDownSideLabel();'>
-                    2023</div></div><br clear=all><div style='padding:0px;' id='Row3';><div style='float:left; width:60px; padding: 4px 5px 4px 0px;height: 17px;text-align: right; vertical-align:baseline; cursor: move;' id='Month-3' onmousedown='javascript:MouseDownSideLabel();'>Mar/Apr</div><div style='line-height: 1.0; width:17px; vertical-align:middle;height: 17px; float: left; border:solid 1px black; padding: 2px; margin:1px; text-align:center; cursor: pointer; cursor: hand; background-color:#ffdede;' onmouseover='javascript:MouseOverDate(3,1);' onmousedown='javascript:MouseDownDate(3,1);' id='Day-3-1'>26</div>
-                    <input type=hidden id='DateOf-3-1' value='2023-03-26'><div style='line-height: 1.0; width:17px; vertical-align:middle;height: 17px; float: left; border:solid 1px black; padding: 2px; margin:1px; text-align:center; cursor: pointer; cursor: hand; background-color:#ffdede;' onmouseover='javascript:MouseOverDate(3,2);' onmousedown='javascript:MouseDownDate(3,2);' id='Day-3-2'>27</div>
-                    <input type=hidden id='DateOf-3-2' value='2023-03-27'><div style='line-height: 1.0; width:17px; vertical-align:middle;height: 17px; float: left; border:solid 1px black; padding: 2px; margin:1px; text-align:center; cursor: pointer; cursor: hand; background-color:#ffdede;' onmouseover='javascript:MouseOverDate(3,3);' onmousedown='javascript:MouseDownDate(3,3);' id='Day-3-3'>28</div>
-                    <input type=hidden id='DateOf-3-3' value='2023-03-28'><div style='line-height: 1.0; width:17px; vertical-align:middle;height: 17px; float: left; border:solid 1px black; padding: 2px; margin:1px; text-align:center; cursor: pointer; cursor: hand; background-color:#ffdede;' onmouseover='javascript:MouseOverDate(3,4);' onmousedown='javascript:MouseDownDate(3,4);' id='Day-3-4'>29</div>
-                    <input type=hidden id='DateOf-3-4' value='2023-03-29'><div style='line-height: 1.0; width:17px; vertical-align:middle;height: 17px; float: left; border:solid 1px black; padding: 2px; margin:1px; text-align:center; cursor: pointer; cursor: hand; background-color:#ffdede;' onmouseover='javascript:MouseOverDate(3,5);' onmousedown='javascript:MouseDownDate(3,5);' id='Day-3-5'>30</div>
-                    <input type=hidden id='DateOf-3-5' value='2023-03-30'><div style='line-height: 1.0; width:17px; vertical-align:middle;height: 17px; float: left; border:solid 1px black; padding: 2px; margin:1px; text-align:center; cursor: pointer; cursor: hand; background-color:#ffdede;' onmouseover='javascript:MouseOverDate(3,6);' onmousedown='javascript:MouseDownDate(3,6);' id='Day-3-6'>31</div>
-                    <input type=hidden id='DateOf-3-6' value='2023-03-31'><div style='line-height: 1.0; width:17px; vertical-align:middle;height: 17px; float: left; border:solid 1px black; padding: 2px; margin:1px; text-align:center; cursor: pointer; cursor: hand; background-color:#ffdede;' onmouseover='javascript:MouseOverDate(3,7);' onmousedown='javascript:MouseDownDate(3,7);' id='Day-3-7'>1</div>
-                    <input type=hidden id='DateOf-3-7' value='2023-04-01'><div style='padding:1px; float:left; width:60px; padding: 4px 0px 4px 5px;height: 17px;text-align: left; vertical-align:baseline; cursor: move;' id='Year-3' onmousedown='javascript:MouseDownSideLabel();'>
-                    2023</div></div><br clear=all><div style='padding:0px;' id='Row4';><div style='float:left; width:60px; padding: 4px 5px 4px 0px;height: 17px;text-align: right; vertical-align:baseline; cursor: move;' id='Month-4' onmousedown='javascript:MouseDownSideLabel();'>Apr</div><div style='line-height: 1.0; width:17px; vertical-align:middle;height: 17px; float: left; border:solid 1px black; padding: 2px; margin:1px; text-align:center; cursor: pointer; cursor: hand; background-color:#ffdede;' onmouseover='javascript:MouseOverDate(4,1);' onmousedown='javascript:MouseDownDate(4,1);' id='Day-4-1'>2</div>
-                    <input type=hidden id='DateOf-4-1' value='2023-04-02'><div style='line-height: 1.0; width:17px; vertical-align:middle;height: 17px; float: left; border:solid 1px black; padding: 2px; margin:1px; text-align:center; cursor: pointer; cursor: hand; background-color:#ffdede;' onmouseover='javascript:MouseOverDate(4,2);' onmousedown='javascript:MouseDownDate(4,2);' id='Day-4-2'>3</div>
-                    <input type=hidden id='DateOf-4-2' value='2023-04-03'><div style='line-height: 1.0; width:17px; vertical-align:middle;height: 17px; float: left; border:solid 1px black; padding: 2px; margin:1px; text-align:center; cursor: pointer; cursor: hand; background-color:#ffdede;' onmouseover='javascript:MouseOverDate(4,3);' onmousedown='javascript:MouseDownDate(4,3);' id='Day-4-3'>4</div>
-                    <input type=hidden id='DateOf-4-3' value='2023-04-04'><div style='line-height: 1.0; width:17px; vertical-align:middle;height: 17px; float: left; border:solid 1px black; padding: 2px; margin:1px; text-align:center; cursor: pointer; cursor: hand; background-color:#ffdede;' onmouseover='javascript:MouseOverDate(4,4);' onmousedown='javascript:MouseDownDate(4,4);' id='Day-4-4'>5</div>
-                    <input type=hidden id='DateOf-4-4' value='2023-04-05'><div style='line-height: 1.0; width:17px; vertical-align:middle;height: 17px; float: left; border:solid 1px black; padding: 2px; margin:1px; text-align:center; cursor: pointer; cursor: hand; background-color:#ffdede;' onmouseover='javascript:MouseOverDate(4,5);' onmousedown='javascript:MouseDownDate(4,5);' id='Day-4-5'>6</div>
-                    <input type=hidden id='DateOf-4-5' value='2023-04-06'><div style='line-height: 1.0; width:17px; vertical-align:middle;height: 17px; float: left; border:solid 1px black; padding: 2px; margin:1px; text-align:center; cursor: pointer; cursor: hand; background-color:#ffdede;' onmouseover='javascript:MouseOverDate(4,6);' onmousedown='javascript:MouseDownDate(4,6);' id='Day-4-6'>7</div>
-                    <input type=hidden id='DateOf-4-6' value='2023-04-07'><div style='line-height: 1.0; width:17px; vertical-align:middle;height: 17px; float: left; border:solid 1px black; padding: 2px; margin:1px; text-align:center; cursor: pointer; cursor: hand; background-color:#ffdede;' onmouseover='javascript:MouseOverDate(4,7);' onmousedown='javascript:MouseDownDate(4,7);' id='Day-4-7'>8</div>
-                    <input type=hidden id='DateOf-4-7' value='2023-04-08'><div style='padding:1px; float:left; width:60px; padding: 4px 0px 4px 5px;height: 17px;text-align: left; vertical-align:baseline; cursor: move;' id='Year-4' onmousedown='javascript:MouseDownSideLabel();'>
-                    2023</div></div><br clear=all><div style='padding:0px;' id='Row5';><div style='float:left; width:60px; padding: 4px 5px 4px 0px;height: 17px;text-align: right; vertical-align:baseline; cursor: move;' id='Month-5' onmousedown='javascript:MouseDownSideLabel();'>Apr</div><div style='line-height: 1.0; width:17px; vertical-align:middle;height: 17px; float: left; border:solid 1px black; padding: 2px; margin:1px; text-align:center; cursor: pointer; cursor: hand; background-color:#ffdede;' onmouseover='javascript:MouseOverDate(5,1);' onmousedown='javascript:MouseDownDate(5,1);' id='Day-5-1'>9</div>
-                    <input type=hidden id='DateOf-5-1' value='2023-04-09'><div style='line-height: 1.0; width:17px; vertical-align:middle;height: 17px; float: left; border:solid 1px black; padding: 2px; margin:1px; text-align:center; cursor: pointer; cursor: hand; background-color:#ffdede;' onmouseover='javascript:MouseOverDate(5,2);' onmousedown='javascript:MouseDownDate(5,2);' id='Day-5-2'>10</div>
-                    <input type=hidden id='DateOf-5-2' value='2023-04-10'><div style='line-height: 1.0; width:17px; vertical-align:middle;height: 17px; float: left; border:solid 1px black; padding: 2px; margin:1px; text-align:center; cursor: pointer; cursor: hand; background-color:#ffdede;' onmouseover='javascript:MouseOverDate(5,3);' onmousedown='javascript:MouseDownDate(5,3);' id='Day-5-3'>11</div>
-                    <input type=hidden id='DateOf-5-3' value='2023-04-11'><div style='line-height: 1.0; width:17px; vertical-align:middle;height: 17px; float: left; border:solid 1px black; padding: 2px; margin:1px; text-align:center; cursor: pointer; cursor: hand; background-color:#ffdede;' onmouseover='javascript:MouseOverDate(5,4);' onmousedown='javascript:MouseDownDate(5,4);' id='Day-5-4'>12</div>
-                    <input type=hidden id='DateOf-5-4' value='2023-04-12'><div style='line-height: 1.0; width:17px; vertical-align:middle;height: 17px; float: left; border:solid 1px black; padding: 2px; margin:1px; text-align:center; cursor: pointer; cursor: hand; background-color:#ffdede;' onmouseover='javascript:MouseOverDate(5,5);' onmousedown='javascript:MouseDownDate(5,5);' id='Day-5-5'>13</div>
-                    <input type=hidden id='DateOf-5-5' value='2023-04-13'><div style='line-height: 1.0; width:17px; vertical-align:middle;height: 17px; float: left; border:solid 1px black; padding: 2px; margin:1px; text-align:center; cursor: pointer; cursor: hand; background-color:#ffdede;' onmouseover='javascript:MouseOverDate(5,6);' onmousedown='javascript:MouseDownDate(5,6);' id='Day-5-6'>14</div>
-                    <input type=hidden id='DateOf-5-6' value='2023-04-14'><div style='line-height: 1.0; width:17px; vertical-align:middle;height: 17px; float: left; border:solid 1px black; padding: 2px; margin:1px; text-align:center; cursor: pointer; cursor: hand; background-color:#ffdede;' onmouseover='javascript:MouseOverDate(5,7);' onmousedown='javascript:MouseDownDate(5,7);' id='Day-5-7'>15</div>
-                    <input type=hidden id='DateOf-5-7' value='2023-04-15'><div style='padding:1px; float:left; width:60px; padding: 4px 0px 4px 5px;height: 17px;text-align: left; vertical-align:baseline; cursor: move;' id='Year-5' onmousedown='javascript:MouseDownSideLabel();'>
-                    2023</div></div><br clear=all></div><div id='DaysOfTheWeek' style='display:none;'><div style='padding:0px;' id='Row6';><div style='float:left; width:60px; padding: 4px 5px 4px 0px;height: 117px;text-align: right; vertical-align:baseline; cursor: move;' id='Month-6' onmousedown='javascript:MouseDownSideLabel();'></div><div style='line-height: 1.0; width:17px; vertical-align:middle;height: 117px; float: left; border:solid 1px black; padding: 2px; margin:1px; text-align:center; cursor: pointer; cursor: hand; background-color:#ffdede;' onmouseover='javascript:MouseOverDate(6,1);' onmousedown='javascript:MouseDownDate(6,1);' id='Day-6-1'></div>
-                    <input type=hidden id='DateOf-6-1' value='0'><div style='line-height: 1.0; width:17px; vertical-align:middle;height: 117px; float: left; border:solid 1px black; padding: 2px; margin:1px; text-align:center; cursor: pointer; cursor: hand; background-color:#ffdede;' onmouseover='javascript:MouseOverDate(6,2);' onmousedown='javascript:MouseDownDate(6,2);' id='Day-6-2'></div>
-                    <input type=hidden id='DateOf-6-2' value='1'><div style='line-height: 1.0; width:17px; vertical-align:middle;height: 117px; float: left; border:solid 1px black; padding: 2px; margin:1px; text-align:center; cursor: pointer; cursor: hand; background-color:#ffdede;' onmouseover='javascript:MouseOverDate(6,3);' onmousedown='javascript:MouseDownDate(6,3);' id='Day-6-3'></div>
-                    <input type=hidden id='DateOf-6-3' value='2'><div style='line-height: 1.0; width:17px; vertical-align:middle;height: 117px; float: left; border:solid 1px black; padding: 2px; margin:1px; text-align:center; cursor: pointer; cursor: hand; background-color:#ffdede;' onmouseover='javascript:MouseOverDate(6,4);' onmousedown='javascript:MouseDownDate(6,4);' id='Day-6-4'></div>
-                    <input type=hidden id='DateOf-6-4' value='3'><div style='line-height: 1.0; width:17px; vertical-align:middle;height: 117px; float: left; border:solid 1px black; padding: 2px; margin:1px; text-align:center; cursor: pointer; cursor: hand; background-color:#ffdede;' onmouseover='javascript:MouseOverDate(6,5);' onmousedown='javascript:MouseDownDate(6,5);' id='Day-6-5'></div>
-                    <input type=hidden id='DateOf-6-5' value='4'><div style='line-height: 1.0; width:17px; vertical-align:middle;height: 117px; float: left; border:solid 1px black; padding: 2px; margin:1px; text-align:center; cursor: pointer; cursor: hand; background-color:#ffdede;' onmouseover='javascript:MouseOverDate(6,6);' onmousedown='javascript:MouseDownDate(6,6);' id='Day-6-6'></div>
-                    <input type=hidden id='DateOf-6-6' value='5'><div style='line-height: 1.0; width:17px; vertical-align:middle;height: 117px; float: left; border:solid 1px black; padding: 2px; margin:1px; text-align:center; cursor: pointer; cursor: hand; background-color:#ffdede;' onmouseover='javascript:MouseOverDate(6,7);' onmousedown='javascript:MouseDownDate(6,7);' id='Day-6-7'></div>
-                    <input type=hidden id='DateOf-6-7' value='6'><div style='padding:1px; float:left; width:60px; padding: 4px 0px 4px 5px;height: 117px;text-align: left; vertical-align:baseline; cursor: move;' id='Year-6' onmousedown='javascript:MouseDownSideLabel();'>
-                    </div></div><br clear=all></div>
-
-                    <div style="margin:5px; height:20px;">
-                        <input type=button id="Today" value="Today"
-                    ontouchstart="ShiftToDate('2023-03-14',false)" onclick="ShiftToDate('2023-03-14',false)">
-                    </div>
-                    </div>
-
-                    <div style="display:none">
-                        <input id=PossibleDates name=PossibleDates>
-                        <input id=TopLeftDate value="2023-03-12">
-                    </div>
-                </td>
-
-                <td align=center valign=top>
-                    <div id="WhatTimes" style="text-align: center; width: 50%; min-width:305px;"><center>
-                        What times might work?<div style="font-size:12px;line-height:1.5; margin: 10px 0px 10px 0px;">
-                        <!-- <input type=checkbox name="AllDayEvent"> All-day event -->&nbsp;
-                    </div>
-
-                    <div style="font-size:12px;line-height:1.5; margin: 10px 0px 10px 0px;">
-                        No earlier than: <select name="NoEarlierThan">
-                          <option value=0>12:00  AM</option>  <option value=1>1:00  AM</option>  <option value=2>2:00  AM</option>  <option value=3>3:00  AM</option>  <option value=4>4:00  AM</option>  <option value=5>5:00  AM</option>  <option value=6>6:00  AM</option>  <option value=7>7:00  AM</option>  <option value=8>8:00  AM</option>  <option selected value=9>9:00  AM</option>  <option value=10>10:00  AM</option>  <option value=11>11:00  AM</option>  <option value=12>12:00  PM</option>  <option value=13>1:00  PM</option>  <option value=14>2:00  PM</option>  <option value=15>3:00  PM</option>  <option value=16>4:00  PM</option>  <option value=17>5:00  PM</option>  <option value=18>6:00  PM</option>  <option value=19>7:00  PM</option>  <option value=20>8:00  PM</option>  <option value=21>9:00  PM</option>  <option value=22>10:00  PM</option>  <option value=23>11:00  PM</option>  <option value=0>12:00  AM</option></select>
-                    </div>
-                        
-                    <div style="font-size:12px;line-height:1.5; margin: 10px 0px 10px 0px;">
-                        No later than: <select name="NoLaterThan">
-                          <option value=0>12:00  AM</option>  <option value=1>1:00  AM</option>  <option value=2>2:00  AM</option>  <option value=3>3:00  AM</option>  <option value=4>4:00  AM</option>  <option value=5>5:00  AM</option>  <option value=6>6:00  AM</option>  <option value=7>7:00  AM</option>  <option value=8>8:00  AM</option>  <option value=9>9:00  AM</option>  <option value=10>10:00  AM</option>  <option value=11>11:00  AM</option>  <option value=12>12:00  PM</option>  <option value=13>1:00  PM</option>  <option value=14>2:00  PM</option>  <option value=15>3:00  PM</option>  <option value=16>4:00  PM</option>  <option selected value=17>5:00  PM</option>  <option value=18>6:00  PM</option>  <option value=19>7:00  PM</option>  <option value=20>8:00  PM</option>  <option value=21>9:00  PM</option>  <option value=22>10:00  PM</option>  <option value=23>11:00  PM</option>  <option value=0>12:00  AM</option></select></div>
-                        <div style="font-size:12px;line-height:1.5; margin: 10px 0px 10px 0px;" id="TimeZoneTextAndSelect">
-                        Time Zone:  <select name=TimeZone id=TimeZone></select>
-                        </div>
-                        <div style="display: none; font-size:12px;line-height:1.5; margin: 10px 0px 10px 0px; width: 200px;" id="NoTimeZoneSelect">
-                        For "Days of the Week" events, it is expected that all participants are in a single time zone.</div>
-                        <div style="font-size:12px;line-height:1.5; margin: 10px 0px 10px 0px">
-                        &nbsp;</div>
-                        
-                        </div>
-                        </div>
-                        </td>
-                        </tr>
-
-                        <tr><td colspan=2 align=center>Ready? <input type=submit value="Create Event"
-                            style="font-size:12px;"></td></tr>
+                    <tr>
+                        <td colspan=2 style="color:white;" align=center>Ready? <input type=submit value="Create Event"style="font-size:12px;"></td>
+                    </tr>
                 </tbody>
             </table>
         </form>
-
-
-
-
     </body>
 </html>
