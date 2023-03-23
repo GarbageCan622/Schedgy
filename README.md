@@ -8,7 +8,7 @@ To Build
 
 Running Unit Tests
 1. Tests run automatically on Github, but to test locally it must be done manually.
-2. n a command line in the /commands folder.
+2. Open a command line in the /commands folder.
 3. If Jest is not installed on your system run 'npm i --save-dev jest' to install it.
 4. If Jest is already installed, or after it has been installed, run 'npm run test' in the commands folder to run all unit tests.
 
