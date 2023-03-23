@@ -3,10 +3,10 @@ $(document).ready(function(){
     $('input[name="daterange"]').daterangepicker({
         "alwaysShowCalendars": true,
         "opens": 'left',
-        startDate: moment(),
-        endDate: moment().add(1, 'day')
+        startDate: "03/17/2023",
+        endDate: "03/23/2023"
       }, function(start, end, label) {
-        console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+        $("#datePick").val(start.format('MM/DD/YYYY') + ' - ' + end.format('MM/DD/YYYY'));
       });
     
       $("#DateTypes").change(function(){     
@@ -59,4 +59,60 @@ $(document).ready(function(){
 
   });
 
+});
+
+
+class SpecificDateEvent{
+  constructor(Start, End, Name){
+    var name = Name;
+    var start = Start;    
+    var end = End;
+  }
+}
+
+class WeeklyEvent{
+  constructor(StartTime, EndTime, Days, Name){
+var startTime = StartTime;
+var endTime = EndTime;
+var days = Days;
+var name = Name;
+  }
+}
+
+
+$("#EventForm").submit(function(event){
+  var NameSubmit = $("#NewEventName").val();
+  var NoEarlierThanSubmit = $("#NoEarlierThan").val();
+  var NoLaterThanSubmit = $("#NoLaterThan").val();
+
+  if($("#DateTypes option:selected").val() == 'SpecificDates'){
+    var SpecificDateSubmit = $("#datePick").val();
+      //year, month, day, hours, minutes, seconds, milliseconds
+start = new Date(SpecificDateSubmit.substring(6,10), SpecificDateSubmit.substring(0,2), SpecificDateSubmit.substring(3,5), NoEarlierThanSubmit, 0, 0, 0);
+end = new Date(SpecificDateSubmit.substring(19,23), SpecificDateSubmit.substring(13,15), SpecificDateSubmit.substring(16,18), NoLaterThanSubmit, 0, 0, 0);
+module.exports = new SpecificDateEvent(start, end, NameSubmit);
+event.preventDefault();
+window.location.href='specificDayEvent.html';
+}
+else{
+  var DaysArr = [];
+    for(i=0; i<7;i++){
+      DaysArr.push($('#'+ i+'Day').is(":checked"));
+    }
+    var checker = true;
+    for(i=0; i < DaysArr.length; i++){
+      if(DaysArr[i] == true){
+        checker = false;
+      }
+    }
+    console.log(checker);
+    if(checker){
+      event.preventDefault();
+      alert("No days selected for weekly schedule");  
+      return;  
+    }
+  module.exports = new WeeklyEvent(NoEarlierThanSubmit, NoLaterThanSubmit, DaysArr, NameSubmit);
+   event.preventDefault();
+    window.location.href='weeklyEvent.html';
+}
 });
