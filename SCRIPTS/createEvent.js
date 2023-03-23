@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    console.log("boop");
+
     $('input[name="daterange"]').daterangepicker({
         "alwaysShowCalendars": true,
         "opens": 'left',
@@ -19,4 +19,49 @@ $(document).ready(function(){
         $('#DaysOfTheWeek').css('display', 'block');
     }
     });
+
+
+    function disableLaterThan() { 
+      console.log("NoEarlierThan changed to value "+this.value);
+
+      for(i = 0; i <= 9; i++){
+        $('[name="NoLaterThan"]>option[value="'+i+'"]').attr("disabled","disabled");
+      }
+    }
+
+    function disableEarlierThan() { 
+      console.log("NoLaterThan changed to value "+this.value);
+      for(i = 17; i <= 23; i++){
+        $('[name="NoEarlierThan"]>option[value="'+i+'"]').attr("disabled","disabled");
+      }
+  
+    }
+
+    disableLaterThan();
+    disableEarlierThan();
+
+	$('[name="NoEarlierThan"]').change(function() { 
+    console.log("NoEarlierThan changed to value "+this.value);
+    for(i = 0; i <= this.value; i++){
+      $('[name="NoLaterThan"]>option[value="'+i+'"]').attr("disabled","disabled");
+    }
+    for(i = this.value; i <= 23; i++){
+      $('[name="NoLaterThan"]>option[value="'+i+'"]').removeAttr("disabled");
+    }
+    $('[name="NoLaterThan"]>option[value="'+this.value+'"]').attr("disabled","disabled");
+  });
+
+
+	$('[name="NoLaterThan"]').change(function() { 
+    console.log("NoLaterThan changed to value "+this.value);
+    for(i = 0; i <= this.value; i++){
+      $('[name="NoEarlierThan"]>option[value="'+i+'"]').removeAttr("disabled");
+    }
+    for(i = this.value; i <= 23; i++){
+      $('[name="NoEarlierThan"]>option[value="'+i+'"]').attr("disabled","disabled");
+    }
+    $('[name="NoEarlierThan"]>option[value="'+this.value+'"]').attr("disabled","disabled");
+
+  });
+
 });
