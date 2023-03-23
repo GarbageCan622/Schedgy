@@ -8,7 +8,7 @@
     <body style="background-color:#36393F;">
         <h1>Schedgy Sign Up Chart</h1>
 
-        <form>
+        <form id="EventForm">
             <table width="100%" cellpadding="0" cellspacing="0">
                 <tbody>
                     
@@ -38,39 +38,39 @@
                                 </select>
                             </div>
                      <div id='SpecificDates'>
-                        <input type="text" id="datePick" name="daterange" readonly/>
+                        <input type="text" id="datePick" name="daterange" readonly value="03/17/2023 - 03/23/2023"/>
                                 </div>
                                 
                                 <div id='DaysOfTheWeek' style='display:none;'>
                                     <div style='padding:0px;' id='Row6';>
                                         <ul>
                                             <li>
-                                              <input type="checkbox" id="Monday" name="Monday" value="Monday">
-                                              <label for="Monday">Mo</label>
+                                              <input type="checkbox" id="0Day" name="Monday" value="Monday">
+                                              <label for="0Day">Mo</label>
                                             </li>
                                             <li>
-                                              <input type="checkbox" id="Tuesday" name="Tuesday" value="Tuesday">
-                                              <label for="Tuesday">Tu</label>
+                                              <input type="checkbox" id="1Day" name="Tuesday" value="Tuesday">
+                                              <label for="1Day">Tu</label>
                                             </li>
                                             <li>
-                                              <input type="checkbox" id="Wednesday" name="Wednesday" value="Wednesday">
-                                              <label for="Wednesday">We</label>
+                                              <input type="checkbox" id="2Day" name="Wednesday" value="Wednesday">
+                                              <label for="2Day">We</label>
                                             </li>
                                             <li>
-                                              <input type="checkbox" id="Thursday" name="Thursday" value="Thursday">
-                                              <label for="Thursday">Th</label>
+                                              <input type="checkbox" id="3Day" name="Thursday" value="Thursday">
+                                              <label for="3Day">Th</label>
                                             </li>
                                             <li>
-                                                <input type="checkbox" id="Friday" name="Friday" value="Friday">
-                                                <label for="Friday">Fi</label>
+                                                <input type="checkbox" id="4Day" name="Friday" value="Friday">
+                                                <label for="4Day">Fi</label>
                                               </li>
                                               <li>
-                                                <input type="checkbox" id="Saturday" name="Saturday" value="Saturday">
-                                                <label for="Saturday">Sa</label>
+                                                <input type="checkbox" id="5Day" name="Saturday" value="Saturday">
+                                                <label for="5Day">Sa</label>
                                               </li>
                                               <li>
-                                                <input type="checkbox" id="Sunday" name="Sunday" value="Sunday">
-                                                <label for="Sunday">Su</label>
+                                                <input type="checkbox" id="6Day" name="Sunday" value="Sunday">
+                                                <label for="6Day">Su</label>
                                               </li>
                                           </ul>
                                     </div>
@@ -170,7 +170,7 @@
                     </tr>
 
                     <tr>
-                        <td colspan=2 style="color:white;" align=center>Ready? <input type=submit value="Create Event"style="font-size:12px;"></td>
+                        <td colspan=2 style="color:white;" align=center>Ready? <input type=submit value="Create Event" id="CreateEvent" style="font-size:12px;"></td>
                     </tr>
                    
                 </tbody>
