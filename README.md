@@ -1,3 +1,6 @@
+About the project:
+Schedgy is a scheduling tool seamlessly integrated with Discord. Its purpose is to make scheduling meetings easier and faster for groups. There is a Schedgy bot that users can add to their Discord servers and its main purpose is to send notifications to users. These notifications can be about filling out an availability polling chart, reminders about upcoming events, and a decided meeting time once a polling chart has been filled out by an entire group. The polling chart will be held on a website and Schedgy will be able to supply links to website to fill out charts, create events, and see past/upcoming events. 
+
 To Build
 1. If you have node.js on your system (run 'node -v' in a command line, it should return v16.9.0 if node.js is installed). Otherwise install the latest version from the node.js site: https://nodejs.org/en/
 2. Install discord.js and dotenv with node.js, by running 'npm install discord.js dotenv' in a command line.
