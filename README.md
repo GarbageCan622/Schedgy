@@ -1,4 +1,5 @@
-About the project
+About the Project
+
 Schedgy is a scheduling tool seamlessly integrated with Discord. Its purpose is to make scheduling meetings easier and faster for groups. There is a Schedgy bot that users can add to their Discord servers and its main purpose is to send notifications to users. These notifications can be about filling out an availability polling chart, reminders about upcoming events, and a decided meeting time once a polling chart has been filled out by an entire group. The polling chart will be held on a website and Schedgy will be able to supply links to website to fill out charts, create events, and see past/upcoming events. 
 
 To Build
