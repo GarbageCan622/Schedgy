@@ -3,14 +3,17 @@
   "version": "1.0.0",
   "description": "",
   "main": "bot.js",
+  "type": "module",
   "scripts": {
-    "test": "jest --config=jest.config.js"
-
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "jest": "^27.5.1"
+    "@testing-library/dom": "^9.2.0",
+    "@testing-library/jest-dom": "^5.16.5",
+    "jest": "^27.5.1",
+    "jest-dom": "^4.0.0"
   }
 }
