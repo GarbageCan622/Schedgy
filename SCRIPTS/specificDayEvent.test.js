@@ -21,6 +21,6 @@ describe('specificDayEvent.html', () => {
 
   test('renders a heading element', () => {
     expect(container.querySelector('h1')).not.toBeNull()
-    expect(getByText(container, 'Event Name')).toBeInTheDocument()
+    expect(getByText(container, 'Event Name Goes Here')).toBeInTheDocument()
   })
 })
