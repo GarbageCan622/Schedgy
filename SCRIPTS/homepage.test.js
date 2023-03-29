@@ -23,4 +23,9 @@ describe('homepage.html', () => {
     expect(container.querySelector('h1')).not.toBeNull()
     expect(getByText(container, 'Link Schedgy to your Discord Server')).toBeInTheDocument()
   })
+  //checks for accurate link on link element
+  test('renders a link h2 element with known link content', () => {
+    expect(container.querySelector('h2')).not.toBeNull()
+    expect(getByText(container, 'Link')).toHaveAttribute('href', 'https://discord.com/api/oauth2/authorize?client_id=1080576304551825478&permissions=337155091456&scope=bot%20applications.commands')
+    })
 })
