@@ -1,5 +1,7 @@
 //const AvailabilityChart = require("./availabilityChart");
 //const SpecificDateEvent = require("./createEvent");
+//import { exportWeekly} from "./createEvent.js";
+
 
 function createWeeklyEventFillOutChart(start, end, daysArr){
     
@@ -9,7 +11,6 @@ function createWeeklyEventFillOutChart(start, end, daysArr){
     var timeLoop = start; //this is for the for loop
     var dayName;
     var numDays = 0;
-    var tempH = 0;
     for(i=0; i<daysArr.length; i++){
         if(daysArr[i] == true){
             switch(i){
@@ -42,26 +43,23 @@ function createWeeklyEventFillOutChart(start, end, daysArr){
     appendTable += '</tr>'
 
     for(i=0; i<=time; i++){
-        for(h=0; h<=3; h++){
-            tempH = h *15;
         appendTable += '<tr>';
-        appendTable += '<th>' + timeLoop + ':' + tempH.toString().padStart(2, "0"); + '</th>'
+        appendTable += '<th>' + timeLoop + ':00</th>'
     for(j=0; j<numDays;j++){       
         appendTable += '<td>' + 
-                       '<input type="checkbox" id="checkboxDate' + j + timeLoop + ':' + tempH + '" name="checkboxDate' + j + timeLoop + ':' + tempH + '">' +
-                        '<label for="checkboxDate' + j + timeLoop + ':' + tempH + '">&nbsp;</label>' +
-                        '</td>'     
-    }
-    appendTable += '</tr>'
+                       '<input type="checkbox" id="checkboxDate' + j + timeLoop + '" name="checkboxDate' + j + timeLoop + '">' +
+                        '<label for="checkboxDate' + j + timeLoop + '">&nbsp;</label>' +
+                        '</td>'        
 }
+appendTable += '</tr>'
 timeLoop++;
 }
     $('#personalTimeTable').append(appendTable);
 }
 
-$(document).ready(function(){
-    const testArr = [false, true, false, true, false, false, true];
-    createWeeklyEventFillOutChart(5, 20, testArr);
-
+$(document).ready(function(){   
+    $('#eventName').html(sessionStorage.getItem("name"));
+    console.log(JSON.parse(sessionStorage.getItem("days")));
+    createWeeklyEventFillOutChart(sessionStorage.getItem("weeklyStart"), sessionStorage.getItem("weeklyEnd"), JSON.parse(sessionStorage.getItem("days")));
 
 });

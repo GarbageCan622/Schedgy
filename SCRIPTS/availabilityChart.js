@@ -20,9 +20,9 @@ class AvailabilityChart {
         for(var i = 0; i < this.chart.length; i++) {
             //console.log("");
             for (var j = 0; j < this.chart[i].length; j++) {
-                //console.log(i + ", " + j + " howMany: " + this.chart[i][j].howMany);
+                console.log(i + ", " + j + " howMany: " + this.chart[i][j].howMany);
                 for (var n = 0; n < this.chart[i][j].who.length; n++) {
-                    //console.log(" who: " + this.chart[i][j].who[n])
+                    console.log(" who: " + this.chart[i][j].who[n])
                 }
             }
         }
@@ -50,6 +50,13 @@ end = new Date(2018, 11, 30, 15, 15, 0, 0);
 // 6 days, 23 fifteen minute availability slots
 
 poll = new AvailabilityChart(start, end);
+//console.log(poll.chart[0][0].howMany == poll.chart[1][1].howMany);
+poll.printChart();
+poll.markAvailable(1,1,123);
+poll.printChart();
+poll.markUnavailable(1,1,123);
+poll.printChart();
+//console.log(poll.chart[0][0].howMany == poll.chart[1][1].howMany);
 
 
 module.exports = AvailabilityChart;
