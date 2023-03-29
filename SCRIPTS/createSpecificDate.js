@@ -1,10 +1,10 @@
-const AvailabilityChart = require("./availabilityChart");
-const SpecificDateEvent = require("./createEvent");
+//const AvailabilityChart = require("./availabilityChart");
+//const SpecificDateEvent = require("./createEvent");
 
-function makeChartToFill(start, end){
+function createSpecificDateFillOutChart(start, end){
     var days = Math.floor((end.getTime() - start.getTime())/(1000*3600*24))
     var time = (end.getHours() - start.getHours())*4 + (end.getMinutes() - start.getMinutes())/15;
-    console.log(time)
+
     var appendTable = '<tr><th></th>';
     var timeLoop = start; //this is for the for loop
     var tempTimeLoop = timeLoop; 
@@ -35,7 +35,7 @@ function makeChartToFill(start, end){
 $(document).ready(function(){
     start = new Date(2018, 11, 24, 12, 0, 0, 0);
     end = new Date(2018, 11, 30, 17, 45, 0, 0);
-    makeChartToFill(start, end)
+    createSpecificDateFillOutChart(start, end)
 
 
 });
