@@ -1,9 +1,10 @@
 //const AvailabilityChart = require("./availabilityChart");
 //const SpecificDateEvent = require("./createEvent");
+//import { exportSpecific} from "./createEvent.js";
 
 function createSpecificDateFillOutChart(start, end){
     var days = Math.floor((end.getTime() - start.getTime())/(1000*3600*24))
-    var time = (end.getHours() - start.getHours())*4 + (end.getMinutes() - start.getMinutes())/15;
+    var time = (end.getHours() - start.getHours());
 
     var appendTable = '<tr><th></th>';
     var timeLoop = start; //this is for the for loop
@@ -27,15 +28,14 @@ function createSpecificDateFillOutChart(start, end){
                         '</td>'     
     }
     appendTable += '</tr>'
-    timeLoop.setMinutes(timeLoop.getMinutes() + 15);
+    timeLoop.setHours(timeLoop.getHours() + 1);
 }
     $('#personalTimeTable').append(appendTable);
 }
 
 $(document).ready(function(){
-    start = new Date(2018, 11, 24, 12, 0, 0, 0);
-    end = new Date(2018, 11, 30, 17, 45, 0, 0);
+    $('#eventName').html(sessionStorage.getItem("name"));
+    var start = new Date(sessionStorage.getItem("specificStartYear"), sessionStorage.getItem("specificStartMonth"), sessionStorage.getItem("specificStartDay"), sessionStorage.getItem("specificStartHour"), 0, 0, 0);
+    var end = new Date(sessionStorage.getItem("specificEndYear"), sessionStorage.getItem("specificEndMonth"), sessionStorage.getItem("specificEndDay"), sessionStorage.getItem("specificEndHour"), 0, 0, 0);
     createSpecificDateFillOutChart(start, end)
-
-
 });
