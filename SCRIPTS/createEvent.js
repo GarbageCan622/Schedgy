@@ -90,7 +90,9 @@ $("#EventForm").submit(function(event){
       //year, month, day, hours, minutes, seconds, milliseconds
 start = new Date(SpecificDateSubmit.substring(6,10), SpecificDateSubmit.substring(0,2), SpecificDateSubmit.substring(3,5), NoEarlierThanSubmit, 0, 0, 0);
 end = new Date(SpecificDateSubmit.substring(19,23), SpecificDateSubmit.substring(13,15), SpecificDateSubmit.substring(16,18), NoLaterThanSubmit, 0, 0, 0);
+console.log("before")
 module.exports = new SpecificDateEvent(start, end, NameSubmit);
+console.log("after")
 event.preventDefault();
 window.location.href='specificDayEvent.html';
 }
