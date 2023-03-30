@@ -6,12 +6,12 @@
   "type": "module",
   "scripts": {
     "test": "jest --config=jest.config.js"
-
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "dotenv": "^16.0.3",
     "jest": "^27.5.1"
   }
 }
