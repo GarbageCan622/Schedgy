@@ -17,8 +17,8 @@ To Generate Figures
 3. From here you can log into Discord, which will give you access to the polling prototype page
 4. On the polling page, you then set a name for your event in the “New Event Name” textbox 
 5. You can then choose whether you want a “Specific Date” event or a “Day of the Week” event
-  a. If “Specific Date” is chosen, click on the dates shown to pull up the calendar and select a date range for the event to occur
-  b. If “Day of the Week” is chosen, click on the days of the week you intend to have the event occur on 
+  5a. If “Specific Date” is chosen, click on the dates shown to pull up the calendar and select a date range for the event to occur
+  5b. If “Day of the Week” is chosen, click on the days of the week you intend to have the event occur on 
 6. Select the hour range you intend to have the event to occur between in the “No earlier than:” and “No later than:” fields 
 7. Click create event, and you should now be presented with the event’s polling chart, displaying the times that would be filled out by users.
 
