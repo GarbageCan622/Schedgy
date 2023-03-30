@@ -10,6 +10,7 @@ To Build
 5. If new slash commands have been created, run 'node deploy-commands.js' to register these new commands for use.
 6. Open the command line into the root folder and run 'node bot.js', and 'Ready!' will print if successful. At this point the bot will remain online while the command line is open.
 
+
 To Generate Figures
 1. Add Schedgy to a Discord server you own using this link, if you do not have it already. (Alternatively you can access the "signup.html" page by downloading the repository and skip to step 4)
 2. In a Discord channel Schedgy can access, type /sendlink to receive link to Schedy’s homepage
@@ -22,6 +23,7 @@ b. If “Day of the Week” is chosen, click on the days of the week you intend 
 
 6. Select the hour range you intend to have the event to occur between in the “No earlier than:” and “No later than:” fields 
 7. Click create event, and you should now be presented with the event’s polling chart, displaying the times that would be filled out by users.
+
 
 
 Running Unit Tests
