@@ -12,5 +12,8 @@
   "devDependencies": {
     "dotenv": "^16.0.3",
     "jest": "^27.5.1"
+  },
+  "dependencies": {
+    "discord.js-mock-interactions": "^0.1.9"
   }
 }
