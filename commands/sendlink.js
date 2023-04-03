@@ -15,5 +15,3 @@ module.exports = {
 		await interaction.reply('${linkMessage.message}(${linkMessage.site})');
 	},
 };
-
-module.exports = linkMessage;

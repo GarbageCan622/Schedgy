@@ -1,3 +1,5 @@
+
+
 $(document).ready(function(){
 
     $('input[name="daterange"]').daterangepicker({
@@ -22,13 +24,13 @@ $(document).ready(function(){
 
 
     function disableLaterThan() { 
-      for(i = 0; i <= 9; i++){
+      for(var i = 0; i <= 9; i++){
         $('[name="NoLaterThan"]>option[value="'+i+'"]').attr("disabled","disabled");
       }
     }
 
     function disableEarlierThan() { 
-      for(i = 17; i <= 23; i++){
+      for(var i = 17; i <= 23; i++){
         $('[name="NoEarlierThan"]>option[value="'+i+'"]').attr("disabled","disabled");
       }
   
@@ -38,10 +40,10 @@ $(document).ready(function(){
     disableEarlierThan();
 
 	$('[name="NoEarlierThan"]').change(function() { 
-    for(i = 0; i <= this.value; i++){
+    for(var i = 0; i <= this.value; i++){
       $('[name="NoLaterThan"]>option[value="'+i+'"]').attr("disabled","disabled");
     }
-    for(i = this.value; i <= 23; i++){
+    for(var i = this.value; i <= 23; i++){
       $('[name="NoLaterThan"]>option[value="'+i+'"]').removeAttr("disabled");
     }
     $('[name="NoLaterThan"]>option[value="'+this.value+'"]').attr("disabled","disabled");
@@ -49,10 +51,10 @@ $(document).ready(function(){
 
 
 	$('[name="NoLaterThan"]').change(function() { 
-    for(i = 0; i <= this.value; i++){
+    for(var i = 0; i <= this.value; i++){
       $('[name="NoEarlierThan"]>option[value="'+i+'"]').removeAttr("disabled");
     }
-    for(i = this.value; i <= 23; i++){
+    for(var i = this.value; i <= 23; i++){
       $('[name="NoEarlierThan"]>option[value="'+i+'"]').attr("disabled","disabled");
     }
     $('[name="NoEarlierThan"]>option[value="'+this.value+'"]').attr("disabled","disabled");
@@ -90,17 +92,27 @@ $("#EventForm").submit(function(event){
       //year, month, day, hours, minutes, seconds, milliseconds
 start = new Date(SpecificDateSubmit.substring(6,10), SpecificDateSubmit.substring(0,2), SpecificDateSubmit.substring(3,5), NoEarlierThanSubmit, 0, 0, 0);
 end = new Date(SpecificDateSubmit.substring(19,23), SpecificDateSubmit.substring(13,15), SpecificDateSubmit.substring(16,18), NoLaterThanSubmit, 0, 0, 0);
-module.exports = new SpecificDateEvent(start, end, NameSubmit);
+//module.exports = new SpecificDateEvent(start, end, NameSubmit);
+//const exportSpecific = new SpecificDateEvent(start, end, NameSubmit);
+sessionStorage.setItem("specificStartYear", SpecificDateSubmit.substring(6,10));
+sessionStorage.setItem("specificStartMonth", SpecificDateSubmit.substring(0,2));
+sessionStorage.setItem("specificStartDay", SpecificDateSubmit.substring(3,5));
+sessionStorage.setItem("specificStartHour", NoEarlierThanSubmit);
+sessionStorage.setItem("specificEndYear", SpecificDateSubmit.substring(19,23));
+sessionStorage.setItem("specificEndMonth", SpecificDateSubmit.substring(13,15));
+sessionStorage.setItem("specificEndDay", SpecificDateSubmit.substring(16,18));
+sessionStorage.setItem("specificEndHour", NoLaterThanSubmit);
+sessionStorage.setItem("name", NameSubmit);
 event.preventDefault();
 window.location.href='specificDayEvent.html';
 }
 else{
   var DaysArr = [];
-    for(i=0; i<7;i++){
+    for(var i=0; i<7;i++){
       DaysArr.push($('#'+ i+'Day').is(":checked"));
     }
     var checker = true;
-    for(i=0; i < DaysArr.length; i++){
+    for(var i=0; i < DaysArr.length; i++){
       if(DaysArr[i] == true){
         checker = false;
       }
@@ -111,8 +123,17 @@ else{
       alert("No days selected for weekly schedule");  
       return;  
     }
-  module.exports = new WeeklyEvent(NoEarlierThanSubmit, NoLaterThanSubmit, DaysArr, NameSubmit);
+  //module.exports = new WeeklyEvent(NoEarlierThanSubmit, NoLaterThanSubmit, DaysArr, NameSubmit);
+  //exportWeekly = new WeeklyEvent(NoEarlierThanSubmit, NoLaterThanSubmit, DaysArr, NameSubmit);
+  sessionStorage.setItem("weeklyStart", NoEarlierThanSubmit);
+  sessionStorage.setItem("weeklyEnd", NoLaterThanSubmit);
+  sessionStorage.setItem("days", JSON.stringify(DaysArr));
+  sessionStorage.setItem("name", NameSubmit);
+
+
    event.preventDefault();
     window.location.href='weeklyEvent.html';
 }
 });
+
+//export {exportSpecific, exportWeekly};

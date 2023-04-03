@@ -87,13 +87,13 @@ ul {
     float: left;
   }
   
-  input[type="checkbox"]:not(:checked), 
-  input[type="checkbox"]:checked {
+  .daySelect input[type="checkbox"]:not(:checked), 
+  .daySelect input[type="checkbox"]:checked {
     position: absolute;
     left: -9999%;
   }
   
-  input[type="checkbox"] + label {
+  .daySelect input[type="checkbox"] + label {
     display: inline-block;
     padding: 10px;
     cursor: pointer;
@@ -103,8 +103,36 @@ ul {
     margin-bottom: 10px;
   }
   
-  input[type="checkbox"]:checked + label {
+  .daySelect input[type="checkbox"]:checked + label {
     border: 1px solid white;
     color: white;
     background-color: black;
   }
+
+  .avalibityChart  {
+    border-collapse:collapse;
+    border-spacing:0;
+    background-color: white;
+  }
+
+.avalibityChart td{border-color:black;
+  border-style:solid;border-width:1px;
+  font-family:Arial, sans-serif;font-size:14px;
+  overflow:hidden;padding:10px 5px;
+  word-break:normal;
+}
+
+.avalibityChart th{border-color:black;
+  border-style:solid;
+  border-width:1px;
+  font-family:Arial, sans-serif;
+  font-size:14px;
+  font-weight:normal;
+  overflow:hidden;
+  padding:10px 5px;
+  word-break:normal;
+}
+
+.avalibityChart .avalibityChart-0lax{text-align:left;
+  vertical-align:top
+}
