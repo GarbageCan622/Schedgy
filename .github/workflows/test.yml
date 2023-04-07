@@ -4,12 +4,12 @@ on: [push]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v1
-    - name: Run Jest
-    - run: npm install --save-dev jest
-    - run: npm install --save-dev @testing-library/jest-dom
-    - run: npm test
+    - name: Install dependencies
+      run: |
+        npm install --save-dev jest
+        npm install --save-dev @testing-library/jest-dom
+    - name: Run tests
+      run: npm test
