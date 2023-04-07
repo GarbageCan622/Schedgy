@@ -1,3 +1,5 @@
+
+
 $(document).ready(function(){
 
     $('input[name="daterange"]').daterangepicker({
@@ -90,11 +92,17 @@ $("#EventForm").submit(function(event){
       //year, month, day, hours, minutes, seconds, milliseconds
 start = new Date(SpecificDateSubmit.substring(6,10), SpecificDateSubmit.substring(0,2), SpecificDateSubmit.substring(3,5), NoEarlierThanSubmit, 0, 0, 0);
 end = new Date(SpecificDateSubmit.substring(19,23), SpecificDateSubmit.substring(13,15), SpecificDateSubmit.substring(16,18), NoLaterThanSubmit, 0, 0, 0);
-console.log("before")
 //module.exports = new SpecificDateEvent(start, end, NameSubmit);
 //const exportSpecific = new SpecificDateEvent(start, end, NameSubmit);
-//export {exportSpecific};
-console.log("after")
+sessionStorage.setItem("specificStartYear", SpecificDateSubmit.substring(6,10));
+sessionStorage.setItem("specificStartMonth", SpecificDateSubmit.substring(0,2));
+sessionStorage.setItem("specificStartDay", SpecificDateSubmit.substring(3,5));
+sessionStorage.setItem("specificStartHour", NoEarlierThanSubmit);
+sessionStorage.setItem("specificEndYear", SpecificDateSubmit.substring(19,23));
+sessionStorage.setItem("specificEndMonth", SpecificDateSubmit.substring(13,15));
+sessionStorage.setItem("specificEndDay", SpecificDateSubmit.substring(16,18));
+sessionStorage.setItem("specificEndHour", NoLaterThanSubmit);
+sessionStorage.setItem("name", NameSubmit);
 event.preventDefault();
 window.location.href='specificDayEvent.html';
 }
@@ -116,7 +124,16 @@ else{
       return;  
     }
   //module.exports = new WeeklyEvent(NoEarlierThanSubmit, NoLaterThanSubmit, DaysArr, NameSubmit);
+  //exportWeekly = new WeeklyEvent(NoEarlierThanSubmit, NoLaterThanSubmit, DaysArr, NameSubmit);
+  sessionStorage.setItem("weeklyStart", NoEarlierThanSubmit);
+  sessionStorage.setItem("weeklyEnd", NoLaterThanSubmit);
+  sessionStorage.setItem("days", JSON.stringify(DaysArr));
+  sessionStorage.setItem("name", NameSubmit);
+
+
    event.preventDefault();
     window.location.href='weeklyEvent.html';
 }
 });
+
+//export {exportSpecific, exportWeekly};

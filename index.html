@@ -54,7 +54,7 @@
               document.getElementById("avatar").style.display = "none";
 
               if (!accessToken) {
-                  window.location.href('/')
+                 window.location.href('/')
               }
           
               fetch('https://discord.com/api/users/@me', {
@@ -74,11 +74,13 @@
                   //set the avatar image by constructing a url to access discord's cdn
                   document.getElementById("avatar").style.display = "block";
                   document.getElementById("avatar").src = `https://cdn.discordapp.com/avatars/${id}/${avatar}.jpg`;
+                  location.assign('HTML/signup.html');
               }        
-
+              
               })
               .catch(console.error);
-          
+              
+              
           
           };
           </script>
