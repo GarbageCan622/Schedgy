@@ -86,7 +86,6 @@ abbr:where([title]) {
 Remove the default font size and weight for headings.
 */
 
-h1,
 h2,
 h3,
 h4,
@@ -303,7 +302,6 @@ Removes the default spacing and border for appropriate elements.
 blockquote,
 dl,
 dd,
-h1,
 h2,
 h3,
 h4,

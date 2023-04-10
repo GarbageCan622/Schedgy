@@ -21,6 +21,6 @@ describe('weeklyEvent.html', () => {
 
   test('renders a heading element', () => {
     expect(container.querySelector('h1')).not.toBeNull()
-    expect(getByText(container, 'Event Header')).toBeInTheDocument()
+    expect(getByText(container, 'Event Name')).toBeInTheDocument()
   })
 })
