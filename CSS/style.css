@@ -107,29 +107,6 @@ ul {
     padding: 10px;
     display: inline;
   }
-/* setting up the two columns of charts */
-/* #chartToFill{
-  width: 50%;
-  vertical-align: top;
-  text-align: center;
-  display: inline-block;
-}
-#livefeed{
-  width: 50%;
-  vertical-align: top;
-  text-align: center;
-  display: inline-block;
-} */
-.grids{
-  width: 50%;
-  vertical-align: top;
-  text-align: center;
-  display: inline-block;
-}
-
-
-
-
   
   .daySelect input[type="checkbox"]:not(:checked), 
   .daySelect input[type="checkbox"]:checked {
@@ -138,18 +115,18 @@ ul {
   }
   
   .daySelect input[type="checkbox"] + label {
-    display: list-item;
+    display: inline-block;
     padding: 10px;
     cursor: pointer;
     border: 1px solid black;
-    color: white;
+    color: black;
     background-color: white;
     margin-bottom: 10px;
   }
   
   .daySelect input[type="checkbox"]:checked + label {
     border: 1px solid black;
-    color: #5865F2;
+    color: white;
     background-color: #5865F2;
   }
 
