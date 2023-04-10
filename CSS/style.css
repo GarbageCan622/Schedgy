@@ -107,6 +107,29 @@ ul {
     padding: 10px;
     display: inline;
   }
+/* setting up the two columns of charts */
+/* #chartToFill{
+  width: 50%;
+  vertical-align: top;
+  text-align: center;
+  display: inline-block;
+}
+#livefeed{
+  width: 50%;
+  vertical-align: top;
+  text-align: center;
+  display: inline-block;
+} */
+.grids{
+  width: 50%;
+  vertical-align: top;
+  text-align: center;
+  display: inline-block;
+}
+
+
+
+
   
   .daySelect input[type="checkbox"]:not(:checked), 
   .daySelect input[type="checkbox"]:checked {
@@ -115,25 +138,25 @@ ul {
   }
   
   .daySelect input[type="checkbox"] + label {
-    display: inline-block;
+    display: list-item;
     padding: 10px;
     cursor: pointer;
     border: 1px solid black;
-    color: black;
+    color: white;
     background-color: white;
     margin-bottom: 10px;
   }
   
   .daySelect input[type="checkbox"]:checked + label {
-    border: 1px solid white;
-    color: white;
-    background-color: black;
+    border: 1px solid black;
+    color: #5865F2;
+    background-color: #5865F2;
   }
 
   .avalibityChart  {
     border-collapse:collapse;
     border-spacing:0;
-    background-color: white;
+    background-color: #2f3136;
   }
 
 .avalibityChart td{border-color:black;
@@ -148,6 +171,7 @@ ul {
   border-width:1px;
   font-family:Arial, sans-serif;
   font-size:14px;
+  color:white;
   font-weight:normal;
   overflow:hidden;
   padding:10px 5px;
