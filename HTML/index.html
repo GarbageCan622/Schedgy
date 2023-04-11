@@ -40,6 +40,7 @@
           
                   //set the avatar image by constructing a url to access discord's cdn
                   document.getElementById("avatar").src = `https://cdn.discordapp.com/avatars/${id}/${avatar}.jpg`;
+                  location.assign('HTML/signup.html');
               })
               .catch(console.error);
           
