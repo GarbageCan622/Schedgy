@@ -1,21 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
     <header>
-        <title>Specific day event</title>
+        <title>Specific Day Event</title>
         <link rel="stylesheet" href="../CSS/style.css"/>
     </header>
 
     <body style="background-color:#36393F;">
         <h1 id="eventName">Event Name</h1>
-        
-        <div id="chartToFill">
-            <table id="personalTimeTable" class="avalibityChart daySelect">              
-            </table>           
-        </div>
-        <div id="submitDiv">
-            <input type=submit value="Submit time" id="CreateEvent" style="font-size:12px;">
-        </div>
-
+            <div id="AviailableGrid">
+                <script type="text/javascript">
+                    //discord names
+                </script>
+                    <div class="availableCharts">
+                        <div class="grids">
+                            <div id="chartToFill">
+                                <table id="personalTimeTable" class="avalibityChart daySelect"></table>           
+                            </div>
+                        </div>
+                        <div class="grids">
+                            <div id="liveFeed">
+                                <table id="groupTimeTable"></table>
+                            </div>
+                        </div>
+                    </div>
+                <div id="submitDiv">
+                    <input type=submit value="Submit time" id="CreateEvent" style="font-size:12px;">
+                </div>
+            </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
         <script  src="../SCRIPTS/createWeeklyEvent.js" ></script>
     </body>

@@ -71,6 +71,7 @@ input[type=text]{
     border: solid black;
     border-radius: 5px;
     margin:1px;
+    text-align: center;
     color:white;
     width: 95%;
     padding:12px;
@@ -88,18 +89,23 @@ input[type=submit]{
     padding: 12px;
     margin: 2px;
 }
-
+/* Specific Day styles to get them looking nice */
+/* #Monday{
+  float:inline-start;
+}
+#Sunday{
+  float: inline-end;
+} */
 ul {
     padding: 0;
     margin: 0;
     clear: both;
-  }
-  
-  li{
     list-style-type: none;
+  }
+  li{
     list-style-position: outside;
     padding: 10px;
-    float: left;
+    display: inline;
   }
   
   .daySelect input[type="checkbox"]:not(:checked), 
@@ -119,15 +125,15 @@ ul {
   }
   
   .daySelect input[type="checkbox"]:checked + label {
-    border: 1px solid white;
+    border: 1px solid black;
     color: white;
-    background-color: black;
+    background-color: #5865F2;
   }
 
   .avalibityChart  {
     border-collapse:collapse;
     border-spacing:0;
-    background-color: white;
+    background-color: #2f3136;
   }
 
 .avalibityChart td{border-color:black;
@@ -142,6 +148,7 @@ ul {
   border-width:1px;
   font-family:Arial, sans-serif;
   font-size:14px;
+  color:white;
   font-weight:normal;
   overflow:hidden;
   padding:10px 5px;
