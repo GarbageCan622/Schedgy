@@ -130,6 +130,29 @@ ul {
     background-color: #5865F2;
   }
 
+  .timeSelect input[type="checkbox"]:not(:checked), 
+  .timeSelect input[type="checkbox"]:checked {
+    position: absolute;
+    left: -9999%;
+  }
+  
+  .timeSelect input[type="checkbox"] + label {
+    display: inline-block;
+    display: flex;
+    padding: 10px;
+    cursor: pointer;
+    border: 1px solid black;
+    color: black;
+    background-color: white;
+    margin-bottom: 10px;
+  }
+  
+  .timeSelect input[type="checkbox"]:checked + label {
+    border: 1px solid black;
+    color: white;
+    background-color: #5865F2;
+  }
+
   .avalibityChart  {
     border-collapse:collapse;
     border-spacing:0;
