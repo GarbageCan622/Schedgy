@@ -12,6 +12,6 @@ module.exports = {
 		.setName('sendlink')
 		.setDescription('Sends a link to the github page'),
 	async execute(interaction) {
-		await interaction.reply('${linkMessage.message}(${linkMessage.site})');
+		await interaction.reply(`${linkMessage.message}(${linkMessage.site})`);
 	},
 };
