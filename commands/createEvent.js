@@ -9,7 +9,7 @@ const linkMessage = {
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName('create event')
+		.setName('createevent')
 		.setDescription('Links user to create a new event'),
 	async execute(interaction) {
 		await interaction.reply('${linkMessage.message}(${linkMessage.site})');
