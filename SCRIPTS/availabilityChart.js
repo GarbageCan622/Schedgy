@@ -51,11 +51,6 @@ end = new Date(2018, 11, 30, 15, 15, 0, 0);
 
 poll = new AvailabilityChart(start, end);
 //console.log(poll.chart[0][0].howMany == poll.chart[1][1].howMany);
-poll.printChart();
-poll.markAvailable(1,1,123);
-poll.printChart();
-poll.markUnavailable(1,1,123);
-poll.printChart();
 //console.log(poll.chart[0][0].howMany == poll.chart[1][1].howMany);
 
 
