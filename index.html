@@ -36,6 +36,10 @@
                   const { username, discriminator, avatar, id} = response;
                   //set the welcome username string
                   if( '${username}' !== 'undefined'){
+                    sessionStorage.setItem("discordUsername", username);
+                    sessionStorage.setItem("discordDiscriminator", discriminator);
+                    sessionStorage.setItem("discordAvatar", avatar);
+                    sessionStorage.setItem("discordId", id);
                   location.assign('HTML/signup.html');
              }})
               .catch(console.error);

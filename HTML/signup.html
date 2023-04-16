@@ -184,34 +184,11 @@
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 <script type="text/javascript" src="../SCRIPTS/createEvent.js" ></script>
-
 <script>
-    window.onload = () => {
-      const fragment = new URLSearchParams(window.location.hash.slice(1));
-      const [accessToken, tokenType] = [fragment.get('access_token'), fragment.get('token_type')];
-  
-      if (!accessToken) {
-          window.location.href('/')
-      }
-  
-      fetch('https://discord.com/api/users/@me', {
-      headers: {
-          authorization: `${tokenType} ${accessToken}`,
-      },
-      })
-      .then(result => result.json())
-      .then(response => {
-        console.log(response);
-          const { username, discriminator, avatar, id} = response;
-          //set the welcome username string
-          if( '${username}' !== 'undefined'){
-          
-     }})
-      .catch(console.error);
-  
-  
-  };
-  </script>
-
+    console.log('username: ' + sessionStorage.getItem("discordUsername"));
+    console.log('discriminator: ' + sessionStorage.getItem("discordDiscriminator"));
+    console.log('username: ' + sessionStorage.getItem("discordAvatar"));
+    console.log('id: ' + sessionStorage.getItem("discordId"));
+</script>
     </body>
 </html>
