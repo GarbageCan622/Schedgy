@@ -178,16 +178,16 @@
             </table>
         </form>
         
-        //<?php
+        <?php
             // session_start();
             // function redirect($url) {
             //     header('Location: '.$url);
             // }
 
-            // $dbConnection = mysqli_connect("jdbc:mysql://u88864_T3BYDVo5Nj:%2B4i%5EQ6Pfwm%40OzghvSw1V6rwt@212.192.29.151:3306", "u88864_T3BYDVo5Nj", "+4i^Q6Pfwm@OzghvSw1V6rwt", "s88864_Events");
-            // if (!$dbConnection) {
-            //     die("Connection failed: " . mysqli_connect_error());
-            // }
+            $dbConnection = mysqli_connect("localhost", "u88864_T3BYDVo5Nj", "+4i^Q6Pfwm@OzghvSw1V6rwt", "s88864_Events");
+            if (!$dbConnection) {
+                die("Connection failed: " . mysqli_connect_error());
+            }
         ?>
         
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
