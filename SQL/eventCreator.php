@@ -17,19 +17,19 @@
                         <tr>
                             <td align="center" colspan="2">
                                 <form action="" method="post" id="NewEvent" style="width:100%; margin:20px 0px 20px 0px;">
-                                    <label for="eventName">Enter new Event Name: </label>
+                                    <label for="eventName" style="font-family:discord;color:white;font-size:30px;">Enter new Event Name: </label>
                                     <input type="text" id="eventName" name="eventName">
-                                    <br>
-                                    <label for="eventID">Enter New Event ID: </label>
+                                    <br><br>
+                                    <label for="eventID" style="font-family:discord;color:white;font-size:20px;">Enter New Event ID#: </label>
                                     <input type="text" id="eventID" name="eventID">
-                                    <br>
-                                    <label for="description">Description: </label>
+                                    <br><br>
+                                    <label for="description" style="font-family:discord;color:white;font-size:20px;">Description: </label>
                                     <input type="text" id="description" name="description">
                                 </form>
                             </td>
                         </tr>
                     </div>
-                
+
                     <tr>
                         <td align=center valign=top rowspan=2 width="50%">
                             <div id="WhatDates" style=" color:white; font-size:18px; text-align: center; width: 50%; min-width:305px;">
@@ -39,7 +39,6 @@
                             <div style="color:white; font-size:15px;line-height:1.5; margin: 10px 0px 10px 0px;">
                                 Select Specific Dates or Days of the Week.<br>
                                 Click a start and end date for your event.<br>
-                                    Survey using: 
                             </div>
                      <div id='SpecificDates'>
                         <input type="text" id="datePick" name="daterange" readonly value="03/17/2023 - 03/23/2023"/>
@@ -159,33 +158,10 @@
                             </div>
                         
                             <div style="color:white;font-size:16px;line-height:1.5; margin: 10px 0px 10px 0px;" id="TimeZoneTextAndSelect">
-                                Select Time ID:  
-                                <select name=timeID id=timeID>
-                                    <option value=1>1</option>
-                                    <option value=2>2</option>
-                                    <option value=3>3</option>
-                                    <option value=4>4</option>
-                                    <option value=5>5</option>
-                                    <option value=6>6</option>
-                                    <option value=7>7</option>
-                                    <option value=8>8</option>
-                                    <option value=9>9</option>
-                                    <option value=10>10</option>
-                                    <option value=11>11</option>
-                                    <option value=12>12</option>
-                                    <option value=13>13</option>
-                                    <option value=14>14</option>
-                                    <option value=15>15</option>
-                                    <option value=16>16</option>
-                                    <option value=17>17</option>
-                                    <option value=18>18</option>
-                                    <option value=19>19</option>
-                                    <option value=20>20</option>
-                                    <option value=21>11</option>
-                                    <option value=22>22</option>
-                                    <option value=23>23</option>
-                                    <option value=24>24</option>
-                                </select>
+                                <form action="" method="post">
+                                    <label for="eventName" style="color:white;">Enter Time ID#: </label>
+                                    <input type="text" id="timeID   " name="timeID">
+                                </form>  
                             </div>
                         
                             <div style="font-size:12px;line-height:1.5; margin: 10px 0px 10px 0px">
@@ -201,7 +177,19 @@
                 </tbody>
             </table>
         </form>
+        
+        //<?php
+            // session_start();
+            // function redirect($url) {
+            //     header('Location: '.$url);
+            // }
 
+            // $dbConnection = mysqli_connect("jdbc:mysql://u88864_T3BYDVo5Nj:%2B4i%5EQ6Pfwm%40OzghvSw1V6rwt@212.192.29.151:3306", "u88864_T3BYDVo5Nj", "+4i^Q6Pfwm@OzghvSw1V6rwt", "s88864_Events");
+            // if (!$dbConnection) {
+            //     die("Connection failed: " . mysqli_connect_error());
+            // }
+        ?>
+        
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
