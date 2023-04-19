@@ -4,7 +4,7 @@ const {JSDOM} = require('jsdom');
 const fs = require('fs'); //== import fs from fs
 const path = require('path');
 
-const html = fs.readFileSync(path.resolve(__dirname, '../HTML/index.html'), 'utf8');
+const html = fs.readFileSync(path.resolve(__dirname, '../index.html'), 'utf8');
 
 let container;
 let dom;
