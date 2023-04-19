@@ -1,7 +1,7 @@
 const { getByText } = require ('@testing-library/dom');
 const { toBeInTheDocument } = require ('@testing-library/jest-dom/extend-expect');
 const {JSDOM} = require('jsdom');
-const fs = require('fs'); //== import fs from fs
+const fs = require('fs');
 const path = require('path');
 
 const html = fs.readFileSync(path.resolve(__dirname, '../HTML/signup.html'), 'utf8');
@@ -9,18 +9,44 @@ const html = fs.readFileSync(path.resolve(__dirname, '../HTML/signup.html'), 'ut
 let container;
 let dom;
 
-describe('signup.html', () => {
-    beforeEach(() => {
-        // Constructing a new JSDOM with this option is the key
-        // to getting the code in the script tag to execute.
-        // This is indeed dangerous and should only be done with trusted content.
-        // https://github.com/jsdom/jsdom#executing-scripts
-        dom = new JSDOM(html, { runScripts: 'dangerously' })
-        container = dom.window.document.body
-      })
+beforeEach(() => {
+  dom = new JSDOM(html, { runScripts: 'dangerously' });
+  global.document = dom.window.document;
+  container = document.body;
+});
 
-  test('renders a heading element', () => {
-    expect(container.querySelector('h1')).not.toBeNull()
-    expect(getByText(container, 'Schedgy Sign Up Chart')).toBeInTheDocument()
-  })
-})
+afterEach(() => {
+  dom.window.close();
+  global.document = undefined;
+  container = undefined;
+});
+
+test('Form exists', () => {
+  //Check that the form element exists
+  const form = document.getElementById('EventForm');
+  expect(form).toBeTruthy();
+});
+
+test('Event name exists', () => {
+  //Check that event name exists
+  const input = document.getElementById('NewEventName');
+  expect(input).toBeTruthy();
+});
+
+test('Contains element for date types', () => {
+  //Element for date types is present
+  const select = document.getElementById('DateTypes');
+  expect(select).toBeTruthy();
+});
+
+test('Form contains input element for date range', () => {
+  //Selector for date range exists
+  const input = document.getElementById('datePick');
+  expect(input).toBeTruthy();
+});
+
+test('Form contains select element for "no earlier than" time', () => {
+  //Check that the form contains a select element for "no earlier than" time
+  const select = document.getElementById('NoEarlierThan');
+  expect(select).toBeTruthy();
+});
