@@ -31,7 +31,7 @@
                     </div>
 
                     <tr>
-                        <td align=center valign=top rowspan=2 width="50%">
+                    <td align=center valign=top rowspan=2 width="50%">
                             <div id="WhatDates" style=" color:white; font-size:18px; text-align: center; width: 50%; min-width:305px;">
                                 What dates might work?
                             </div>    
@@ -39,6 +39,12 @@
                             <div style="color:white; font-size:15px;line-height:1.5; margin: 10px 0px 10px 0px;">
                                 Select Specific Dates or Days of the Week.<br>
                                 Click a start and end date for your event.<br>
+                                Or select the days of the week for your event.<br>
+                                    Survey using: 
+                                <select id="DateTypes" name="DateTypes">
+                                    <option value="SpecificDates">Specific Dates</option>
+                                    <option value="DaysOfTheWeek">Days of the Week</option>
+                                </select>
                             </div>
                      <div id='SpecificDates'>
                         <input type="text" id="datePick" name="daterange" readonly value="03/17/2023 - 03/23/2023"/>
@@ -172,19 +178,20 @@
         </form>
         
         <?php
-            $dbConnection = mysqli_connect("b7a39c95", "u88864_T3BYDVo5Nj", "+4i^Q6Pfwm@OzghvSw1V6rwt", "s88864_Events");
+            // $dbConnection = mysqli_connect("b7a39c95", "u88864_T3BYDVo5Nj", "+4i^Q6Pfwm@OzghvSw1V6rwt", "s88864_Events");
+            $dbConnection = mysqli_connect("localhost", "root", "", "schedgy");
             if (!$dbConnection) {
                 die("Connection failed: " . mysqli_connect_error());
             }
 
             if(isset($_POST['CreateEvent'])) {
-                $id = $_POST['event_id'];
-                $eventname = $_POST['event_name'];
+                $id = $_POST['eventID'];
+                $eventname = $_POST['eventName'];
                 $description = $_POST['description'];
-                $startd = $_POST['start_date'];
+                $startd = $_POST['daterange'];
                 $endd = $_POST['end_date'];
-                $startt = $_POST['start_time'];
-                $endt = $_POST['end_time'];
+                $startt = $_POST['NoEarlierThan'];
+                $endt = $_POST['NoLaterThan'];
             
                 if (empty($id) || empty($eventname) || empty($description) || empty($startd) || empty($endd) || empty($startt) || empty($endt)) {
                     echo "Data required in all fields";
@@ -197,7 +204,18 @@
                     } else {
                         echo "<br>Event succsefully created!<br>";
                     }
-            }
+                    switch ($type) {
+                        case "author":
+                            $query = 'insert into author values (' . $id .')';
+                            $result = mysqli_query($dbConnection, $query);
+                            if (!$result) {
+                                echo "<br>Could not insert into Author table<br>";
+                            } else {
+                                echo "<br>Successfuly inserted into Author table<br>";
+                            }
+                            break;
+                        }
+            }   
 
         ?>
         
