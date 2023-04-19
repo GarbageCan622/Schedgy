@@ -204,18 +204,7 @@
                     } else {
                         echo "<br>Event succsefully created!<br>";
                     }
-                    switch ($type) {
-                        case "author":
-                            $query = 'insert into author values (' . $id .')';
-                            $result = mysqli_query($dbConnection, $query);
-                            if (!$result) {
-                                echo "<br>Could not insert into Author table<br>";
-                            } else {
-                                echo "<br>Successfuly inserted into Author table<br>";
-                            }
-                            break;
-                        }
-            }   
+                }
 
         ?>
         
