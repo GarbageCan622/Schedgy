@@ -157,13 +157,6 @@
                                 </select>
                             </div>
                         
-                            <div style="color:white;font-size:16px;line-height:1.5; margin: 10px 0px 10px 0px;" id="TimeZoneTextAndSelect">
-                                <form action="" method="post">
-                                    <label for="eventName" style="color:white;">Enter Time ID#: </label>
-                                    <input type="text" id="timeID   " name="timeID">
-                                </form>  
-                            </div>
-                        
                             <div style="font-size:12px;line-height:1.5; margin: 10px 0px 10px 0px">
                                 &nbsp;
                             </div>
@@ -171,7 +164,7 @@
                     </tr>
 
                     <tr>
-                        <td colspan=2 style="color:white;" align=center>Ready? <input type=submit value="Create Event" id="CreateEvent" style="font-size:12px;"></td>
+                        <td colspan=2 style="color:white;" align=center><input type=submit value="CreateEvent" id="CreateEvent" style="font-size:12px;"></td>
                     </tr>
                    
                 </tbody>
@@ -179,15 +172,33 @@
         </form>
         
         <?php
-            // session_start();
-            // function redirect($url) {
-            //     header('Location: '.$url);
-            // }
-
-            $dbConnection = mysqli_connect("localhost", "u88864_T3BYDVo5Nj", "+4i^Q6Pfwm@OzghvSw1V6rwt", "s88864_Events");
+            $dbConnection = mysqli_connect("b7a39c95", "u88864_T3BYDVo5Nj", "+4i^Q6Pfwm@OzghvSw1V6rwt", "s88864_Events");
             if (!$dbConnection) {
                 die("Connection failed: " . mysqli_connect_error());
             }
+
+            if(isset($_POST['CreateEvent'])) {
+                $id = $_POST['event_id'];
+                $eventname = $_POST['event_name'];
+                $description = $_POST['description'];
+                $startd = $_POST['start_date'];
+                $endd = $_POST['end_date'];
+                $startt = $_POST['start_time'];
+                $endt = $_POST['end_time'];
+            
+                if (empty($id) || empty($eventname) || empty($description) || empty($startd) || empty($endd) || empty($startt) || empty($endt)) {
+                    echo "Data required in all fields";
+                } else {
+                    $query = 'insert into event values (' . $id . ', "' . $eventname . '", "' . $description . '", "' . $startd . '", ' . $endd . ' ","' .$startt. '","' .$endt. ')';
+                    $result = mysqli_query($dbConnection, $query);
+                }
+                    if (!$result) {
+                        echo "<br>Could not create new event!<br>";
+                    } else {
+                        echo "<br>Event succsefully created!<br>";
+                    }
+            }
+
         ?>
         
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
