@@ -104,7 +104,7 @@ sessionStorage.setItem("specificEndDay", SpecificDateSubmit.substring(16,18));
 sessionStorage.setItem("specificEndHour", NoLaterThanSubmit);
 sessionStorage.setItem("name", NameSubmit);
 event.preventDefault();
-window.location.href='specificDayEvent.html';
+window.location.href='eventPage.php';
 }
 else{
   var DaysArr = [];
@@ -132,7 +132,7 @@ else{
 
 
    event.preventDefault();
-    window.location.href='weeklyEvent.html';
+    window.location.href='eventPage.php';
 }
 });
 

@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
     <header>
-        <title>Specific Day Event</title>
+        <title>Schedgy Event</title>
         <link rel="stylesheet" href="../CSS/style.css"/>
     </header>
 
     <body style="background-color:#36393F;">
-        <h1 id="eventName">Event Name</h1>
+        <h1 id="eventName"></h1>
         
         <div class="availableCharts">
             <div class="grids">
