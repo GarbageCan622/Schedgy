@@ -17,13 +17,13 @@
                         <tr>
                             <td align="center" colspan="2">
                                 <form action="" method="post" id="NewEvent" style="width:100%; margin:20px 0px 20px 0px;">
-                                    <label for="eventName" style="font-family:discord;color:white;font-size:30px;">Enter new Event Name: </label>
-                                    <input type="text" id="event_name" name="eventName">
+                                    <label for="event_name" style="font-family:discord;color:white;font-size:30px;">Enter new Event Name: </label>
+                                    <input type="text" id="event_name" name="event_name">
                                     <br><br>
-                                    <label for="eventID" style="font-family:discord;color:white;font-size:20px;">Enter New Event ID#: </label>
+                                    <label for="event_id" style="font-family:discord;color:white;font-size:20px;">Enter New Event ID#: </label>
                                     <input type="text" id="event_id" name="eventID">
                                     <br><br>
-                                    <label for="description" style="font-family:discord;color:white;font-size:20px;">Description: </label>
+                                    <label id="desc" for="description" style="font-family:discord;color:white;font-size:20px;">Description: </label>
                                     <input type="text" id="description" name="description">
                                 </form>
                             </td>

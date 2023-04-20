@@ -65,7 +65,9 @@ a:hover, a:active {
     margin-top: 10%;
   }
 
-
+.section{
+  width:auto;
+}
 input[type=text]{
     background-color: #2f3136;
     border: solid black;
@@ -73,7 +75,6 @@ input[type=text]{
     margin:1px;
     text-align: center;
     color:white;
-    width: 95%;
     padding:12px;
     -webkit-transition: 0.5s;
     transition: 0.5s;

@@ -8,14 +8,14 @@
     <body style="background-color:#36393F;">
         <h1>Create Schedgy Account</h1>
         <br>
-        <h2>Use your Discord name to create a Schedgy Account</h2>
+        <h2 style="font-family:discord; color:white;">Create a Schedgy account to access your events</h2>
 
-        <section>
+        <section class="section">
             <form action="" method="post">
-                <label for="uid">Id: </label>
+                <label style="font-family:discord; color:white;"for="uid">Id: </label>
                 <input type="text" id="id" name="id">
                 <br><br>
-                <label for="uname">Email: </label>
+                <label style="font-family:discord; color:white;"for="uname">Username: </label>
                 <input type="text" id="email" name="email">
             </form>
         </section>
