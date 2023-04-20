@@ -86,7 +86,7 @@ $("#EventForm").submit(function(event){
   var NameSubmit = $("#NewEventName").val();
   var NoEarlierThanSubmit = $("#NoEarlierThan").val();
   var NoLaterThanSubmit = $("#NoLaterThan").val();
-
+  if($("#event_id")!=null || $("#event_id")!=""){
   if($("#DateTypes option:selected").val() == 'SpecificDates'){
     var SpecificDateSubmit = $("#datePick").val();
       //year, month, day, hours, minutes, seconds, milliseconds
@@ -103,8 +103,8 @@ sessionStorage.setItem("specificEndMonth", SpecificDateSubmit.substring(13,15));
 sessionStorage.setItem("specificEndDay", SpecificDateSubmit.substring(16,18));
 sessionStorage.setItem("specificEndHour", NoLaterThanSubmit);
 sessionStorage.setItem("name", NameSubmit);
-event.preventDefault();
-window.location.href='eventPage.php';
+//event.preventDefault();
+//window.location.href='eventPage.php';
 }
 else{
   var DaysArr = [];
@@ -131,8 +131,11 @@ else{
   sessionStorage.setItem("name", NameSubmit);
 
 
-   event.preventDefault();
-    window.location.href='eventPage.php';
+  //  event.preventDefault();
+  //   window.location.href='eventPage.php';
+}
+}else{
+  alert("Please fill out all fields!");
 }
 });
 

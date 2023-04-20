@@ -9,14 +9,14 @@
         <div class="container">
             <h1>Welcome to Schedgy Event Creator</h1>
         </div>
-        <form id="EventForm">
+        <form action="" method="post" id="EventForm">
             <table width="100%" cellpadding="0" cellspacing="0">
                 <tbody>
                     
                     <div>
                         <tr>
                             <td align="center" colspan="2">
-                                <form action="eventPage.php" method="post" id="NewEvent" style="width:100%; margin:20px 0px 20px 0px;">
+                                <form action="" method="post" id="NewEvent" style="width:100%; margin:20px 0px 20px 0px;">
                                     <label for="event_name" style="font-family:discord;color:white;font-size:30px;">Enter new Event Name: </label>
                                     <input type="text" id="event_name" name="event_name">
                                     <br><br>
@@ -41,7 +41,7 @@
                                 Click a start and end date for your event.<br>
                                 Or select the days of the week for your event.<br>
                                     Survey using: 
-                                <select id="DateTypes" name="DateTypes">
+                                <select id="DateTypes" method ="post" name="DateTypes">
                                     <option value="SpecificDates">Specific Dates</option>
                                     <option value="DaysOfTheWeek">Days of the Week</option>
                                 </select>
@@ -98,12 +98,12 @@
                                 What times might work?
                             </div>
                             <div style="font-size:12px;line-height:1.5; margin: 10px 0px 10px 0px;">
-                                <!-- <input type=checkbox name="AllDayEvent"> All-day event -->&nbsp;
+                                &nbsp;
                             </div>
 
                             <div style="color:white;font-size:15px;line-height:1.5; margin: 10px 0px 10px 0px;">
                                 No earlier than: 
-                                <select name="start_time" id="NoEarlierThan">
+                                <select name="start_time" method="post" id="NoEarlierThan">
                                     <option value=0>12:00  AM</option>  
                                     <option value=1>1:00  AM</option>  
                                     <option value=2>2:00  AM</option>  
@@ -134,7 +134,7 @@
                         
                             <div style="color:white;font-size:15px;line-height:1.5; margin: 10px 0px 10px 0px;">
                                 No later than: 
-                                <select name="end_time" id="NoLaterThan">
+                                <select name="end_time" method="post" id="NoLaterThan">
                                     <option value=0>12:00  AM</option>  
                                     <option value=1>1:00  AM</option>  
                                     <option value=2>2:00  AM</option>  
@@ -180,24 +180,25 @@
                 die("Connection failed: " . mysqli_connect_error());
             }
 
-            if(isset($_POST['CreateEvent'])) {
+            if(isset($_POST['EventForm'])) {
                 $id = $_POST['event_id'];
                 $eventname = $_POST['event_name'];
                 $description = $_POST['description'];
                 $startd = $_POST['start_date'];
                 $endd = $_POST['end_date'];
-                $startt = $_POST['start_time'];
+                $starttime = $_POST['start_time'];
                 $endt = $_POST['end_time'];
             
-                if (empty($id) || empty($eventname) || empty($description) || empty($startd) || empty($endd) || empty($startt) || empty($endt)) {
+                if (empty($id) || empty($eventname) || empty($description) || empty($startd) || empty($endd) || empty($starttime) || empty($endt)) {
                     echo "Data required in all fields";
                 } else {
-                    $query = 'insert into event values (' . $id . ', "' . $eventname . '", "' . $description . '", "' . $startd . '", ' . $endd . ' ","' .$startt. '","' .$endt. ')';
+                    $query = 'insert into event values (' . $id . ', "' . $eventname . '", "' . $description . '", "' . $startd . '", ' . $endd . ' ","' .$starttime. '","' .$endt. ')';
                     $result = mysqli_query($dbConnection, $query);
                 }
                     if (!$result) {
                         echo "<br>Could not create new event!<br>";
                     } else {
+                        header('Location: eventPage.php');
                         echo "<br>Event succsefully created!<br>";
                     }
                 }
