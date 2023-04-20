@@ -162,10 +162,6 @@
                                     <option value=0>12:00  AM</option>
                                 </select>
                             </div>
-                        
-                            <div style="font-size:12px;line-height:1.5; margin: 10px 0px 10px 0px">
-                                &nbsp;
-                            </div>
                         </td>
                     </tr>
 
