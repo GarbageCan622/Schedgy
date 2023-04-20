@@ -16,7 +16,7 @@
                     <div>
                         <tr>
                             <td align="center" colspan="2">
-                                <form action="" method="post" id="NewEvent" style="width:100%; margin:20px 0px 20px 0px;">
+                                <form action="eventPage.php" method="post" id="NewEvent" style="width:100%; margin:20px 0px 20px 0px;">
                                     <label for="event_name" style="font-family:discord;color:white;font-size:30px;">Enter new Event Name: </label>
                                     <input type="text" id="event_name" name="event_name">
                                     <br><br>
