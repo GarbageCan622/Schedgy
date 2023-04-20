@@ -14,3 +14,6 @@ jobs:
         chmod +x node_modules/.bin/jest
     - name: Run tests
       run: npm test
+        # Add the `quiet` option to suppress console errors
+        options:
+          quiet: true
