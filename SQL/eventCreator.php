@@ -31,7 +31,7 @@
                     </div>
 
                     <tr>
-                        <td align=center valign=top rowspan=2 width="50%">
+                    <td align=center valign=top rowspan=2 width="50%">
                             <div id="WhatDates" style=" color:white; font-size:18px; text-align: center; width: 50%; min-width:305px;">
                                 What dates might work?
                             </div>    
@@ -39,6 +39,12 @@
                             <div style="color:white; font-size:15px;line-height:1.5; margin: 10px 0px 10px 0px;">
                                 Select Specific Dates or Days of the Week.<br>
                                 Click a start and end date for your event.<br>
+                                Or select the days of the week for your event.<br>
+                                    Survey using: 
+                                <select id="DateTypes" name="DateTypes">
+                                    <option value="SpecificDates">Specific Dates</option>
+                                    <option value="DaysOfTheWeek">Days of the Week</option>
+                                </select>
                             </div>
                      <div id='SpecificDates'>
                         <input type="text" id="datePick" name="daterange" readonly value="03/17/2023 - 03/23/2023"/>
@@ -157,13 +163,6 @@
                                 </select>
                             </div>
                         
-                            <div style="color:white;font-size:16px;line-height:1.5; margin: 10px 0px 10px 0px;" id="TimeZoneTextAndSelect">
-                                <form action="" method="post">
-                                    <label for="eventName" style="color:white;">Enter Time ID#: </label>
-                                    <input type="text" id="timeID   " name="timeID">
-                                </form>  
-                            </div>
-                        
                             <div style="font-size:12px;line-height:1.5; margin: 10px 0px 10px 0px">
                                 &nbsp;
                             </div>
@@ -171,29 +170,48 @@
                     </tr>
 
                     <tr>
-                        <td colspan=2 style="color:white;" align=center>Ready? <input type=submit value="Create Event" id="CreateEvent" style="font-size:12px;"></td>
+                        <td colspan=2 style="color:white;" align=center><input type=submit value="CreateEvent" id="CreateEvent" style="font-size:12px;"></td>
                     </tr>
                    
                 </tbody>
             </table>
         </form>
         
-        //<?php
-            // session_start();
-            // function redirect($url) {
-            //     header('Location: '.$url);
-            // }
+        <?php
+            // $dbConnection = mysqli_connect("b7a39c95", "u88864_T3BYDVo5Nj", "+4i^Q6Pfwm@OzghvSw1V6rwt", "s88864_Events");
+            $dbConnection = mysqli_connect("localhost", "root", "", "schedgy");
+            if (!$dbConnection) {
+                die("Connection failed: " . mysqli_connect_error());
+            }
 
-            // $dbConnection = mysqli_connect("jdbc:mysql://u88864_T3BYDVo5Nj:%2B4i%5EQ6Pfwm%40OzghvSw1V6rwt@212.192.29.151:3306", "u88864_T3BYDVo5Nj", "+4i^Q6Pfwm@OzghvSw1V6rwt", "s88864_Events");
-            // if (!$dbConnection) {
-            //     die("Connection failed: " . mysqli_connect_error());
-            // }
+            if(isset($_POST['CreateEvent'])) {
+                $id = $_POST['eventID'];
+                $eventname = $_POST['eventName'];
+                $description = $_POST['description'];
+                $startd = $_POST['daterange'];
+                $endd = $_POST['end_date'];
+                $startt = $_POST['NoEarlierThan'];
+                $endt = $_POST['NoLaterThan'];
+            
+                if (empty($id) || empty($eventname) || empty($description) || empty($startd) || empty($endd) || empty($startt) || empty($endt)) {
+                    echo "Data required in all fields";
+                } else {
+                    $query = 'insert into event values (' . $id . ', "' . $eventname . '", "' . $description . '", "' . $startd . '", ' . $endd . ' ","' .$startt. '","' .$endt. ')';
+                    $result = mysqli_query($dbConnection, $query);
+                }
+                    if (!$result) {
+                        echo "<br>Could not create new event!<br>";
+                    } else {
+                        echo "<br>Event succsefully created!<br>";
+                    }
+                }
+
         ?>
         
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
-<script type="text/javascript" src="../SCRIPTS/createEvent.js" ></script>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+        <script type="text/javascript" src="../SCRIPTS/createEvent.js" ></script>
     </body>
 </html>
