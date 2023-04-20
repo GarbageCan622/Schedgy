@@ -18,10 +18,10 @@
                             <td align="center" colspan="2">
                                 <form action="" method="post" id="NewEvent" style="width:100%; margin:20px 0px 20px 0px;">
                                     <label for="eventName" style="font-family:discord;color:white;font-size:30px;">Enter new Event Name: </label>
-                                    <input type="text" id="eventName" name="eventName">
+                                    <input type="text" id="event_name" name="eventName">
                                     <br><br>
                                     <label for="eventID" style="font-family:discord;color:white;font-size:20px;">Enter New Event ID#: </label>
-                                    <input type="text" id="eventID" name="eventID">
+                                    <input type="text" id="event_id" name="eventID">
                                     <br><br>
                                     <label for="description" style="font-family:discord;color:white;font-size:20px;">Description: </label>
                                     <input type="text" id="description" name="description">
@@ -103,7 +103,7 @@
 
                             <div style="color:white;font-size:15px;line-height:1.5; margin: 10px 0px 10px 0px;">
                                 No earlier than: 
-                                <select name="NoEarlierThan" id="NoEarlierThan">
+                                <select name="start_time" id="NoEarlierThan">
                                     <option value=0>12:00  AM</option>  
                                     <option value=1>1:00  AM</option>  
                                     <option value=2>2:00  AM</option>  
@@ -134,7 +134,7 @@
                         
                             <div style="color:white;font-size:15px;line-height:1.5; margin: 10px 0px 10px 0px;">
                                 No later than: 
-                                <select name="NoLaterThan" id="NoLaterThan">
+                                <select name="end_time" id="NoLaterThan">
                                     <option value=0>12:00  AM</option>  
                                     <option value=1>1:00  AM</option>  
                                     <option value=2>2:00  AM</option>  
@@ -185,13 +185,13 @@
             }
 
             if(isset($_POST['CreateEvent'])) {
-                $id = $_POST['eventID'];
-                $eventname = $_POST['eventName'];
+                $id = $_POST['event_id'];
+                $eventname = $_POST['event_name'];
                 $description = $_POST['description'];
-                $startd = $_POST['daterange'];
+                $startd = $_POST['start_date'];
                 $endd = $_POST['end_date'];
-                $startt = $_POST['NoEarlierThan'];
-                $endt = $_POST['NoLaterThan'];
+                $startt = $_POST['start_time'];
+                $endt = $_POST['end_time'];
             
                 if (empty($id) || empty($eventname) || empty($description) || empty($startd) || empty($endd) || empty($startt) || empty($endt)) {
                     echo "Data required in all fields";
