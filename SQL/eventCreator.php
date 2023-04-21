@@ -9,28 +9,29 @@
         <div class="container">
             <h1>Welcome to Schedgy Event Creator</h1>
         </div>
-        <form action="" method="post" id="EventForm">
+        <!-- <form action="" method="post" name="EventForm" id="EventForm"> -->
             <table width="100%" cellpadding="0" cellspacing="0">
-                <tbody>
-                    
+                <tbody>   
                     <div>
                         <tr>
                             <td align="center" colspan="2">
-                                <form action="" method="post" id="NewEvent" style="width:100%; margin:20px 0px 20px 0px;">
+                                <form action="" method="post" style="width:100%; margin:20px 0px 20px 0px;">
                                     <label for="event_name" style="font-family:discord;color:white;font-size:30px;">Enter new Event Name: </label>
                                     <input type="text" id="event_name" name="event_name">
                                     <br><br>
                                     <label for="event_id" style="font-family:discord;color:white;font-size:20px;">Enter New Event ID#: </label>
-                                    <input type="text" id="event_id" name="eventID">
+                                    <input type="text" id="event_id" name="event_id">
                                     <br><br>
                                     <label id="desc" for="description" style="font-family:discord;color:white;font-size:20px;">Description: </label>
                                     <input type="text" id="description" name="description">
+                                    <br>
+                                    <input type=submit name="CreateEvent" value="CreateEvent" id="CreateEvent" style="font-size:12px;">
                                 </form>
                             </td>
                         </tr>
                     </div>
 
-                    <tr>
+                    <!-- <tr>
                     <td align=center valign=top rowspan=2 width="50%">
                             <div id="WhatDates" style=" color:white; font-size:18px; text-align: center; width: 50%; min-width:305px;">
                                 What dates might work?
@@ -163,15 +164,15 @@
                                 </select>
                             </div>
                         </td>
-                    </tr>
+                    </tr> -->
 
-                    <tr>
-                        <td colspan=2 style="color:white;" align=center><input type=submit value="CreateEvent" id="CreateEvent" style="font-size:12px;"></td>
-                    </tr>
+                    <!-- <tr>
+                        <td colspan=2 style="color:white;" align=center></td>
+                    </tr> -->
                    
                 </tbody>
             </table>
-        </form>
+        <!-- </form> -->
         
         <?php
             // $dbConnection = mysqli_connect("b7a39c95", "u88864_T3BYDVo5Nj", "+4i^Q6Pfwm@OzghvSw1V6rwt", "s88864_Events");
@@ -179,36 +180,36 @@
             if (!$dbConnection) {
                 die("Connection failed: " . mysqli_connect_error());
             }
-
-            if(isset($_POST['EventForm'])) {
+            $result="";
+            if(isset($_POST['CreateEvent'])) {
                 $id = $_POST['event_id'];
                 $eventname = $_POST['event_name'];
                 $description = $_POST['description'];
-                $startd = $_POST['start_date'];
-                $endd = $_POST['end_date'];
-                $starttime = $_POST['start_time'];
-                $endt = $_POST['end_time'];
+                // $startd = $_POST['start_date'];
+                // $endd = $_POST['end_date'];
+                // $starttime = $_POST['start_time'];
+                // $endt = $_POST['end_time'];
             
-                if (empty($id) || empty($eventname) || empty($description) || empty($startd) || empty($endd) || empty($starttime) || empty($endt)) {
+                if (empty($id) || empty($eventname) || empty($description)) {
                     echo "Data required in all fields";
                 } else {
-                    $query = 'insert into event values (' . $id . ', "' . $eventname . '", "' . $description . '", "' . $startd . '", ' . $endd . ' ","' .$starttime. '","' .$endt. ')';
+                    $query = 'insert into event (event_id, event_name, description) values (' . $id . ', "' . $eventname . '", "' . $description . '")';
                     $result = mysqli_query($dbConnection, $query);
                 }
                     if (!$result) {
                         echo "<br>Could not create new event!<br>";
                     } else {
-                        header('Location: eventPage.php');
+                        // header('Location: eventPage.php');
                         echo "<br>Event succsefully created!<br>";
                     }
                 }
 
         ?>
         
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
-        <script type="text/javascript" src="../SCRIPTS/createEvent.js" ></script>
+        <script type="text/javascript" src="../SCRIPTS/createEvent.js" ></script> -->
     </body>
 </html>

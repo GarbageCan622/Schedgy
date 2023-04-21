@@ -8,7 +8,7 @@
     <body style="background-color:#36393F;">
         <h1>Create Schedgy Account</h1>
         <br>
-        <h2 style="font-family:discord; color:white;">Create a Schedgy account to access your events</h2>
+        <h2 style="font-family:discord; color:white;">Create a Schedgy account to access Events</h2>
         <h3 style="font-family:discord; color:white;">Enter a User ID# and Username for access across the site.<br>Select if you want to create an Event or participate in an Event</h3>
 
         <section class="section">
