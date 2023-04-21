@@ -59,7 +59,7 @@
                                     echo "<br>Could not create an Event Author<br>";
                                 } else {
                                     echo "<br>Successfuly created new Event Author!<br>";
-                                    header('Location: eventCreator.php');
+                                    header('Location: login.php');
                                 }
                                 break;
                             case "guest":

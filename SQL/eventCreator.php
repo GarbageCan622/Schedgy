@@ -15,6 +15,9 @@
                     <div>
                         <tr>
                             <td align="center" colspan="2">
+                                <h2 style="font-family:discord; color:white;">Fill out the following form to create an Event</h2>
+                                <h3 style="font-family:discord; color:white;">After all values are filled, click Create Event to select a date and time for your Event</h3>
+                                <br>
                                 <form action="" method="post" style="width:100%; margin:20px 0px 20px 0px;">
                                     <label for="event_name" style="font-family:discord;color:white;font-size:30px;">Enter new Event Name: </label>
                                     <input type="text" id="event_name" name="event_name">
@@ -24,15 +27,15 @@
                                     <br><br>
                                     <label id="desc" for="description" style="font-family:discord;color:white;font-size:20px;">Description: </label>
                                     <input type="text" id="description" name="description">
-                                    <br>
-                                    <input type=submit name="CreateEvent" value="CreateEvent" id="CreateEvent" style="font-size:12px;">
+                                    <br><br>
+                                    <input type=submit name="CreateEvent" value="Create Event" id="CreateEvent" style="font-size:12px;">
                                 </form>
                             </td>
                         </tr>
                     </div>
 
-                    <tr>
-                    <!--<td align=center valign=top rowspan=2 width="50%">
+                    <!--<tr>
+                     <td align=center valign=top rowspan=2 width="50%">
                             <div id="WhatDates" style=" color:white; font-size:18px; text-align: center; width: 50%; min-width:305px;">
                                 What dates might work?
                             </div>    
@@ -45,8 +48,8 @@
                                 <select id="DateTypes" method ="post" name="DateTypes">
                                     <option value="SpecificDates">Specific Dates</option>
                                     <option value="DaysOfTheWeek">Days of the Week</option>
-                                </select>
-                            </div>
+                                </select> -->
+                            <!-- </div>
                      <div id='SpecificDates'>
                         <input type="text" id="datePick" name="daterange" readonly value="03/17/2023 - 03/23/2023"/>
                                 </div>
@@ -92,9 +95,9 @@
                                 <input id=PossibleDates name=PossibleDates>
                                 <input id=TopLeftDate value="2023-03-12">
                             </div>
-                        </td>
+                        </td> -->
 
-                        <td align=center valign=top width="50%">
+                        <!-- <td align=center valign=top width="50%">
                             <div id="WhatTimes" style="color:white;font-size:20px;text-align: center; width: 50%; min-width:305px;">
                                 What times might work?
                             </div>
@@ -102,9 +105,10 @@
                                 &nbsp;
                             </div>
 
-                            <div style="color:white;font-size:15px;line-height:1.5; margin: 10px 0px 10px 0px;">
-                                No earlier than: 
-                                <select name="start_time" method="post" id="NoEarlierThan">
+                            <div style="color:white;font-size:15px;line-height:1.5; margin: 10px 0px 10px 0px;"> 
+                                <form action="" method="post" name="stime">
+                                <label for="start_time">No Earlier Than:</label>
+                                <select form="stime" name="start_time">
                                     <option value=0>12:00  AM</option>  
                                     <option value=1>1:00  AM</option>  
                                     <option value=2>2:00  AM</option>  
@@ -131,11 +135,13 @@
                                     <option value=23>11:00  PM</option>  
                                     <option value=0>12:00  AM</option>
                                 </select>
+                                </form>
                             </div>
                         
                             <div style="color:white;font-size:15px;line-height:1.5; margin: 10px 0px 10px 0px;">
-                                No later than: 
-                                <select name="end_time" method="post" id="NoLaterThan">
+                                <form action="" method="post" name="etime">
+                                <label for="end_time">No Later Than:</label>
+                                <select form="etime" name="end_time">
                                     <option value=0>12:00  AM</option>  
                                     <option value=1>1:00  AM</option>  
                                     <option value=2>2:00  AM</option>  
@@ -149,7 +155,7 @@
                                     <option value=10>10:00  AM</option>  
                                     <option value=11>11:00  AM</option>  
                                     <option value=12>12:00  PM</option>  
-                                    <option value=13>1:00  PM</option>  
+                                    <option value=13>1:00  PM</option>
                                     <option value=14>2:00  PM</option>  
                                     <option value=15>3:00  PM</option>  
                                     <option value=16>4:00  PM</option>  
@@ -162,6 +168,7 @@
                                     <option value=23>11:00  PM</option>  
                                     <option value=0>12:00  AM</option>
                                 </select>
+                                </form>
                             </div>
                         </td>
                     </tr> -->
@@ -187,13 +194,13 @@
                 $description = $_POST['description'];
                 // $startd = $_POST['start_date'];
                 // $endd = $_POST['end_date'];
-                // $starttime = $_POST['start_time'];
-                // $endt = $_POST['end_time'];
+                // $starttime = $_POST['stime'];
+                // $endtime = $_POST['etime'];
             
                 if (empty($id) || empty($eventname) || empty($description)) {
                     echo "Data required in all fields";
                 } else {
-                    $query = 'insert into event (event_id, event_name, description) values (' . $id . ', "' . $eventname . '", "' . $description . '")';
+                    $query = 'insert into event (event_id, event_name, description, start_time, end_time) values (' . $id . ', "' . $eventname . '", "' . $description . '")';
                     $result = mysqli_query($dbConnection, $query);
                 }
                     if (!$result) {
@@ -207,9 +214,9 @@
         ?>
         
         <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
-        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>-->
+        <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
-        <script type="text/javascript" src="../SCRIPTS/createEvent.js" ></script> -->
-    </body>
+        <script type="text/javascript" src="../SCRIPTS/createEvent.js" ></script>
+    </body> -->
 </html>
