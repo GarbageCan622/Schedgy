@@ -31,8 +31,8 @@
                         </tr>
                     </div>
 
-                    <!-- <tr>
-                    <td align=center valign=top rowspan=2 width="50%">
+                    <tr>
+                    <!--<td align=center valign=top rowspan=2 width="50%">
                             <div id="WhatDates" style=" color:white; font-size:18px; text-align: center; width: 50%; min-width:305px;">
                                 What dates might work?
                             </div>    
