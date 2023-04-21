@@ -32,74 +32,37 @@
                     <tr> 
                         <td align=center valign=top rowspan=2 width="50%">
                             <div id="WhatDates" style="font-family:discord; color:white; font-size:18px; text-align: center; width: 50%; min-width:305px;">
-                                What dates might work?
+                                What day of the week might work?
                             </div>    
-                            
-                            <div style="font-family:discord; color:white; font-size:15px;line-height:1.5; margin: 10px 0px 10px 0px;">
-                                Select Specific Dates or Days of the Week.<br>
-                                Click a start and end date for your event.<br>
-                                Or select the days of the week for your event.<br>
-                                Survey using: 
-                                <select id="DateTypes" method ="post" name="DateTypes">
-                                    <option value="SpecificDates">Specific Dates</option>
-                                    <option value="DaysOfTheWeek">Days of the Week</option>
+                            <br>
+                            <label for="start_day" style="font-family:discord;color:white;font-size:20px;">Select Starting Day:</label>
+                                <select name="start_day">
+                                    <option value=1>Sunday</option>  
+                                    <option value=2>Monday</option>  
+                                    <option value=3>Tuesday</option>  
+                                    <option value=4>Wednesday</option>  
+                                    <option selected value=5>Thursday</option>  
+                                    <option value=6>Friday</option>  
+                                    <option value=7>Saturday</option>     
                                 </select>
-                            </div>
-
-                            <div id='SpecificDates'>
-                                <input type="text" id="datePick" name="daterange" readonly value="03/17/2023 - 03/23/2023"/>
-                            </div>
-                                
-                                <div id='DaysOfTheWeek' style='display:none;'>
-                                    <div id='Row6' class="daySelect">
-                                        <ul>
-                                            <li id="Monday">
-                                              <input type="checkbox" id="0Day" name="Monday" value="Monday">
-                                              <label for="0Day">Mon</label>
-                                            </li>
-                                            <li id="Tuesday">
-                                              <input type="checkbox" id="1Day" name="Tuesday" value="Tuesday">
-                                              <label for="1Day">Tues</label>
-                                            </li>
-                                            <li id="Wednesday">
-                                              <input type="checkbox" id="2Day" name="Wednesday" value="Wednesday">
-                                              <label for="2Day">Wed</label>
-                                            </li>
-                                            <li id="Thursday">
-                                              <input type="checkbox" id="3Day" name="Thursday" value="Thursday">
-                                              <label for="3Day">Thur</label>
-                                            </li>
-                                            <li id="Friday">
-                                                <input type="checkbox" id="4Day" name="Friday" value="Friday">
-                                                <label for="4Day">Fri</label>
-                                              </li>
-                                              <li id="Saturday">
-                                                <input type="checkbox" id="5Day" name="Saturday" value="Saturday">
-                                                <label for="5Day">Sat</label>
-                                              </li>
-                                              <li id="Sunday">
-                                                <input type="checkbox" id="6Day" name="Sunday" value="Sunday">
-                                                <label for="6Day">Sun</label>
-                                              </li>
-                                          </ul>
-                                    </div>
-                                    <br clear=all>
-                                </div>                  
-                            
-
-                            <div style="display:none">
-                                <input id=PossibleDates name=PossibleDates>
-                                <input id=TopLeftDate value="2023-03-12">
-                            </div>
+                                <br><br>
+                                <label for="end_day" style="font-family:discord;color:white;font-size:20px;">Select Ending Day (can be the same day) :</label>
+                                <select name="end_day">
+                                    <option value=1>Sunday</option>  
+                                    <option value=2>Monday</option>  
+                                    <option value=3>Tuesday</option>  
+                                    <option value=4>Wednesday</option>  
+                                    <option value=5>Thursday</option>  
+                                    <option selected value=6>Friday</option>  
+                                    <option value=7>Saturday</option>     
+                                </select>
                         </td>
 
                         <td align=center valign=top rowspan=2 width="50%">
                             <div id="WhatTimes" style="font-family:discord; color:white;font-size:20px;text-align: center; width: 50%; min-width:305px;">
                                 What times might work?
                             </div>
-                            <div style="font-size:12px;line-height:1.5; margin: 10px 0px 10px 0px;">
-                                &nbsp;
-                            </div>
+                            <br>
                             <label for="start_time" style="font-family:discord;color:white;font-size:20px;">No Earlier Than:</label>
                                 <select name="start_time">
                                     <option value=0>12:00  AM</option>  
@@ -164,68 +127,7 @@
                     </tr>
                 </tbody>
             </table>
-                    <!--<tr>
-                     <td align=center valign=top rowspan=2 width="50%">
-                            <div id="WhatDates" style=" color:white; font-size:18px; text-align: center; width: 50%; min-width:305px;">
-                                What dates might work?
-                            </div>    
-                            
-                            <div style="color:white; font-size:15px;line-height:1.5; margin: 10px 0px 10px 0px;">
-                                Select Specific Dates or Days of the Week.<br>
-                                Click a start and end date for your event.<br>
-                                Or select the days of the week for your event.<br>
-                                    Survey using: 
-                                <select id="DateTypes" method ="post" name="DateTypes">
-                                    <option value="SpecificDates">Specific Dates</option>
-                                    <option value="DaysOfTheWeek">Days of the Week</option>
-                                </select>
-                            </div>
-                     <div id='SpecificDates'>
-                        <input type="text" id="datePick" name="daterange" readonly value="03/17/2023 - 03/23/2023"/>
-                                </div>
-                                
-                                <div id='DaysOfTheWeek' style='display:none;'>
-                                    <div id='Row6' class="daySelect">
-                                        <ul>
-                                            <li id="Monday">
-                                              <input type="checkbox" id="0Day" name="Monday" value="Monday">
-                                              <label for="0Day">Mon</label>
-                                            </li>
-                                            <li id="Tuesday">
-                                              <input type="checkbox" id="1Day" name="Tuesday" value="Tuesday">
-                                              <label for="1Day">Tues</label>
-                                            </li>
-                                            <li id="Wednesday">
-                                              <input type="checkbox" id="2Day" name="Wednesday" value="Wednesday">
-                                              <label for="2Day">Wed</label>
-                                            </li>
-                                            <li id="Thursday">
-                                              <input type="checkbox" id="3Day" name="Thursday" value="Thursday">
-                                              <label for="3Day">Thur</label>
-                                            </li>
-                                            <li id="Friday">
-                                                <input type="checkbox" id="4Day" name="Friday" value="Friday">
-                                                <label for="4Day">Fri</label>
-                                              </li>
-                                              <li id="Saturday">
-                                                <input type="checkbox" id="5Day" name="Saturday" value="Saturday">
-                                                <label for="5Day">Sat</label>
-                                              </li>
-                                              <li id="Sunday">
-                                                <input type="checkbox" id="6Day" name="Sunday" value="Sunday">
-                                                <label for="6Day">Sun</label>
-                                              </li>
-                                          </ul>
-                                    </div>
-                                    <br clear=all>
-                                </div>                  
-                            
-
-                            <div style="display:none">
-                                <input id=PossibleDates name=PossibleDates>
-                                <input id=TopLeftDate value="2023-03-12">
-                            </div>
-                        </td> -->
+                    
         <?php
             // $dbConnection = mysqli_connect("b7a39c95", "u88864_T3BYDVo5Nj", "+4i^Q6Pfwm@OzghvSw1V6rwt", "s88864_Events");
             $dbConnection = mysqli_connect("localhost", "root", "", "schedgy");
@@ -237,15 +139,15 @@
                 $id = $_POST['event_id'];
                 $eventname = $_POST['event_name'];
                 $description = $_POST['description'];
-                // $startd = $_POST['start_date'];
-                // $endd = $_POST['end_date'];
+                $startday = $_POST['start_day'];
+                $endday = $_POST['end_day'];
                 $starttime = $_POST['start_time'];
                 $endtime = $_POST['end_time'];
             
-                if (empty($id) || empty($eventname) || empty($description) || empty($starttime) || empty($endtime)) {
+                if (empty($id) || empty($eventname) || empty($description) || empty($startday) || empty($endday) || empty($starttime) || empty($endtime)) {
                     echo "Data required in all fields";
                 } else {
-                    $query = 'insert into event (event_id, event_name, description, start_time, end_time) values (' . $id . ',"' . $eventname . '","' . $description . '","' .$starttime. '","' .$endtime. '")';
+                    $query = 'insert into event values (' . $id . ',"' . $eventname . '","' . $description . '","' .$startday. '","' .$endday. '","' .$starttime. '","' .$endtime. '")';
                     $result = mysqli_query($dbConnection, $query);
                 }
                     if (!$result) {
@@ -258,10 +160,10 @@
 
         ?>
         
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
-        <script type="text/javascript" src="../SCRIPTS/createEvent.js" ></script>
+        <script type="text/javascript" src="../SCRIPTS/createEvent.js" ></script> -->
     </body>
 </html>
