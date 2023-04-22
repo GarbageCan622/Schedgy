@@ -55,6 +55,7 @@
                     }
                 }
                 echo "<br>Logged in as user " .$username. "";
+                redirect("/Schedgy/SQL/eventHomePage.php");
             }else{
                 echo "<br>USER NOT FOUND<br>";
                 }

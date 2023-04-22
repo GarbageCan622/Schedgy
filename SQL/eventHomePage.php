@@ -7,17 +7,29 @@
 
     <body style="background-color:#36393F;">
         <h1 id="eventName">Schedgy Homepage</h1>
-        <p style="font-family:discord; color:white;"><a href="eventCreator.php">Create New Event</a></p>
-
-        <section>
-            <h2 style="text-align:center; font-family:discord; color:white;">Active Events</h2>
-            <br>
-            <?php
+        <?php
+            session_start();
+            
             $dbConnection = mysqli_connect("localhost", "root", "", "schedgy");
             if (!$dbConnection) {
                 die("Connection failed: " . mysqli_connect_error());
             }
 
+            $getname = 'select uname from users where uid =' . $_SESSION['sessionID'];
+            $name_result = mysqli_query($dbConnection, $getname);
+            if(mysqli_num_rows($name_result) > 0){
+                while($row = mysqli_fetch_assoc($name_result)){
+                    $username = $row['uname'];
+                    echo "Logged in as: $username<br>";
+                }
+            }
+            ?>
+        <p style="font-family:discord; color:white;"><a href="eventCreator.php">Create New Event</a></p>
+
+        <section>
+            <h2 style="text-align:center; font-family:discord; color:white;">My Events</h2>
+            <br>
+            <?php
             $query = 'select * from event';
             $result = mysqli_query($dbConnection, $query);
 

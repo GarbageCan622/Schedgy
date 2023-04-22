@@ -9,6 +9,23 @@
         <div class="container">
             <h1>Welcome to Schedgy Event Creator</h1>
         </div>
+        <?php
+            session_start();
+            // $dbConnection = mysqli_connect("b7a39c95", "u88864_T3BYDVo5Nj", "+4i^Q6Pfwm@OzghvSw1V6rwt", "s88864_Events");
+            $dbConnection = mysqli_connect("localhost", "root", "", "schedgy");
+            if (!$dbConnection) {
+                die("Connection failed: " . mysqli_connect_error());
+            }
+
+             $getname = 'select uname from users where uid =' . $_SESSION['sessionID'];
+             $name_result = mysqli_query($dbConnection, $getname);
+             if(mysqli_num_rows($name_result) > 0){
+                 while($row = mysqli_fetch_assoc($name_result)){
+                     $username = $row['uname'];
+                     echo "Logged in as: $username<br>";
+                 }
+             }
+        ?>
             <table width="100%" cellpadding="0" cellspacing="0">
                 <tbody>   
                     <tr>
@@ -127,11 +144,6 @@
             </table>
                     
         <?php
-            // $dbConnection = mysqli_connect("b7a39c95", "u88864_T3BYDVo5Nj", "+4i^Q6Pfwm@OzghvSw1V6rwt", "s88864_Events");
-            $dbConnection = mysqli_connect("localhost", "root", "", "schedgy");
-            if (!$dbConnection) {
-                die("Connection failed: " . mysqli_connect_error());
-            }
             $result="";
             if(isset($_POST['CreateEvent'])) {
                 $id = $_POST['event_id'];
@@ -147,6 +159,9 @@
                 } else {
                     $query = 'insert into event values (' . $id . ',"' . $eventname . '","' . $description . '","' .$startday. '","' .$endday. '","' .$starttime. '","' .$endtime. '")';
                     $result = mysqli_query($dbConnection, $query);
+
+                    $createauthor = 'insert into owner_of values (' .$id. ',"' .$_SESSION['session_id'].'")';
+                    $author_result = mysqli_query($dbConnection, $createauthor);
                 }
                     if (!$result) {
                         echo "<br>Could not create new event!<br>";

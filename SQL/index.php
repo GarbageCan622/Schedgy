@@ -9,7 +9,7 @@
         <h1>Create Schedgy Account</h1>
         <br>
         <h2 style="font-family:discord; color:white;">Create a Schedgy account to access Events</h2>
-        <h3 style="font-family:discord; color:white;">Enter a User ID# and Username for access across the site.<br>Select if you want to create an Event or participate in an Event</h3>
+        <h3 style="font-family:discord; color:white;">Enter a User ID# and Username for access across the site</h3>
 
         <section class="section">
             <form action="" method="post">
@@ -36,9 +36,8 @@
             if(isset($_POST['register'])) {
                 $id = $_POST['id'];
                 $uname = $_POST['uname'];
-                $type = $_POST['type'];
             
-                if (empty($id) || empty($uname) || empty($type)) {
+                if (empty($id) || empty($uname)) {
                     echo "Data required in all fields except grade";
                 } else {
                     $query = 'insert into users values (' . $id . ', "' . $uname . '")';
@@ -48,31 +47,32 @@
                         echo "<br>Could not insert into User table<br>";
                     } else {
                         echo "<br>Successfuly inserted into User table<br>";
+                        redirect("/Schedgy/SQL/login.php");
             
-                        switch ($type) {
-                            case "author":
-                                $query = 'insert into author values (' . $id .')';
-                                $result = mysqli_query($dbConnection, $query);
-                                if (!$result) {
-                                    echo "<br>Could not create an Event Author<br>";
-                                } else {
-                                    echo "<br>Successfuly created new Event Author!<br>";
-                                    redirect("/Schedgy/SQL/login.php");
-                                }
-                                break;
-                            case "guest":
-                                $query = 'insert into guests values (' . $id .')';
-                                $result = mysqli_query($dbConnection, $query);
-                                if (!$result) {
-                                    echo "<br>Could not create an Event Guest<br>";
-                                } else {
-                                    echo "<br>Successfuly created new Event Guest!<br>";
-                                    redirect("/Schedgy/SQL/login.php");
-                                }
-                                break;
-                            default:
-                                echo "<br>Unexpected error, invalid Acct Type<br>";
-                        }
+                        // switch ($type) {
+                        //     case "author":
+                        //         $query = 'insert into author values (' . $id .')';
+                        //         $result = mysqli_query($dbConnection, $query);
+                        //         if (!$result) {
+                        //             echo "<br>Could not create an Event Author<br>";
+                        //         } else {
+                        //             echo "<br>Successfuly created new Event Author!<br>";
+                        //             redirect("/Schedgy/SQL/login.php");
+                        //         }
+                        //         break;
+                        //     case "guest":
+                        //         $query = 'insert into guests values (' . $id .')';
+                        //         $result = mysqli_query($dbConnection, $query);
+                        //         if (!$result) {
+                        //             echo "<br>Could not create an Event Guest<br>";
+                        //         } else {
+                        //             echo "<br>Successfuly created new Event Guest!<br>";
+                        //             redirect("/Schedgy/SQL/login.php");
+                        //         }
+                        //         break;
+                        //     default:
+                        //         echo "<br>Unexpected error, invalid Acct Type<br>";
+                        // }
                     }
                 }
             }
