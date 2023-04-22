@@ -159,8 +159,8 @@
                 } else {
                     $query = 'insert into event values (' . $id . ',"' . $eventname . '","' . $description . '","' .$startday. '","' .$endday. '","' .$starttime. '","' .$endtime. '")';
                     $result = mysqli_query($dbConnection, $query);
-
-                    $createauthor = 'insert into owner_of values (' .$id. ',"' .$_SESSION['session_id'].'")';
+                    
+                    $createauthor = 'insert into owner_of values (' .$id. ',"' .$_SESSION['sessionID'].'")';
                     $author_result = mysqli_query($dbConnection, $createauthor);
                 }
                     if (!$result) {
