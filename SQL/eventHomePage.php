@@ -7,6 +7,7 @@
 
     <body style="background-color:#36393F;">
         <h1 id="eventName">Schedgy Homepage</h1>
+        <p style="font-family:discord; color:white;"><a href="eventCreator.php">Create New Event</a></p>
 
         <section>
             <h2 style="text-align:center; font-family:discord; color:white;">Active Events</h2>

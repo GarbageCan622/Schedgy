@@ -19,12 +19,6 @@
                 <label style="font-family:discord; color:white;"for="uname">Username: </label>
                 <input type="text" id="uname" name="uname">
                 <br><br>
-                <label style="font-family:discord; color:white;"for="type">Account Type: </label>
-                <select name="type" id="type">
-                    <option value="author">Event Author</option>
-                    <option value="guest">Event Guest</option>
-                </select>
-                <br><br>
                 <input type="submit" name="register" value="Register">
             </form>
         </section>
@@ -35,6 +29,10 @@
             if (!$dbConnection) {
                 die("Connection failed: " . mysqli_connect_error());
             }
+            function redirect($url) {
+                header('Location: '.$url);
+            }
+
             if(isset($_POST['register'])) {
                 $id = $_POST['id'];
                 $uname = $_POST['uname'];
@@ -59,7 +57,7 @@
                                     echo "<br>Could not create an Event Author<br>";
                                 } else {
                                     echo "<br>Successfuly created new Event Author!<br>";
-                                    header('Location: login.php');
+                                    redirect("/Schedgy/SQL/login.php");
                                 }
                                 break;
                             case "guest":
@@ -69,7 +67,7 @@
                                     echo "<br>Could not create an Event Guest<br>";
                                 } else {
                                     echo "<br>Successfuly created new Event Guest!<br>";
-                                    header('Location: login.php');
+                                    redirect("/Schedgy/SQL/login.php");
                                 }
                                 break;
                             default:
