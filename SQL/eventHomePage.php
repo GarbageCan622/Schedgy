@@ -30,7 +30,7 @@
             <h2 style="text-align:center; font-family:discord; color:white;">My Events</h2>
             <br>
             <?php
-            $query = 'select * from event';
+            $query = 'select * from owner_of,event where owner_of.author_id = event.owner_id';
             $result = mysqli_query($dbConnection, $query);
 
             if (mysqli_num_rows($result) > 0) {
