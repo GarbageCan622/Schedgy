@@ -114,13 +114,23 @@ input[type=submit]{
 }
 
 
-#submitButton{
+.genericButton{
   background-color: #5865F2;
   border-radius: 5px;
   width:100%;
   color:white;
   padding: 12px;
   margin: 2px;
+}
+
+.linkButton{
+  background-color: #5865F2;
+  border-radius: 5px;
+  width:70%;
+  color:white;
+  padding: 12px;
+  margin: 2px;
+  margin: auto;
 }
 /* Specific Day styles to get them looking nice */
 /* #Monday{
