@@ -8,6 +8,6 @@ $(document).ready(function(){
     });
 
     $("#createEventButton").click(function(){
-        location.assign('../HTML/signup.html');
+        location.assign('../SQL/eventCreator.php');
     });
 });
