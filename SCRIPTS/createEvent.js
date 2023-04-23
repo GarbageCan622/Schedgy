@@ -83,7 +83,7 @@ class SpecificDateEvent{
 
 
 $("#EventForm").submit(function(event){
-  //var NameSubmit = $("#NewEventName").val();
+  var NameSubmit = $("#NewEventName").val();
   var NoEarlierThanSubmit = $("#NoEarlierThan").val();
   var NoLaterThanSubmit = $("#NoLaterThan").val();
   if($("#event_id")!=null || $("#event_id")!=""){

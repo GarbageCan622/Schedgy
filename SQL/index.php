@@ -25,8 +25,8 @@
         </section>
 
         <?php
-            // $dbConnection = mysqli_connect("b7a39c95", "u88864_T3BYDVo5Nj", "+4i^Q6Pfwm@OzghvSw1V6rwt", "s88864_Events");
-            $dbConnection = mysqli_connect("localhost", "root", "", "schedgy");
+            $dbConnection = mysqli_connect("212.192.29.151", "u88864_T3BYDVo5Nj", "+4i^Q6Pfwm@OzghvSw1V6rwt", "s88864_Events");
+            //$dbConnection = mysqli_connect("localhost", "root", "", "schedgy");
             if (!$dbConnection) {
                 die("Connection failed: " . mysqli_connect_error());
             }
@@ -39,7 +39,7 @@
                 $uname = $_POST['uname'];
             
                 if (empty($id) || empty($uname)) {
-                    echo "Data required in all fields except grade";
+                    echo "Data required in all fields";
                 } else {
                     $query = 'insert into users values (' . $id . ', "' . $uname . '")';
                     $result = mysqli_query($dbConnection, $query);

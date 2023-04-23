@@ -9,8 +9,8 @@
         <h1 id="eventName">Schedgy Homepage</h1>
         <?php
             session_start();
-            
-            $dbConnection = mysqli_connect("localhost", "root", "", "schedgy");
+            $dbConnection = mysqli_connect("212.192.29.151", "u88864_T3BYDVo5Nj", "+4i^Q6Pfwm@OzghvSw1V6rwt", "s88864_Events");
+            //$dbConnection = mysqli_connect("localhost", "root", "", "schedgy");
             if (!$dbConnection) {
                 die("Connection failed: " . mysqli_connect_error());
             }
@@ -26,9 +26,20 @@
 
          
             ?>
-        <p style="font-family:discord; color:white;"><a href="eventCreator.php">Create New Event</a></p>
-
-        <section>
+            <table>
+                <tr>
+                    <td>
+                        <p style="font-family:discord; color:white;"><a href="eventCreator.php">Create New Event</a></p>
+                    </td>
+                    <td>
+                        <p style="font-family:discord; color:white;"><a href="../HTML/weeklyEvent.html">Weekly Event</a></p>
+                    </td>
+                    <td>
+                        <p style="font-family:discord; color:white;"><a href="../HTML/specificDayEvent.html">Specific Day Event</a></p>
+                    </td>
+                </tr>
+            </table>
+            
             <h2 style="text-align:center; font-family:discord; color:white;">My Events</h2>
             <br>
             <?php
@@ -51,19 +62,16 @@
                     $ownerid = $row['owner_id'];
                     $eventname = $row['event_name'];
                     $description = $row['description'];
-                    $startday = $row['start_day'];
-                    $endday = $row['end_day'];
-                    $starttime = $row['start_time'];
-                    $endtime = $row['end_time'];
+                    $start = $row['start'];
+                    $end = $row['end'];
 
                     echo "Event ID: $eventid<br>" .
                         "Owner ID: $ownerid<br>".
                         "Event Name: $eventname<br>" .
                         "Description: $description<br>" .
-                        "Starting Day: $startday<br>" .
-                        "Ending Day: $endday<br>" .
-                        "Starting Time: $starttime<br>" .
-                        "Ending Time: $endtime <br>---------------------------------------------------------<br>";
+                        "Starting at: $start<br>" .
+                        "Ending at: $end<br>" .
+                        "<br>---------------------------------------------------------<br>";
 
                 }
             } else {
