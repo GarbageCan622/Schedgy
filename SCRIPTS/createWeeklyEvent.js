@@ -11,6 +11,7 @@ function createWeeklyEventFillOutChart(start, end, daysArr){
     var timeLoop = start; //this is for the for loop
     var dayName;
     var numDays = 0;
+    var uIdSetter = 0;
     for(i=0; i<daysArr.length; i++){
         if(daysArr[i] == true){
             switch(i){
@@ -47,15 +48,33 @@ function createWeeklyEventFillOutChart(start, end, daysArr){
         appendTable += '<th>' + timeLoop + ':00</th>'
     for(j=0; j<numDays;j++){       
         appendTable += '<td>' + 
-                       '<input type="checkbox" id="checkboxDate' + j + timeLoop + '" name="checkboxDate' + j + timeLoop + '">' +
-                        '<label for="checkboxDate' + j + timeLoop + '">&nbsp;</label>' +
-                        '</td>'        
+                       '<input type="checkbox" id="checkboxDate' + uIdSetter + '" name="checkboxDate' + uIdSetter + '">' +
+                        '<label for="checkboxDate' + uIdSetter + '">&nbsp;</label>' +
+                        '</td>'      
+                    uIdSetter++;  
 }
 appendTable += '</tr>'
 timeLoop++;
 }
     $('#personalTimeTable').append(appendTable);
 }
+
+function submitTime(start, end){
+    var days = Math.floor((end.getTime() - start.getTime())/(1000*3600*24))
+    var time = (end.getHours() - start.getHours());
+    var limit = (days+1) * (time + 1);
+    var submitString = "";
+    for(i=0; i<limit; i++){
+       if ($('#checkboxDate' + i).is(':checked')){
+        submitString+= '1';
+       }
+       else{
+        submitString+='0';
+       }
+    }
+    console.log(submitString);
+}
+
 
 $(document).ready(function(){   
     $('#eventName').html(sessionStorage.getItem("name"));
