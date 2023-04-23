@@ -29,7 +29,7 @@ for (const folder of commandFolders) {
 }
 
 client.once(Events.ClientReady, () => {
-	console.log('Ready!');
+	console.log('Logged in and ready!');
 });
 
 client.on(Events.InteractionCreate, async interaction => {
