@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
     <header>
-        <title>Create Event Login</title>
+        <title>Create Schedgy Account</title>
         <link rel="stylesheet" href="../CSS/style.css"/>
     </header>
 
     <body style="background-color:#36393F;">
         <h1>Create Schedgy Account</h1>
-        <br>
+        <h2 style="font-family:discord; color:white;">Already Have an account?</h2>
+        <p style="font-family:discord; color:white;"><a href="login.php">Schedgy Login</a></p>
         <h2 style="font-family:discord; color:white;">Create a Schedgy account to access Events</h2>
         <h3 style="font-family:discord; color:white;">Enter a User ID# and Username for access across the site</h3>
 

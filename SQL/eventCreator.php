@@ -157,8 +157,7 @@
                 if (empty($id) || empty($_SESSION['sessionID']) || empty($eventname) || empty($description) || empty($startday) || empty($endday) || empty($starttime) || empty($endtime)) {
                     echo "Data required in all fields";
                 } else {
-                    $query = 'insert into event (event_id, owner_id, event_name, description, start_day, end_day, start_time, end_time) values (' . $id . ',' .$_SESSION['sessionID']. ',"' . $eventname . ',' . $description . ',' .$startday. ',' .$endday. ',' .$starttime. '","' .$endtime. '")';
-                    $result = mysqli_query($dbConnection, $query);
+                    $query = 'insert into event (event_id, owner_id, event_name, description, start_day, end_day, start_time, end_time) values (' . $id . ',' .$_SESSION['sessionID']. ',"' .$eventname. '","' .$description. '","' .$startday. '","' .$endday. '","' .$starttime. '","' .$endtime. '")';                    $result = mysqli_query($dbConnection, $query);
                     
                     $createauthor = 'insert into owner_of values (' .$id. ',"' .$_SESSION['sessionID'].'")';
                     $author_result = mysqli_query($dbConnection, $createauthor);
