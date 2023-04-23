@@ -15,7 +15,7 @@
                 die("Connection failed: " . mysqli_connect_error());
             }
 
-            $getname = 'select uname from users where uid =' . $_SESSION['sessionID'];
+            $getname = 'select * from users where uid =' . $_SESSION['sessionID'];
             $name_result = mysqli_query($dbConnection, $getname);
             if(mysqli_num_rows($name_result) > 0){
                 while($row = mysqli_fetch_assoc($name_result)){
@@ -23,6 +23,8 @@
                     echo "Logged in as: $username<br>";
                 }
             }
+
+         
             ?>
         <p style="font-family:discord; color:white;"><a href="eventCreator.php">Create New Event</a></p>
 
@@ -30,13 +32,23 @@
             <h2 style="text-align:center; font-family:discord; color:white;">My Events</h2>
             <br>
             <?php
-            $query = 'select * from owner_of,event where owner_of.author_id = event.owner_id';
+        //     $getauthor = 'select owner_id from event where owner_id ='.$_SESSION['sessionID'];
+        //     $getauthor_result = mysqli_query($dbConnection, $getauthor);
+        //     if(mysqli_num_rows($getauthor_result) > 0){
+        //         while($row = $getauthor_result -> fetch_assoc()){
+        //            $currAuthor = $getauthor_result;
+        //            echo "Current Author ID: $currAuthor<br>";
+        //        }
+        //    }
+            $row['owner_id'] = $_SESSION['sessionID'];
+            $query = 'select * from event,owner_of where event.owner_id = owner_of.author_id';
             $result = mysqli_query($dbConnection, $query);
 
             if (mysqli_num_rows($result) > 0) {
 
                 while($row = mysqli_fetch_assoc($result)) {
                     $eventid = $row['event_id'];
+                    $ownerid = $row['owner_id'];
                     $eventname = $row['event_name'];
                     $description = $row['description'];
                     $startday = $row['start_day'];
@@ -45,6 +57,7 @@
                     $endtime = $row['end_time'];
 
                     echo "Event ID: $eventid<br>" .
+                        "Owner ID: $ownerid<br>".
                         "Event Name: $eventname<br>" .
                         "Description: $description<br>" .
                         "Starting Day: $startday<br>" .
