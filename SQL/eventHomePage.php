@@ -45,8 +45,7 @@
                     <h2 style="text-align:center; font-family:discord; color:white;">My Events</h2>
                     <br>
                     <?php
-                    $row['owner_id'] = $_SESSION['sessionID'];
-                    $query = 'select * from event,owner_of where event.owner_id = owner_of.author_id';
+                    $query = 'select * from event,owner_of where event.'.$_SESSION['sessionID'].' = owner_of.'.$_SESSION['sessionID'].'';
                     $result = mysqli_query($dbConnection, $query);
                         if (mysqli_num_rows($result) > 0) {
                             while($row = mysqli_fetch_assoc($result)) {
