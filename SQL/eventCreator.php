@@ -9,93 +9,63 @@
         <div class="container">
             <h1>Welcome to Schedgy Event Creator</h1>
         </div>
-        <form id="EventForm">
-            <table width="100%" cellpadding="0" cellspacing="0">
-                <tbody>
-                    
-                    <div>
-                        <tr>
-                            <td align="center" colspan="2">
-                                <form action="" method="post" id="NewEvent" style="width:100%; margin:20px 0px 20px 0px;">
-                                    <label for="eventName" style="font-family:discord;color:white;font-size:30px;">Enter new Event Name: </label>
-                                    <input type="text" id="eventName" name="eventName">
-                                    <br><br>
-                                    <label for="eventID" style="font-family:discord;color:white;font-size:20px;">Enter New Event ID#: </label>
-                                    <input type="text" id="eventID" name="eventID">
-                                    <br><br>
-                                    <label for="description" style="font-family:discord;color:white;font-size:20px;">Description: </label>
-                                    <input type="text" id="description" name="description">
-                                </form>
-                            </td>
-                        </tr>
-                    </div>
+        <?php
+            session_start();
+            $dbConnection = mysqli_connect("212.192.29.151", "u88864_T3BYDVo5Nj", "+4i^Q6Pfwm@OzghvSw1V6rwt", "s88864_Events");
+            //$dbConnection = mysqli_connect("localhost", "root", "", "schedgy");
+            if (!$dbConnection) {
+                die("Connection failed: " . mysqli_connect_error());
+            }
 
+             $getname = 'select uname from users where uid =' . $_SESSION['sessionID'];
+             $name_result = mysqli_query($dbConnection, $getname);
+             if(mysqli_num_rows($name_result) > 0){
+                 while($row = mysqli_fetch_assoc($name_result)){
+                     $username = $row['uname'];
+                     echo "Logged in as: $username<br>";
+                 }
+             }
+        ?>
+            <table width="100%" cellpadding="0" cellspacing="0">
+                <tbody>   
                     <tr>
+                        <td align="center" colspan="2">
+                            <h2 style="font-family:discord; color:white;">Fill out the following form to create an Event</h2>
+                            <h3 style="font-family:discord; color:white;">After all values are filled, click Create Event to be brought to your "Schedgy Events Homepage"</h3>
+                            <p style="font-family:discord; color:white;"><a href="eventHomePage.php">View Active Events</a></p>
+                            <br>
+                            <form action="" method="post" style="width:100%; margin:20px 0px 20px 0px;">
+                                <label for="event_name" style="font-family:discord;color:white;font-size:30px;">Enter new Event Name: </label>
+                                <input type="text" id="event_name" name="event_name">
+                                <br><br>
+                                <label for="event_id" style="font-family:discord;color:white;font-size:20px;">Enter New Event ID#: </label>
+                                <input type="text" id="event_id" name="event_id">
+                                <br><br>
+                                <label id="desc" for="description" style="font-family:discord;color:white;font-size:20px;">Description: </label>
+                                <input type="text" id="description" name="description">
+                                <br><br>
+                        </td>
+                    </tr> 
+
+                    <tr> 
                         <td align=center valign=top rowspan=2 width="50%">
-                            <div id="WhatDates" style=" color:white; font-size:18px; text-align: center; width: 50%; min-width:305px;">
-                                What dates might work?
+                            <div id="WhatDates" style="font-family:discord; color:white; font-size:18px; text-align: center; width: 50%; min-width:305px;">
+                                What day of the week might work?
                             </div>    
-                            
-                            <div style="color:white; font-size:15px;line-height:1.5; margin: 10px 0px 10px 0px;">
-                                Select Specific Dates or Days of the Week.<br>
+                            <div style="font-family:discord; color:white; font-size:15px;line-height:1.5; margin: 10px 0px 10px 0px;">
+                                Select Specific Dates.<br>
                                 Click a start and end date for your event.<br>
                             </div>
-                     <div id='SpecificDates'>
-                        <input type="text" id="datePick" name="daterange" readonly value="03/17/2023 - 03/23/2023"/>
-                                </div>
-                                
-                                <div id='DaysOfTheWeek' style='display:none;'>
-                                    <div id='Row6' class="daySelect">
-                                        <ul>
-                                            <li id="Monday">
-                                              <input type="checkbox" id="0Day" name="Monday" value="Monday">
-                                              <label for="0Day">Mon</label>
-                                            </li>
-                                            <li id="Tuesday">
-                                              <input type="checkbox" id="1Day" name="Tuesday" value="Tuesday">
-                                              <label for="1Day">Tues</label>
-                                            </li>
-                                            <li id="Wednesday">
-                                              <input type="checkbox" id="2Day" name="Wednesday" value="Wednesday">
-                                              <label for="2Day">Wed</label>
-                                            </li>
-                                            <li id="Thursday">
-                                              <input type="checkbox" id="3Day" name="Thursday" value="Thursday">
-                                              <label for="3Day">Thur</label>
-                                            </li>
-                                            <li id="Friday">
-                                                <input type="checkbox" id="4Day" name="Friday" value="Friday">
-                                                <label for="4Day">Fri</label>
-                                              </li>
-                                              <li id="Saturday">
-                                                <input type="checkbox" id="5Day" name="Saturday" value="Saturday">
-                                                <label for="5Day">Sat</label>
-                                              </li>
-                                              <li id="Sunday">
-                                                <input type="checkbox" id="6Day" name="Sunday" value="Sunday">
-                                                <label for="6Day">Sun</label>
-                                              </li>
-                                          </ul>
-                                    </div>
-                                    <br clear=all>
-                                </div>                  
-                            
-
-                            <div style="display:none">
-                                <input id=PossibleDates name=PossibleDates>
-                                <input id=TopLeftDate value="2023-03-12">
+                            <div id='SpecificDates'>
+                                <input type="text" id="datePick" name="daterange" readonly value="03/17/2023 - 03/23/2023"/>
                             </div>
                         </td>
 
-                        <td align=center valign=top width="50%">
-                            <div id="WhatTimes" style="color:white;font-size:20px;text-align: center; width: 50%; min-width:305px;">
+                        <td align=center valign=top rowspan=2 width="50%">
+                            <div id="WhatTimes" style="font-family:discord; color:white;font-size:20px;text-align: center; width: 50%; min-width:305px;">
                                 What times might work?
                             </div>
-                            <div style="font-size:12px;line-height:1.5; margin: 10px 0px 10px 0px;">
-                                <!-- <input type=checkbox name="AllDayEvent"> All-day event -->&nbsp;
-                            </div>
-
-                            <div style="color:white;font-size:15px;line-height:1.5; margin: 10px 0px 10px 0px;">
+                            <div style="font-family:discord; color:white;font-size:15px;line-height:1.5; margin: 10px 0px 10px 0px;">
                                 No earlier than: 
                                 <select name="NoEarlierThan" id="NoEarlierThan">
                                     <option value=0>12:00  AM</option>  
@@ -126,7 +96,7 @@
                                 </select>
                             </div>
                         
-                            <div style="color:white;font-size:15px;line-height:1.5; margin: 10px 0px 10px 0px;">
+                            <div style="font-family:discord; color:white;font-size:15px;line-height:1.5; margin: 10px 0px 10px 0px;">
                                 No later than: 
                                 <select name="NoLaterThan" id="NoLaterThan">
                                     <option value=0>12:00  AM</option>  
@@ -156,44 +126,122 @@
                                     <option value=0>12:00  AM</option>
                                 </select>
                             </div>
-                        
-                            <div style="color:white;font-size:16px;line-height:1.5; margin: 10px 0px 10px 0px;" id="TimeZoneTextAndSelect">
-                                <form action="" method="post">
-                                    <label for="eventName" style="color:white;">Enter Time ID#: </label>
-                                    <input type="text" id="timeID   " name="timeID">
-                                </form>  
-                            </div>
-                        
-                            <div style="font-size:12px;line-height:1.5; margin: 10px 0px 10px 0px">
-                                &nbsp;
-                            </div>
+                            <br>
+                            
+                                <input type=submit name="CreateEvent" value="Create Event" id="CreateEvent" style="font-size:12px;">
+                            </form>
                         </td>
                     </tr>
-
-                    <tr>
-                        <td colspan=2 style="color:white;" align=center>Ready? <input type=submit value="Create Event" id="CreateEvent" style="font-size:12px;"></td>
-                    </tr>
-                   
                 </tbody>
             </table>
-        </form>
-        
-        //<?php
-            // session_start();
-            // function redirect($url) {
-            //     header('Location: '.$url);
-            // }
+                    
+        <?php
+            $result="";
+            if(isset($_POST['CreateEvent'])) {
+                $id = $_POST['event_id'];
+                $eventname = $_POST['event_name'];
+                $description = $_POST['description'];
+                $star = $_POST['start'];
+                $end = $_POST['end'];
+            
+                if (empty($id) || empty($_SESSION['sessionID']) || empty($eventname) || empty($description) || empty($start) || empty($end)) {
+                    echo "Data required in all fields";
+                } else {
+                    $query = 'insert into event (event_id, owner_id, event_name, description, start, end) values (' . $id . ',' .$_SESSION['sessionID']. ',"' .$eventname. '","' .$description. '","' .$start. '","' .$end. '")';                    
+                    $result = mysqli_query($dbConnection, $query);
+                    $createauthor = 'insert into owner_of values (' .$id. ',"' .$_SESSION['sessionID'].'")';
+                    $author_result = mysqli_query($dbConnection, $createauthor);
+                }
+                    if (!$result) {
+                        echo "<br>Could not create new event!<br>";
+                    } else {
+                        echo "<br>Event succsefully created!<br>";
+                    }
+                }
 
-            // $dbConnection = mysqli_connect("jdbc:mysql://u88864_T3BYDVo5Nj:%2B4i%5EQ6Pfwm%40OzghvSw1V6rwt@212.192.29.151:3306", "u88864_T3BYDVo5Nj", "+4i^Q6Pfwm@OzghvSw1V6rwt", "s88864_Events");
-            // if (!$dbConnection) {
-            //     die("Connection failed: " . mysqli_connect_error());
-            // }
         ?>
         
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
-<script type="text/javascript" src="../SCRIPTS/createEvent.js" ></script>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+        <script type="text/javascript" src="../SCRIPTS/createEvent.js" ></script>
+        
+        <!-- <label for="start_day" style="font-family:discord;color:white;font-size:20px;">Select Starting Day:</label>
+                                <select name="start_day">
+                                    <option value=Sunday>Sunday</option>  
+                                    <option value=Monday>Monday</option>  
+                                    <option value=Tuesday>Tuesday</option>  
+                                    <option value=Wednesday>Wednesday</option>  
+                                    <option selected value=Thursday>Thursday</option>  
+                                    <option value=Friday>Friday</option>  
+                                    <option value=Saturday>Saturday</option>     
+                                </select>
+                                <br><br>
+                                <label for="end_day" style="font-family:discord;color:white;font-size:20px;">Select Ending Day (can be the same day) :</label>
+                                <select name="end_day">
+                                    <option value=Sunday>Sunday</option>  
+                                    <option value=Monday>Monday</option>  
+                                    <option value=Tuesday>Tuesday</option>  
+                                    <option value=Wednesday>Wednesday</option>  
+                                    <option value=Thursday>Thursday</option>  
+                                    <option selected value=Friday>Friday</option>  
+                                    <option value=Saturday>Saturday</option>     
+                                </select> -->
+                                <!-- <label for="start_time" style="font-family:discord;color:white;font-size:20px;">No Earlier Than:</label>
+                                <select name="start_time">
+                                    <option value=00:00:00>12:00  AM</option>  
+                                    <option value=01:00:00>1:00  AM</option>  
+                                    <option value=02:00:00>2:00  AM</option>  
+                                    <option value=03:00:00>3:00  AM</option>  
+                                    <option value=04:00:00>4:00  AM</option>  
+                                    <option value=05:00:00>5:00  AM</option>  
+                                    <option value=06:00:00>6:00  AM</option>  
+                                    <option value=07:00:00>7:00  AM</option>  
+                                    <option value=08:00:00>8:00  AM</option>  
+                                    <option selected value=09:00:00>9:00  AM</option>  
+                                    <option value=10:00:00>10:00  AM</option>  
+                                    <option value=11:00:00>11:00  AM</option>  
+                                    <option value=12:00:00>12:00  PM</option>  
+                                    <option value=13:00:00>1:00  PM</option>  
+                                    <option value=14:00:00>2:00  PM</option>  
+                                    <option value=15:00:00>3:00  PM</option>  
+                                    <option value=16:00:00>4:00  PM</option>  
+                                    <option value=17:00:00>5:00  PM</option>  
+                                    <option value=18:00:00>6:00  PM</option>  
+                                    <option value=19:00:00>7:00  PM</option>  
+                                    <option value=20:00:00>8:00  PM</option>  
+                                    <option value=21:00:00>9:00  PM</option>  
+                                    <option value=22:00:00>10:00  PM</option>  
+                                    <option value=23:00:00>11:00  PM</option>  
+                                </select>
+                                <br><br>
+                                <label for="end_time" style="font-family:discord;color:white;font-size:20px;">No Later Than:</label>
+                                <select name="end_time">
+                                    <option value=00:00:00>12:00  AM</option>  
+                                    <option value=01:00:00>1:00  AM</option>  
+                                    <option value=02:00:00>2:00  AM</option>  
+                                    <option value=03:00:00>3:00  AM</option>  
+                                    <option value=04:00:00>4:00  AM</option>  
+                                    <option value=05:00:00>5:00  AM</option>  
+                                    <option value=06:00:00>6:00  AM</option>  
+                                    <option value=07:00:00>7:00  AM</option>  
+                                    <option value=08:00:00>8:00  AM</option>  
+                                    <option value=09:00:00>9:00  AM</option>  
+                                    <option value=10:00:00>10:00  AM</option>  
+                                    <option value=11:00:00>11:00  AM</option>  
+                                    <option value=12:00:00>12:00  PM</option>  
+                                    <option value=13:00:00>1:00  PM</option>  
+                                    <option value=14:00:00>2:00  PM</option>  
+                                    <option selected value=15:00:00>3:00  PM</option>  
+                                    <option value=16:00:00>4:00  PM</option>  
+                                    <option value=17:00:00>5:00  PM</option>  
+                                    <option value=18:00:00>6:00  PM</option>  
+                                    <option value=19:00:00>7:00  PM</option>  
+                                    <option value=20:00:00>8:00  PM</option>  
+                                    <option value=21:00:00>9:00  PM</option>  
+                                    <option value=22:00:00>10:00  PM</option>  
+                                    <option value=23:00:00>11:00  PM</option>
+                                <br><br> -->
     </body>
 </html>

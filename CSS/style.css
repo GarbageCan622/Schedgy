@@ -65,7 +65,9 @@ a:hover, a:active {
     margin-top: 10%;
   }
 
-
+.section{
+  width:auto;
+}
 input[type=text]{
     background-color: #2f3136;
     border: solid black;
@@ -73,7 +75,6 @@ input[type=text]{
     margin:1px;
     text-align: center;
     color:white;
-    width: 95%;
     padding:12px;
     -webkit-transition: 0.5s;
     transition: 0.5s;
@@ -88,6 +89,48 @@ input[type=submit]{
     color:white;
     padding: 12px;
     margin: 2px;
+}
+
+#eventIdText{
+  background-color: #2f3136;
+  border: solid black;
+  border-radius: 5px;
+  margin:1px;
+  text-align: center;
+  color:white;
+  width: 45%;
+  padding:12px;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+#loadEventButton{
+  background-color: #5865F2;
+  border-radius: 5px;
+  width:10%;
+  color:white;
+  padding: 12px;
+  margin: 2px;
+}
+
+
+.genericButton{
+  background-color: #5865F2;
+  border-radius: 5px;
+  width:100%;
+  color:white;
+  padding: 12px;
+  margin: 2px;
+}
+
+.linkButton{
+  background-color: #5865F2;
+  border-radius: 5px;
+  width:70%;
+  color:white;
+  padding: 12px;
+  margin: 2px;
+  margin: auto;
 }
 /* Specific Day styles to get them looking nice */
 /* #Monday{
@@ -180,4 +223,15 @@ ul {
 
 .avalibityChart .avalibityChart-0lax{text-align:left;
   vertical-align:top
+}
+
+.flexbox{
+  display:flex;
+}
+.flex{
+  flex:1;
+}
+
+#eventIdDiv{
+  width:100%;
 }
