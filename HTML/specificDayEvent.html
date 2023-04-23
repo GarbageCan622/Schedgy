@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <header>
+        <title>Specific Day Event</title>
+        <link rel="stylesheet" href="../CSS/style.css"/>
+    </header>
+
+    <body style="background-color:#36393F;">
+        <h1 id="eventName">Event Name</h1>
+        <div id="eventIdDiv" class="center">
+            <label for="eventIdText"><h3>Enter event id: </h3></label>
+            <input type="text" id="eventIdText" class="column center" name="eventIdText">
+            <input type="button" value="Load event" class="column center" id="loadEventButton" style="font-size:12px;">
+        </div>
+        <br> <br> <br> <br> 
+        <div class="availableCharts flexbox">
+            <div class="grids flex">
+                <div id="chartToFill">
+                    <table id="personalTimeTable" class="avalibityChart timeSelect"></table>           
+                </div>
+            </div>
+            <div class="grids flex">
+                <div id="liveFeed">
+                    <table id="groupTimeTable" class="avalibityChart timeSelect"></table>
+                </div>
+            </div>
+        </div>
+        
+        <div id="submitDiv">
+            <input type="button" value="Submit time" id="submitButton" style="font-size:12px;">
+        </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+        <script src="../SCRIPTS/createSpecificDate.js" ></script>
+    </body>
+</html>
