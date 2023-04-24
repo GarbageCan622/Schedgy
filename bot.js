@@ -1,6 +1,15 @@
 const fs = require('node:fs');
 const path = require('node:path');
 require("dotenv").config();
+const Discord = require('discord.js');
+const Webhook = require('./webhook.js');
+
+const botToken = process.env.BOT_TOKEN;
+const webhookId = process.env.WEBHOOK_ID;
+const webhookToken = process.env.WEBHOOK_TOKEN;
+
+const webhookClient = new Webhook(webhookId, webhookToken);
+
 const {Client, Collection, Events, GatewayIntentBits} = require("discord.js");
 const client = new Client({
 	intents:[
