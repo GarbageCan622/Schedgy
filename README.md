@@ -26,7 +26,6 @@ Running Unit Tests
 3. If Jest is not installed on your system run 'npm i --save-dev jest' to install it.
 4. To run HTML tests, on your system run 'npm i --save-dev @testing-library/dom' to install HTML testing libraries
 5. If Jest is already installed, or after it has been installed, run 'npm run test' in the commands folder to run all unit tests.
-6. Currently on github our workflow automatically runs the tests, but due to errors unrelated to our code, the job itself appears to fail while the tests themselves succeed.
 
 To Use the Bot
 1. Add to discord server using the provided link.
