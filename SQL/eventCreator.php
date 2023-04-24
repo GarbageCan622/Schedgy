@@ -68,16 +68,16 @@
                             <div style="font-family:discord; color:white;font-size:15px;line-height:1.5; margin: 10px 0px 10px 0px;">
                                 No earlier than: 
                                 <select name="NoEarlierThan" id="NoEarlierThan">
-                                    <option value=0>12:00  AM</option>  
-                                    <option value=1>1:00  AM</option>  
-                                    <option value=2>2:00  AM</option>  
-                                    <option value=3>3:00  AM</option>  
-                                    <option value=4>4:00  AM</option>  
-                                    <option value=5>5:00  AM</option>  
-                                    <option value=6>6:00  AM</option>  
-                                    <option value=7>7:00  AM</option>  
-                                    <option value=8>8:00  AM</option>  
-                                    <option selected value=9>9:00  AM</option>  
+                                    <option value=00>12:00  AM</option>  
+                                    <option value=01>1:00  AM</option>  
+                                    <option value=02>2:00  AM</option>  
+                                    <option value=03>3:00  AM</option>  
+                                    <option value=04>4:00  AM</option>  
+                                    <option value=05>5:00  AM</option>  
+                                    <option value=06>6:00  AM</option>  
+                                    <option value=07>7:00  AM</option>  
+                                    <option value=08>8:00  AM</option>  
+                                    <option selected value=09>9:00  AM</option>  
                                     <option value=10>10:00  AM</option>  
                                     <option value=11>11:00  AM</option>  
                                     <option value=12>12:00  PM</option>  
