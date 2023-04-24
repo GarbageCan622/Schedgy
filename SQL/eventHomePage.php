@@ -10,13 +10,12 @@
         <?php
             session_start();
             $dbConnection = mysqli_connect("212.192.29.151", "u88864_T3BYDVo5Nj", "+4i^Q6Pfwm@OzghvSw1V6rwt", "s88864_Events");
-            //$dbConnection = mysqli_connect("localhost", "root", "", "schedgy");
             if (!$dbConnection) {
                 die("Connection failed: " . mysqli_connect_error());
             }
 
-            //$_SESSION['sessionID'] = $_COOKIE['uid'];
-            //$_SESSION['sessionName'] = $_COOKIE['uname'];
+            $_SESSION['sessionID'] = $_COOKIE['uid'];
+            $_SESSION['sessionName'] = $_COOKIE['uname'];
 
             //$insertDiscord = 'insert into users values('.$_SESSION['sessionID'].','.$_SESSION['sessionName'].')';
             //$insertresult = mysqli_query($dbConnection, $insertDiscord);

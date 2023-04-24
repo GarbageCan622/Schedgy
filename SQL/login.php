@@ -40,8 +40,8 @@
                         sessionStorage.setItem("discordDiscriminator", discriminator);
                         sessionStorage.setItem("discordAvatar", avatar);
                         sessionStorage.setItem("discordId", id);
-                        document.cookie = "sessionStorage.getItem("discordId") = uid";
-                        document.cookie = "sessionStorage.getItem("discordUsername") = uname";
+                        document.cookie = "uid = id";
+                        document.cookie = "uname = username";
                         location.assign('../SQL/eventHomePage.php');
                     }
                 })
