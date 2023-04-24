@@ -10,7 +10,6 @@ jobs:
     - name: Install dependencies
       run: |
         npm install --save-dev jest
-        npm install --save-dev @testing-library/jest-dom
     - name: Run tests
       run: npm run test
         # Add the `quiet` option to suppress console errors
