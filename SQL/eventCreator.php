@@ -6,6 +6,26 @@
     </header>
 
     <body style="background-color:#36393F;">
+    <script>
+        function getCookie(cname) {
+            let name = cname + "=";
+            let decodedCookie = decodeURIComponent(document.cookie);
+            let ca = decodedCookie.split(';');
+            for(let i = 0; i <ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+            }
+            getCookie(eventStart);
+            getCookie(eventEnd);
+    </script>
+        
         <div class="container">
             <h1>Welcome to Schedgy Event Creator</h1>
         </div>
@@ -138,12 +158,13 @@
         <?php
             $result="";
             if(isset($_POST['CreateEvent'])) {
+                if(isset($_COOKIE['start']) || isset($_COOKIE['end'])){
                 $id = $_POST['event_id'];
                 $eventname = $_POST['event_name'];
-                $description = $_POST['description'];
-                $star = $_POST['start'];
-                $end = $_POST['end'];
-            
+                $description = $_POST['description'];   
+                $start = $_COOKIE['start'];
+                $end = $_COOKIE['end'];
+                }
                 if (empty($id) || empty($_SESSION['sessionID']) || empty($eventname) || empty($description) || empty($start) || empty($end)) {
                     echo "Data required in all fields";
                 } else {

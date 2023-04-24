@@ -74,10 +74,30 @@
             die("Connection failed: " . mysqli_connect_error());
         }
 
-        //$_SESSION['sessionID'] = $_POST['uid'];
-        //$_SESSION['sessionName'] = $_POST['uname'];
 
-        // if(isset($_POST['submit'])) {
+        
+        if(isset($_POST['submit'])) {
+            $userid = $_POST['uid'];
+
+            $query = 'select * from users where uid = ' . $userid . '';
+            $result = mysqli_query($dbConnection, $query);
+
+            if (mysqli_num_rows($result) > 0) {
+                while($row = mysqli_fetch_assoc($result)){
+                    $dbID = $row["uid"];
+                    if($userid==$dbID){
+                        $username = $row["uname"];
+                        $_SESSION['sessionID'] = $row['uid'];
+                    }
+                }
+                echo "<br>Logged in as user " .$username. "";
+                redirect("/Schedgy/SQL/eventHomePage.php");
+            }else{
+                echo "<br>USER NOT FOUND<br>";
+                }
+        }
+
+        //if(isset($_POST['submit'])) {
         //     $id = $_SESSION['sessionID'];
         //     $uname = $_SESSION['sessionName'];
         
