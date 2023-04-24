@@ -1,6 +1,6 @@
 class AvailabilityChart {
     constructor(start, end) {     
-        var days = Math.floor((end.getTime() - start.getTime())/(1000*3600*24))
+        var days = Math.floor((end.getTime() - start.getTime())/(1000*3600*24));
         var time = (end.getHours() - start.getHours())*4 + (end.getMinutes() - start.getMinutes())/15;
         var arr = [];
         for(let i = 0; i < days; i++) {
@@ -22,7 +22,7 @@ class AvailabilityChart {
             for (var j = 0; j < this.chart[i].length; j++) {
                 console.log(i + ", " + j + " howMany: " + this.chart[i][j].howMany);
                 for (var n = 0; n < this.chart[i][j].who.length; n++) {
-                    console.log(" who: " + this.chart[i][j].who[n])
+                    console.log(" who: " + this.chart[i][j].who[n]);
                 }
             }
         }
