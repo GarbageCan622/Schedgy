@@ -4,10 +4,16 @@ on: [push]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v1
-    - name: Run Jest
+    - name: Install dependencies
+      run: |
+        npm install --save-dev jest
+        npm install --save-dev @testing-library/jest-dom
+        chmod +x node_modules/.bin/jest
+    - name: Run tests
       uses: stefanoeb/jest-action@1.0.3
+        # Add the `quiet` option to suppress console errors
+        options:
+          quiet: true
