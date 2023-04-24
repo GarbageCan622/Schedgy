@@ -20,7 +20,7 @@ con.connect(function(err) {
 // Same as sendlink command currently, above sql code should work
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName('pingAttendees')
+		.setName('pingattendees')
 		.setDescription('Ping all members of an event'),
 	async execute(interaction) {
 		await interaction.reply(`${linkMessage.message}(${linkMessage.site})`);
