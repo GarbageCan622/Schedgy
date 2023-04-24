@@ -44,7 +44,7 @@ resultsToString = function(results){
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('pingattendees')
-		.setDescription('Ping all members of an event')
+		.setDescription('Ping all members of an event you own')
     .addStringOption(option =>
         option
           .setName('event_id')
