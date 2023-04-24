@@ -7,9 +7,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
-    - name: Install dependencies
-      run: |
-        npm install --save-dev jest
     - name: Run tests
       run: npm run test
         # Add the `quiet` option to suppress console errors
