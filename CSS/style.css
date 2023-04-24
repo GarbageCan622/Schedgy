@@ -46,6 +46,9 @@ a:hover, a:active {
     color:white;
     font-family: discord;
 }
+.eventcol{
+  background-color: #5865F2;
+}
 .column{
     float: left;
     width:50%;
