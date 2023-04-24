@@ -38,8 +38,9 @@
                         sessionStorage.setItem("discordDiscriminator", discriminator);
                         sessionStorage.setItem("discordAvatar", avatar);
                         sessionStorage.setItem("discordId", id);
+                        sessionStorage.getItem("discordId");
                         location.assign('../SQL/eventHomePage.php');
-                        window.location.href = "login.php?id = discordID";
+                        window.location.href = "login.php?id = discordId";
                     }
                 })
               .catch(console.error);
@@ -72,7 +73,7 @@
             die("Connection failed: " . mysqli_connect_error());
         }
 
-        //$_SESSION['sessionID'] = $_GET["id"];
+        $_SESSION['sessionID'] = $_GET["id"];
 
         if(isset($_POST['submit'])) {
             $userid = $_POST['uid'];

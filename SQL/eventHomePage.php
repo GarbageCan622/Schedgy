@@ -73,6 +73,31 @@
             <div class="column">
                 <div style="background-color: #2f3136;border-style: solid;border-color:black;border-radius: 5px;padding: 2%;margin: 2%;">
                     <h2 style="text-align:center; font-family:discord; color:white;">Invited Events</h2>
+                    <br>
+                    <?php
+                    $query = 'select * from event,member_of where';
+                    $result = mysqli_query($dbConnection, $query);
+                        if (mysqli_num_rows($result) > 0) {
+                            while($row = mysqli_fetch_assoc($result)) {
+                                $eventid = $row['event_id'];
+                                $ownerid = $row['owner_id'];
+                                $eventname = $row['event_name'];
+                                $description = $row['description'];
+                                $start = $row['start'];
+                                $end = $row['end'];
+
+                                echo "Event ID: $eventid<br>" .
+                                    "Owner ID: $ownerid<br>".
+                                    "Event Name: $eventname<br>" .
+                                    "Description: $description<br>" .
+                                    "Starting at: $start<br>" .
+                                    "Ending at: $end<br>" .
+                                    "<br>---------------------------------------------------------<br>";
+                            }
+                        } else {
+                            echo "<br>No active Events<br>";
+                        }
+                        ?>
                 </div>
             </div>
     </body>
