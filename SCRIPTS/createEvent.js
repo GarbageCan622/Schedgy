@@ -108,6 +108,7 @@ sessionStorage.setItem("specificEndHour", NoLaterThanSubmit);
       sessionStorage.setItem("name", NameSubmit);
       const startDb = SpecificDateSubmit.substring(6, 10) + SpecificDateSubmit.substring(0, 2) + SpecificDateSubmit.substring(3, 5) + NoEarlierThanSubmit;
       const endDb = SpecificDateSubmit.substring(19, 23) + SpecificDateSubmit.substring(13, 15) + SpecificDateSubmit.substring(16, 18) + NoLaterThanSubmit;
+      document.cookie = "start = startDb";
       console.log(startDb);
       console.log(endDb);
 //event.preventDefault();

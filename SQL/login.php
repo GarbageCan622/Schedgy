@@ -40,9 +40,8 @@
                         sessionStorage.setItem("discordDiscriminator", discriminator);
                         sessionStorage.setItem("discordAvatar", avatar);
                         sessionStorage.setItem("discordId", id);
-                        var uid = "discordId";
-                        var uname = "discordUsername";
-                        $.post("../SQL/login.php", {uid:uid, uname:uname});
+                        document.cookie = "sessionStorage.getItem("discordId") = uid";
+                        document.cookie = "sessionStorage.getItem("discordUsername") = uname";
                         location.assign('../SQL/eventHomePage.php');
                     }
                 })
@@ -50,7 +49,7 @@
             };
           </script>
 
-            <!-- <p style="font-family:discord; color:white;"><a href="index.php">Register New Schedgy Account</a></p>
+            <p style="font-family:discord; color:white;"><a href="index.php">Register New Schedgy Account</a></p>
 
             <div>
                 <br><br>
@@ -60,24 +59,23 @@
                     <br><br>
                     <input type="submit" name="submit" value="Login">
                 </form>
-            </div> -->
+            </div>
         <br>
         <img src="../LOGOS/discord logo.png" width = 100 class="center">
 
         <?php
-        // session_start();
-        // function redirect($url) {
-        //     header('Location: '.$url);
-        // }
+        session_start();
+        function redirect($url) {
+            header('Location: '.$url);
+        }
             
-        // $dbConnection = mysqli_connect("212.192.29.151", "u88864_T3BYDVo5Nj", "+4i^Q6Pfwm@OzghvSw1V6rwt", "s88864_Events");
-        // //$dbConnection = mysqli_connect("localhost", "root", "", "schedgy");
-        // if (!$dbConnection) {
-        //     die("Connection failed: " . mysqli_connect_error());
-        // }
+        $dbConnection = mysqli_connect("212.192.29.151", "u88864_T3BYDVo5Nj", "+4i^Q6Pfwm@OzghvSw1V6rwt", "s88864_Events");
+        if (!$dbConnection) {
+            die("Connection failed: " . mysqli_connect_error());
+        }
 
-        // $_SESSION['sessionID'] = $_POST['uid'];
-        // $_SESSION['sessionName'] = $_POST['uname'];
+        //$_SESSION['sessionID'] = $_POST['uid'];
+        //$_SESSION['sessionName'] = $_POST['uname'];
 
         // if(isset($_POST['submit'])) {
         //     $id = $_SESSION['sessionID'];
@@ -93,7 +91,7 @@
         //             echo "<br>Could not insert into User table<br>";
         //         } else {
         //             echo "<br>Successfuly inserted into User table<br>";
-        //             //redirect("../Schedgy/SQL/eventHomePage.php");
+        //             redirect("../Schedgy/SQL/eventHomePage.php");
         //         }
         //     }
         // }

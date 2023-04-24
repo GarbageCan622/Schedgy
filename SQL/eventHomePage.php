@@ -15,12 +15,18 @@
                 die("Connection failed: " . mysqli_connect_error());
             }
 
+            $_SESSION['sessionID'] = $_COOKIE['uid'];
+            $_SESSION['sessionName'] = $_COOKIE['uname'];
+
+            $insertDiscord = 'insert into users values('.$_SESSION['sessionID'].','.$_SESSION['sessionName'].')';
+            $insertresult = mysqli_query($dbConnection, $insertDiscord);
+
             $getname = 'select * from users where uid =' . $_SESSION['sessionID'];
             $name_result = mysqli_query($dbConnection, $getname);
             if(mysqli_num_rows($name_result) > 0){
                 while($row = mysqli_fetch_assoc($name_result)){
-                    $username = $row['uname'];
-                    echo "Logged in as: $username<br>";
+                    $uname = $row['uname'];
+                    echo "Logged in as: $uname<br>";
                 }
             }
 
