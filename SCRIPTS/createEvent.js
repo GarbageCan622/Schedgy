@@ -93,7 +93,7 @@ $("#EventForm").submit(function(event){
 start = new Date(SpecificDateSubmit.substring(6,10), SpecificDateSubmit.substring(0,2), SpecificDateSubmit.substring(3,5), NoEarlierThanSubmit, 0, 0, 0);
 end = new Date(SpecificDateSubmit.substring(19,23), SpecificDateSubmit.substring(13,15), SpecificDateSubmit.substring(16,18), NoLaterThanSubmit, 0, 0, 0);
 start.toString();
-end.toString();
+      end.toString();
 
 //module.exports = new SpecificDateEvent(start, end, NameSubmit);
 //const exportSpecific = new SpecificDateEvent(start, end, NameSubmit);
@@ -105,7 +105,11 @@ sessionStorage.setItem("specificEndYear", SpecificDateSubmit.substring(19,23));
 sessionStorage.setItem("specificEndMonth", SpecificDateSubmit.substring(13,15));
 sessionStorage.setItem("specificEndDay", SpecificDateSubmit.substring(16,18));
 sessionStorage.setItem("specificEndHour", NoLaterThanSubmit);
-sessionStorage.setItem("name", NameSubmit);
+      sessionStorage.setItem("name", NameSubmit);
+      const startDb = SpecificDateSubmit.substring(6, 10) + SpecificDateSubmit.substring(0, 2) + SpecificDateSubmit.substring(3, 5) + NoEarlierThanSubmit;
+      const endDb = SpecificDateSubmit.substring(19, 23) + SpecificDateSubmit.substring(13, 15) + SpecificDateSubmit.substring(16, 18) + NoLaterThanSubmit;
+      console.log(startDb);
+      console.log(endDb);
 //event.preventDefault();
 //window.location.href='eventPage.php';
 }
