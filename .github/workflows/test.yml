@@ -14,5 +14,3 @@ jobs:
         chmod +x node_modules/.bin/jest
     - name: Run tests
       run: npm run test
-        options:
-          quiet: true
