@@ -8,21 +8,47 @@ var con = mysql.createConnection({
   database: "s88864_Events"
 });
 
-con.connect(function(err) {
-  if (err) throw err;
-  con.query("SELECT guest_id FROM event, member_of WHERE event.event_id = member_of.event_id", function (err, result, fields) {
-    if (err) throw err;
-    console.log(result);
-  });
-});
+getMembers = function(event_id) {
+  return new Promise(function(resolve, reject){
+    let searchQuery = "SELECT guest_id FROM event, member_of WHERE event.event_id = member_of.event_id AND event.event_id = " + String(event_id)
+    con.query(
+      searchQuery, 
+      function (err, rows) { 
+        if(rows === undefined){
+          reject(new Error("Error rows is undefined"));
+        } else {
+          resolve(rows);
+        }
+      }
+  )}
+)}
 
+/**
+getMembers(2)
+.then(function(results){
+  render(results)
+})
+.catch(function(err){
+  console.log("Promise rejection error: "+err)
+})
 
-// Same as sendlink command currently, above sql code should work
+render = function(results){ 
+  for (var i in results) console.log(results[i]) 
+}
+*/
+
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('pingattendees')
-		.setDescription('Ping all members of an event'),
+		.setDescription('Ping all members of an event')
+    .addIntegerOption(option =>
+        option
+          .setName('event_id')
+          .setDescription('The number ID of your event.')
+          .setRequired(true)
+      ),
 	async execute(interaction) {
-		await interaction.reply(`${linkMessage.message}(${linkMessage.site})`);
+    getMembers(interaction.options.getInteger('event_id'))
+		await interaction.reply(results);
 	},
 };
