@@ -108,8 +108,21 @@ sessionStorage.setItem("specificEndHour", NoLaterThanSubmit);
       sessionStorage.setItem("name", NameSubmit);
       const startDb = SpecificDateSubmit.substring(6, 10) + SpecificDateSubmit.substring(0, 2) + SpecificDateSubmit.substring(3, 5) + NoEarlierThanSubmit;
       const endDb = SpecificDateSubmit.substring(19, 23) + SpecificDateSubmit.substring(13, 15) + SpecificDateSubmit.substring(16, 18) + NoLaterThanSubmit;
-      console.log(startDb);
-      console.log(endDb);
+      //var start = startDb.toString();
+      // $.ajax({
+      //   URL: "eventCreator.php",
+      //   method: "POST",
+      //   data: {"start" : start}
+      // })
+      // var end = endDb.toString();
+      // $.ajax({
+      //   URL: "eventCreator.php",
+      //   method: "POST",
+      //   data: {"end" : end}
+      // })
+      document.cookie = "eventStart=" + startDb;
+      document.cookie = "eventEnd=" + endDb;
+      
 //event.preventDefault();
 //window.location.href='eventPage.php';
 }

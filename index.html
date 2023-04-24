@@ -1,4 +1,4 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
     <header>
         <title>Discord Login</title>
@@ -16,8 +16,14 @@
             </div>
         <br>
         <img src="LOGOS/discord logo.png" width = 100 class="center">
-        
+
         <script>
+            location.assign('SQL/eventHomePage.php');
+        </script>
+
+
+        
+        <!-- <script>
             window.onload = () => {
               const fragment = new URLSearchParams(window.location.hash.slice(1));
               const [accessToken, tokenType] = [fragment.get('access_token'), fragment.get('token_type')];
@@ -40,12 +46,12 @@
                     sessionStorage.setItem("discordDiscriminator", discriminator);
                     sessionStorage.setItem("discordAvatar", avatar);
                     sessionStorage.setItem("discordId", id);
-                  location.assign('HTML/links.html');
+                  location.assign('SQL/eventHomePage.php');
              }})
               .catch(console.error);
           
           
           };
-          </script>
+          </script> -->
     </body>
-</html> -->
+</html>
