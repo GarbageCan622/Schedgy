@@ -13,7 +13,7 @@ jobs:
         npm install --save-dev @testing-library/jest-dom
         chmod +x node_modules/.bin/jest
     - name: Run tests
-      run: npm test
+      run: npm run test
         # Add the `quiet` option to suppress console errors
         options:
           quiet: true
