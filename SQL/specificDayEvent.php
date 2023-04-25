@@ -50,11 +50,31 @@
         </div>
         <br> <br> <br> <br>
 
+        <div class="availableCharts flexbox">
+            <div class="grids flex">
+                <div id="chartToFill">
+                    <table id="personalTimeTable" class="avalibityChart timeSelect"></table>           
+                </div>
+            </div>
+            <div class="grids flex">
+                <div id="liveFeed">
+                    <table id="groupTimeTable" class="avalibityChart timeSelect"></table>
+                </div>
+            </div>
+        </div> 
+
+        
+
+        
+      <div id="submitDiv">
+            <input type="button" name="submittime" value="Submit time" id="submitButton" class="genericButton" style="font-size:12px;">
+        </div> 
+
         <?php
         if(isset($_POST['submit'])){
             $eventid = $_POST['eventid'];
 
-        $query = 'select * from event where event.owner_id ='.$_SESSION['sessionID'].'& event.event_id='.$eventid;
+        $query = 'select * from event where event.event_id ='.$eventid;
         $result = mysqli_query($dbConnection, $query);
             if (mysqli_num_rows($result) > 0) {
                 while($row = mysqli_fetch_assoc($result)) {
@@ -62,16 +82,35 @@
                     $ownerid = $row['owner_id'];
                     $eventname = $row['event_name'];
                     $description = $row['description'];
-                    $start = $row['start'];
-                    $end = $row['end'];
+                    $date = $row['date'];
+                    $start = $row['start_time'];
+                    $end = $row['end_time'];
 
-                    echo "Event ID: $eventid<br>" .
+                   /* echo "Event ID: $eventid<br>" .
                         "Owner ID: $ownerid<br>".
                         "Event Name: $eventname<br>" .
                         "Description: $description<br>" .
                         "Starting at: $start<br>" .
                         "Ending at: $end<br>" .
-                        "<br>---------------------------------------------------------<br>";
+                        "<br>---------------------------------------------------------<br>";*/
+            
+                }
+
+                $query2 = 'select availability_string from member_of where member_of.event_id ='.$eventid;
+        $result2 = mysqli_query($dbConnection, $query2);
+            if (mysqli_num_rows($result2) > 0) {
+                while($row = mysqli_fetch_assoc($result2)) {
+                    $availability = $row['availability_string'];
+                   
+
+                   /* echo "Event ID: $eventid<br>" .
+                        "Owner ID: $ownerid<br>".
+                        "Event Name: $eventname<br>" .
+                        "Description: $description<br>" .
+                        "Starting at: $start<br>" .
+                        "Ending at: $end<br>" .
+                        "<br>---------------------------------------------------------<br>";*/
+            
                 }
             }
             } else {
@@ -83,27 +122,9 @@
 
 
 
-        <!-- <div class="availableCharts flexbox">
-            <div class="grids flex">
-                <div id="chartToFill">
-                    <table id="personalTimeTable" class="avalibityChart timeSelect"></table>           
-                </div>
-            </div>
-            <div class="grids flex">
-                <div id="liveFeed">
-                    <table id="groupTimeTable" class="avalibityChart timeSelect"></table>
-                </div>
-            </div>
-        </div> -->
-
         
 
-        
-        <!-- <div id="submitDiv">
-            <input type="button" name="submittime" value="Submit time" id="submitButton" class="genericButton" style="font-size:12px;">
-        </div> -->
-
-        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script> -->
-        <!-- <script src="../SCRIPTS/createSpecificDate.js" ></script> -->
+         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script> 
+        <script src="../SCRIPTS/createSpecificDate.js" ></script>
     </body>
 </html>

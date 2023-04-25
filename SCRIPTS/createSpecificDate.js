@@ -110,7 +110,27 @@ $(document).ready(function(){
         "000000111111"
     ];
     var startS = new Date(2023, 4, 1, 1, 0, 0, 0);
-    var endS = new Date(2023, 4, 3, 4, 0, 0, 0);
+    var endS = new Date(2023, 4, 3, 4, 0, 0, 0); 
+ 
+
+    var eventId = "<?php echo $eventid; ?>";
+    var ownerId = "<?php echo $ownerId; ?>";
+    var eventname = "<?php echo $eventname; ?>";
+    var description = "<?php echo $description; ?>";
+    var date = "<?php echo $date; ?>";
+    var start = "<?php echo $start; ?>";
+    var end = "<?php echo $end; ?>";
+    var availabilityArr = "<?php echo $availability; ?>";
+    console.log(eventId);
+    console.log(ownerId);
+    console.log(eventname);
+    console.log(description);
+    console.log(date);
+    console.log(start);
+    console.log(end);
+    console.log(availabilityArr);
+
+
     createSpecificDateFillOutChart(startS, endS);
     createSpecificDateGroupChart(startS, endS, tempTesting);
 
