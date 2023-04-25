@@ -32,6 +32,7 @@
             if (!$dbConnection) {
                 die("Connection failed: " . mysqli_connect_error());
             }
+            if(isset($_POST['register'])){
                 $uname = $_POST['uname'];
                 $id = $_POST['id'];
 
@@ -72,6 +73,7 @@
                         //         echo "<br>Unexpected error, invalid Acct Type<br>";
                         // }
                     }
+                }
             
 
         ?>

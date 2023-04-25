@@ -63,17 +63,22 @@
                 </div>
             </div>
         </div>
+        <br>
+        <br>
         
       <div id="submitDiv">
-            <input type="button" name="submittime" value="Submit time" id="submitButton" class="genericButton" style="font-size:12px;">
+        <form action="" method="post">
+            <input type="text" id="submitTimeField" name="submitTimeField" style="display:none;" readonly>
+            <input type="submit" name="submitButton" value="Submit Time" id="submitButton" class="genericButton" style="font-size:12px;">
+        </form>
         </div> 
 
         <?php
         if(isset($_POST['submit'])){
             $eventid = $_POST['eventid'];
 
-        $query = 'select * from event where event.event_id ='.$eventid;
-        $result = mysqli_query($dbConnection, $query);
+            $query = 'select * from event where event.event_id ='.$eventid;
+            $result = mysqli_query($dbConnection, $query);
             if (mysqli_num_rows($result) > 0) {
                 while($row = mysqli_fetch_assoc($result)) {
                     $eventid = $row['event_id'];
@@ -93,27 +98,40 @@
                         "<br>---------------------------------------------------------<br>";*/
                 } 
             }   
-                    $query2 = 'select availability_string from member_of where member_of.event_id ='.$eventid;
-                    $result2 = mysqli_query($dbConnection, $query2);
-                        if (mysqli_num_rows($result2) > 0) {
-                            $availability = array();
-                            while($row = mysqli_fetch_array($result2)) {
-                                //$availability = $row['availability_string'];
-                                array_push($availability, $row['availability_string']);                                   
+            $query2 = 'select availability_string from member_of where member_of.event_id ='.$eventid;
+            $result2 = mysqli_query($dbConnection, $query2);
+                if (mysqli_num_rows($result2) > 0) {
+                    $availability = array();
+                    while($row = mysqli_fetch_array($result2)) {
+                        array_push($availability, $row['availability_string']);                                   
                 
-                                   /* echo "Event ID: $eventid<br>" .
-                                        "Owner ID: $ownerid<br>".
-                                        "Event Name: $eventname<br>" .
-                                        "Description: $description<br>" .
-                                        "Starting at: $start<br>" .
-                                        "Ending at: $end<br>" .
-                                        "<br>---------------------------------------------------------<br>";*/
-                            
-                           }
-                            }else{
-                                    echo "<br>You are not the author of this event!<br>";
-                                }
-                 } 
+                            /* echo "Event ID: $eventid<br>" .
+                                "Owner ID: $ownerid<br>".
+                                "Event Name: $eventname<br>" .
+                                "Description: $description<br>" .
+                                "Starting at: $start<br>" .
+                                "Ending at: $end<br>" .
+                                "<br>---------------------------------------------------------<br>";*/
+                    }
+                }else{
+                    echo "<br>You are not the author of this event!<br>";
+                    }
+            
+                if(isset($_POST['submitButton'])){
+                    $submit = $_POST['submitTimeField'];
+                if(empty($_SESSION['sessionID'] || empty($eventid) || empty($submit))){
+                    echo "";
+                }else{
+                $query3 = 'insert into member_of values ('.$eventid.','.$_SESSION['sessionID'].','.$submit.')';
+                $result3 = mysqli_query($dbConnection, $query3);
+                if(!$result3){
+                    echo "<br>Could Not Submit Time<br>";
+                }else{
+                    echo "It worked";
+                }
+                }
+            }
+        } 
         ?>
 
          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script> 
@@ -198,11 +216,11 @@ function createSpecificDateGroupChart(start, end, groupArr){
     appendTable += '</tr>'
     timeLoop.setHours(timeLoop.getHours() + 1);
 }
-    $('#groupTimeTable').append(appendTable);
+    $('#groupTimeTable').html(appendTable);
 }
 
 
-function submitTime(start, end){
+function submitTime(start, end, availabilityArr){
     var days = Math.floor((end.getTime() - start.getTime())/(1000*3600*24))
     var time = (end.getHours() - start.getHours());
     var limit = (days+1) * (time + 1);
@@ -215,7 +233,9 @@ function submitTime(start, end){
         submitString+='0';
        }
     }
-    console.log(submitString);
+    $("#submitTimeField").val(submitString);
+    availabilityArr.push(submitString);
+    createSpecificDateGroupChart(start, end, availabilityArr);
 }
 
 $(document).ready(function(){
@@ -256,11 +276,11 @@ $(document).ready(function(){
 
 
     createSpecificDateFillOutChart(startS, endS);
-    createSpecificDateGroupChart(startS, endS, tempTesting);
+    createSpecificDateGroupChart(startS, endS, availabilityArr);
 
 
     $("#submitButton").click(function(){
-        submitTime(startS,endS)
+        submitTime(startS,endS,availabilityArr)
     });
 });
         </script>
