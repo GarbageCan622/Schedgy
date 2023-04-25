@@ -49,50 +49,6 @@
             </form>
         </div>
         <br> <br> <br> <br> 
-        <?php
-        if(isset($_POST['submit'])){
-            $eventid = $_POST['eventid'];
-
-            $query = 'select * from event where event.event_id ='.$eventid;
-            $result = mysqli_query($dbConnection, $query);
-            if (mysqli_num_rows($result) > 0) {
-                while($row = mysqli_fetch_assoc($result)) {
-                    $eventid = $row['event_id'];
-                    $ownerid = $row['owner_id'];
-                    $eventname = $row['event_name'];
-                    $description = $row['description'];
-                    $date = $row['date'];
-                    $start = $row['start_time'];
-                    $end = $row['end_time'];
-
-                   /* echo "Event ID: $eventid<br>" .
-                        "Owner ID: $ownerid<br>".
-                        "Event Name: $eventname<br>" .
-                        "Description: $description<br>" .
-                        "Starting at: $start<br>" .
-                        "Ending at: $end<br>" .
-                        "<br>---------------------------------------------------------<br>";*/
-                } 
-            }   
-            $query2 = 'select availability_string from member_of where member_of.event_id ='.$eventid;
-            $result2 = mysqli_query($dbConnection, $query2);
-                if (mysqli_num_rows($result2) > 0) {
-                    $availability = array();
-                    while($row = mysqli_fetch_array($result2)) {
-                        array_push($availability, $row['availability_string']);                                   
-                
-                            /* echo "Event ID: $eventid<br>" .
-                                "Owner ID: $ownerid<br>".
-                                "Event Name: $eventname<br>" .
-                                "Description: $description<br>" .
-                                "Starting at: $start<br>" .
-                                "Ending at: $end<br>" .
-                                "<br>---------------------------------------------------------<br>";*/
-                    }
-                }else{
-                    echo "<br>You are not the author of this event!<br>";
-                    }
-            ?>
 
         
         <div class="availableCharts flexbox">
@@ -110,29 +66,80 @@
         <br>
         <br>
         
-      <div id="submitDiv">
-        <form action="" method="post">
-            <input type="text" id="submitTimeField" name="submitTimeField" style="display:none;" readonly>
-            <input type="submit" name="submitButton" value="Submit Time" id="submitButton" class="genericButton" style="font-size:12px;">
-        </form>
-        </div> 
+        <section class="section">
+            <form action="" method="post">
+                <input type="text" id="submitTimeField" name="submitTimeField">
+                <input type="text" id="submitZero" name="submitZero">
+                <input type="text" id="submitEventField" name="submitEventField">
+                <input type="button" name="fillTextbox" value="Submit Time" id="fillTextbox" class="genericButton" style="font-size:12px;">
+                <input type="submit" name="submitButton" value="Confirm Time?" id="submitButton" class="genericButton" style="font-size:12px;">
+            </form>
+        </section>
 
             <?php
+             if(isset($_POST['submit'])){
+                $eventid = $_POST['eventid'];
+    
+                $query = 'select * from event where event.event_id ='.$eventid;
+                $result = mysqli_query($dbConnection, $query);
+                if (mysqli_num_rows($result) > 0) {
+                    while($row = mysqli_fetch_assoc($result)) {
+                        $eventid = $row['event_id'];
+                        $ownerid = $row['owner_id'];
+                        $eventname = $row['event_name'];
+                        $description = $row['description'];
+                        $date = $row['date'];
+                        $start = $row['start_time'];
+                        $end = $row['end_time'];
+    
+                       /* echo "Event ID: $eventid<br>" .
+                            "Owner ID: $ownerid<br>".
+                            "Event Name: $eventname<br>" .
+                            "Description: $description<br>" .
+                            "Starting at: $start<br>" .
+                            "Ending at: $end<br>" .
+                            "<br>---------------------------------------------------------<br>";*/
+                    } 
+                }   
+                $query2 = 'select availability_string from member_of where member_of.event_id ='.$eventid;
+                $result2 = mysqli_query($dbConnection, $query2);
+                    if (mysqli_num_rows($result2) > 0) {
+                        $availability = array();
+                        while($row = mysqli_fetch_array($result2)) {
+                            array_push($availability, $row['availability_string']);                                   
+                    
+                                /* echo "Event ID: $eventid<br>" .
+                                    "Owner ID: $ownerid<br>".
+                                    "Event Name: $eventname<br>" .
+                                    "Description: $description<br>" .
+                                    "Starting at: $start<br>" .
+                                    "Ending at: $end<br>" .
+                                    "<br>---------------------------------------------------------<br>";*/
+                        }
+                    }else{
+                        echo "<br>You do not have permission to view this event!<br>";
+                        }
+                    }
+
+
                 if(isset($_POST['submitButton'])){
+                    $eventid = $_POST['submitEventField'];
                     $submit = $_POST['submitTimeField'];
-                if(empty($_SESSION['sessionID'] || empty($eventid) || empty($submit))){
-                    echo "";
+                    //$submitZero = $_POST['submitZero'];
+                    sprintf("%255s", $submit);
+
+                if(empty($eventid) || empty($_SESSION['sessionID']) || empty($submit)){
+                    echo "Please fill out all fields";
                 }else{
-                $query3 = 'insert into member_of values ('.$eventid.','.$_SESSION['sessionID'].','.$submit.')';
-                $result3 = mysqli_query($dbConnection, $query3);
+                    $query3 = 'insert into member_of values ('.$eventid.','.$_SESSION['sessionID'].','.$submit.')';
+                    $result3 = mysqli_query($dbConnection, $query3);
                 if(!$result3){
                     echo "<br>Could Not Submit Time<br>";
                 }else{
-                    echo "It worked";
+                    echo "";
                 }
                 }
             }
-        } 
         ?>
 
          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script> 
@@ -140,6 +147,7 @@
             //const AvailabilityChart = require("./availabilityChart");
 //const SpecificDateEvent = require("./createEvent");
 //import { exportSpecific} from "./createEvent.js";
+var submitOnce = true;
 
 function createSpecificDateFillOutChart(start, end){
     var days = Math.floor((end.getTime() - start.getTime())/(1000*3600*24))
@@ -235,8 +243,15 @@ function submitTime(start, end, availabilityArr){
        }
     }
     $("#submitTimeField").val(submitString);
-    availabilityArr.push(submitString);
-    createSpecificDateGroupChart(start, end, availabilityArr);
+    if(submitOnce){
+        availabilityArr.push(submitString);
+        createSpecificDateGroupChart(start, end, availabilityArr);
+        submitOnce = false;
+    }
+    else{
+        availabilityArr[availabilityArr.length - 1] = submitString;
+        createSpecificDateGroupChart(start, end, availabilityArr);
+    }
 }
 
 $(document).ready(function(){
@@ -280,11 +295,15 @@ $(document).ready(function(){
     createSpecificDateGroupChart(startS, endS, availabilityArr);
 
 
-    $("#submitButton").click(function(){
+    $("#fillTextbox").click(function(){
         submitTime(startS,endS,availabilityArr)
+        $("#submitZero").val($("#submitTimeField").val().length);
+        console.log($("#submitTimeField").val());
     });
-});
-        </script>
+    $("#submitEventField").val(eventId);
+
+});     
+    </script>
         
     </body>
 </html>

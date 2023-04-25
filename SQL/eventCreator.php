@@ -173,6 +173,8 @@
                     $result = mysqli_query($dbConnection, $query);
                     $createauthor = 'insert into owner_of values (' .$id. ',"' .$_SESSION['sessionID'].'")';
                     $author_result = mysqli_query($dbConnection, $createauthor);
+                    $addmember = 'insert into member_of (event_id, guest_id) values (' .$id. ',"' .$_SESSION['sessionID'].'")';
+                    $addmember_result = mysqli_query($dbConnection,$addmember);
                 }
                     if (!$result) {
                         echo "<br>Could not create new event!<br>";
