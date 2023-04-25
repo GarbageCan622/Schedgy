@@ -51,7 +51,18 @@
         <br> <br> <br> <br> 
 
         
-
+        <div class="availableCharts flexbox">
+            <div class="grids flex">
+                <div id="chartToFill">
+                    <table id="personalTimeTable" class="avalibityChart timeSelect"></table>           
+                </div>
+            </div>
+            <div class="grids flex">
+                <div id="liveFeed">
+                    <table id="groupTimeTable" class="avalibityChart timeSelect"></table>
+                </div>
+            </div>
+        </div>
         
       <div id="submitDiv">
             <input type="button" name="submittime" value="Submit time" id="submitButton" class="genericButton" style="font-size:12px;">
@@ -85,9 +96,10 @@
                     $query2 = 'select availability_string from member_of where member_of.event_id ='.$eventid;
                     $result2 = mysqli_query($dbConnection, $query2);
                         if (mysqli_num_rows($result2) > 0) {
-                            while($row = mysqli_fetch_assoc($result2)) {
-                                $availability = $row['availability_string'];
-                                   
+                            $availability = array();
+                            while($row = mysqli_fetch_array($result2)) {
+                                //$availability = $row['availability_string'];
+                                array_push($availability, $row['availability_string']);                                   
                 
                                    /* echo "Event ID: $eventid<br>" .
                                         "Owner ID: $ownerid<br>".
@@ -97,24 +109,12 @@
                                         "Ending at: $end<br>" .
                                         "<br>---------------------------------------------------------<br>";*/
                             
-                                }
+                           }
                             }else{
                                     echo "<br>You are not the author of this event!<br>";
                                 }
                  } 
         ?>
-        <div class="availableCharts flexbox">
-            <div class="grids flex">
-                <div id="chartToFill">
-                    <table id="personalTimeTable" class="avalibityChart timeSelect"></table>           
-                </div>
-            </div>
-            <div class="grids flex">
-                <div id="liveFeed">
-                    <table id="groupTimeTable" class="avalibityChart timeSelect"></table>
-                </div>
-            </div>
-        </div>
 
          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script> 
         <script>
@@ -220,15 +220,16 @@ function submitTime(start, end){
 
 $(document).ready(function(){
     $('#eventName').html(sessionStorage.getItem("name"));
-    var start = new Date(sessionStorage.getItem("specificStartYear"), sessionStorage.getItem("specificStartMonth"), sessionStorage.getItem("specificStartDay"), sessionStorage.getItem("specificStartHour"), 0, 0, 0);
-    var end = new Date(sessionStorage.getItem("specificEndYear"), sessionStorage.getItem("specificEndMonth"), sessionStorage.getItem("specificEndDay"), sessionStorage.getItem("specificEndHour"), 0, 0, 0);
+    //var start = new Date(sessionStorage.getItem("specificStartYear"), sessionStorage.getItem("specificStartMonth"), sessionStorage.getItem("specificStartDay"), sessionStorage.getItem("specificStartHour"), 0, 0, 0);
+    //var end = new Date(sessionStorage.getItem("specificEndYear"), sessionStorage.getItem("specificEndMonth"), sessionStorage.getItem("specificEndDay"), sessionStorage.getItem("specificEndHour"), 0, 0, 0);
+
     var tempTesting = [
         "111111111111",
         "000000000000",
         "000000111111"
     ];
-    var startS = new Date(2023, 4, 1, 1, 0, 0, 0);
-    var endS = new Date(2023, 4, 3, 4, 0, 0, 0); 
+    //var startS = new Date(2023, 4, 1, 1, 0, 0, 0);
+    //var endS = new Date(2023, 4, 3, 4, 0, 0, 0); 
  
 
     var eventId = "<?php echo $eventid; ?>";
@@ -238,7 +239,8 @@ $(document).ready(function(){
     var date = "<?php echo $date; ?>";
     var start = "<?php echo $start; ?>";
     var end = "<?php echo $end; ?>";
-    var availabilityArr = "<?php echo $availability; ?>";
+    //var availabilityArr = [];
+    var availabilityArr = <?php echo json_encode($availability); ?>;
     console.log(eventId);
     console.log(ownerId);
     console.log(eventname);
@@ -247,6 +249,10 @@ $(document).ready(function(){
     console.log(start);
     console.log(end);
     console.log(availabilityArr);
+
+    $('#eventName').html(eventname);
+    startS = new Date(date.substring(6,10), date.substring(0,2), date.substring(3,5), start, 0, 0, 0);
+    endS = new Date(date.substring(19,23), date.substring(13,15), date.substring(16,18), end, 0, 0, 0);
 
 
     createSpecificDateFillOutChart(startS, endS);
