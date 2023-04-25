@@ -122,6 +122,14 @@ $("#EventForm").submit(function(event){
     content: "A new calendar event has been created on the Schedgy website @everyone"
   }
 
+  request.addEventListener('load', function() {
+    console.log('Webhook message sent successfully');
+  });
+
+  request.addEventListener('error', function() {
+    console.log('Error sending webhook message');
+  });
+
   request.send(JSON.stringify(params));
 
   var NameSubmit = $("#NewEventName").val();
