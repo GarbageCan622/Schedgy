@@ -14,12 +14,6 @@
                 die("Connection failed: " . mysqli_connect_error());
             }
 
-            $_SESSION['sessionID'] = $_COOKIE['uid'];
-            $_SESSION['sessionName'] = $_COOKIE['uname'];
-
-            //$insertDiscord = 'insert into users values('.$_SESSION['sessionID'].','.$_SESSION['sessionName'].')';
-            //$insertresult = mysqli_query($dbConnection, $insertDiscord);
-
             $getname = 'select * from users where uid = ' . $_SESSION['sessionID'];
             $name_result = mysqli_query($dbConnection, $getname);
             if(mysqli_num_rows($name_result) > 0){
@@ -33,6 +27,9 @@
             ?>
             <table>
                 <tr>
+                    <td>
+                        <p style="font-family:discord; color:white;"><a href="login.php">Login</a></p>
+                    </td>
                     <td>
                         <p style="font-family:discord; color:white;"><a href="eventCreator.php">Create New Event</a></p>
                     </td>
@@ -58,15 +55,17 @@
                                 $ownerid = $row['owner_id'];
                                 $eventname = $row['event_name'];
                                 $description = $row['description'];
-                                $start = $row['start'];
-                                $end = $row['end'];
+                                $date = $row['date'];
+                                $start = $row['start_time'];
+                                $end = $row['end_time'];
 
                                 echo "Event ID: $eventid<br>" .
                                     "Owner ID: $ownerid<br>".
                                     "Event Name: $eventname<br>" .
                                     "Description: $description<br>" .
-                                    "Starting at: $start<br>" .
-                                    "Ending at: $end<br>" .
+                                    "Date Range: $start<br>" .
+                                    "Starting Time: $end<br>" .
+                                    "Ending Time: $end<br>".
                                     "<br>---------------------------------------------------------<br>";
                             }
                         } else {
