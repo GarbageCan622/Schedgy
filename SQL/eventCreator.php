@@ -6,6 +6,26 @@
     </header>
 
     <body style="background-color:#36393F;">
+    <script>
+        function getCookie(cname) {
+            let name = cname + "=";
+            let decodedCookie = decodeURIComponent(document.cookie);
+            let ca = decodedCookie.split(';');
+            for(let i = 0; i <ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+            }
+            getCookie(eventStart);
+            getCookie(eventEnd);
+    </script>
+        
         <div class="container">
             <h1>Welcome to Schedgy Event Creator</h1>
         </div>
@@ -68,16 +88,16 @@
                             <div style="font-family:discord; color:white;font-size:15px;line-height:1.5; margin: 10px 0px 10px 0px;">
                                 No earlier than: 
                                 <select name="NoEarlierThan" id="NoEarlierThan">
-                                    <option value=0>12:00  AM</option>  
-                                    <option value=1>1:00  AM</option>  
-                                    <option value=2>2:00  AM</option>  
-                                    <option value=3>3:00  AM</option>  
-                                    <option value=4>4:00  AM</option>  
-                                    <option value=5>5:00  AM</option>  
-                                    <option value=6>6:00  AM</option>  
-                                    <option value=7>7:00  AM</option>  
-                                    <option value=8>8:00  AM</option>  
-                                    <option selected value=9>9:00  AM</option>  
+                                    <option value=00>12:00  AM</option>  
+                                    <option value=01>1:00  AM</option>  
+                                    <option value=02>2:00  AM</option>  
+                                    <option value=03>3:00  AM</option>  
+                                    <option value=04>4:00  AM</option>  
+                                    <option value=05>5:00  AM</option>  
+                                    <option value=06>6:00  AM</option>  
+                                    <option value=07>7:00  AM</option>  
+                                    <option value=08>8:00  AM</option>  
+                                    <option selected value=09>9:00  AM</option>  
                                     <option value=10>10:00  AM</option>  
                                     <option value=11>11:00  AM</option>  
                                     <option value=12>12:00  PM</option>  
@@ -138,16 +158,18 @@
         <?php
             $result="";
             if(isset($_POST['CreateEvent'])) {
+                // if(isset($_COOKIE['start']) || isset($_COOKIE['end'])){
                 $id = $_POST['event_id'];
                 $eventname = $_POST['event_name'];
-                $description = $_POST['description'];
-                $star = $_POST['start'];
-                $end = $_POST['end'];
-            
-                if (empty($id) || empty($_SESSION['sessionID']) || empty($eventname) || empty($description) || empty($start) || empty($end)) {
+                $description = $_POST['description'];   
+                $daterange = $_POST['daterange'];
+                $starttime = $_POST['NoEarlierThan'];
+                $endtime = $_POST['NoLaterThan'];
+                //}
+                if (empty($id) || empty($_SESSION['sessionID']) || empty($eventname) || empty($description) || empty($daterange) || empty($starttime) || empty($endtime)) {
                     echo "Data required in all fields";
                 } else {
-                    $query = 'insert into event (event_id, owner_id, event_name, description, start, end) values (' . $id . ',' .$_SESSION['sessionID']. ',"' .$eventname. '","' .$description. '","' .$start. '","' .$end. '")';                    
+                    $query = 'insert into event (event_id, owner_id, event_name, description, date, start_time, end_time) values (' . $id . ',' .$_SESSION['sessionID']. ',"' .$eventname. '","' .$description. '","' .$daterange. '","' .$starttime. '","' .$endtime. '")';                    
                     $result = mysqli_query($dbConnection, $query);
                     $createauthor = 'insert into owner_of values (' .$id. ',"' .$_SESSION['sessionID'].'")';
                     $author_result = mysqli_query($dbConnection, $createauthor);

@@ -4,7 +4,7 @@ Schedgy is a scheduling tool seamlessly integrated with Discord. Its purpose is 
 
 To Build
 1. If you have node.js on your system (run 'node -v' in a command line, it should return v16.9.0 if node.js is installed). Otherwise install the latest version from the node.js site: https://nodejs.org/en/
-2. Install discord.js and dotenv with node.js, by running 'npm install discord.js dotenv' in a command line.
+2. Install discord.js, mysql2, and dotenv with node.js, by running 'npm install discord.js dotenv mysql2' in a command line.
 3. Download and unzip the repository wherever your like, and add the provided .env file to the root folder (the one with bot.js in it)
 4. IMPORTANT: The .env file contains private keys for using the discord bot, please do not store these in a public place, such as the repository.
 5. If new slash commands have been created, run 'node deploy-commands.js' to register these new commands for use.
@@ -26,6 +26,7 @@ Running Unit Tests
 3. If Jest is not installed on your system run 'npm i --save-dev jest' to install it.
 4. To run HTML tests, on your system run 'npm i --save-dev @testing-library/dom' to install HTML testing libraries
 5. If Jest is already installed, or after it has been installed, run 'npm run test' in the commands folder to run all unit tests.
+6. Currently on github our workflow automatically runs the tests, but due to errors unrelated to our code, the job itself appears to fail while the tests themselves succeed.
 
 To Use the Bot
 1. Add to discord server using the provided link.

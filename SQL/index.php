@@ -25,31 +25,28 @@
         </section>
 
         <?php
+         function redirect($url) {
+            header('Location: '.$url);
+        }
             $dbConnection = mysqli_connect("212.192.29.151", "u88864_T3BYDVo5Nj", "+4i^Q6Pfwm@OzghvSw1V6rwt", "s88864_Events");
-            //$dbConnection = mysqli_connect("localhost", "root", "", "schedgy");
             if (!$dbConnection) {
                 die("Connection failed: " . mysqli_connect_error());
             }
-            function redirect($url) {
-                header('Location: '.$url);
-            }
-
-            if(isset($_POST['register'])) {
-                $id = $_POST['id'];
                 $uname = $_POST['uname'];
-            
+                $id = $_POST['id'];
+
                 if (empty($id) || empty($uname)) {
                     echo "Data required in all fields";
                 } else {
                     $query = 'insert into users values (' . $id . ', "' . $uname . '")';
                     $result = mysqli_query($dbConnection, $query);
-            
-                    if (!$result) {
-                        echo "<br>Could not insert into User table<br>";
-                    } else {
-                        echo "<br>Successfuly inserted into User table<br>";
+
+                    if(!$result){
+                        echo "<br>Could Not Create User<br>";
+                    }else{
                         redirect("/Schedgy/SQL/login.php");
-            
+                    }
+                                
                         // switch ($type) {
                         //     case "author":
                         //         $query = 'insert into author values (' . $id .')';
@@ -75,8 +72,7 @@
                         //         echo "<br>Unexpected error, invalid Acct Type<br>";
                         // }
                     }
-                }
-            }
+            
 
         ?>
     </body>
