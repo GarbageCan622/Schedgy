@@ -87,15 +87,17 @@
                                 $ownerid = $row['owner_id'];
                                 $eventname = $row['event_name'];
                                 $description = $row['description'];
-                                $start = $row['start'];
-                                $end = $row['end'];
+                                $date = $row['date'];
+                                $starttime = $row['start_time'];
+                                $endtime = $row['end_time'];
 
                                 echo "Event ID: $eventid<br>" .
                                     "Owner ID: $ownerid<br>".
                                     "Event Name: $eventname<br>" .
                                     "Description: $description<br>" .
-                                    "Starting at: $start<br>" .
-                                    "Ending at: $end<br>" .
+                                    "Date Range: $date<br>".
+                                    "Starting at: $starttime<br>" .
+                                    "Ending at: $endtime<br>" .
                                     "<br>---------------------------------------------------------<br>";
                             }
                         } else {
