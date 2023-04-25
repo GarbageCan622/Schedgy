@@ -7,6 +7,7 @@
 
     <body style="background-color:#36393F;">
         <h1 id="eventName">Schedgy Homepage</h1>
+        <div style="font-family:discord; color:white; background-color: #2f3136; border-style: solid; border-color:black; border-radius: 5px; padding: 2%; margin: 2%; width:10%;">
         <?php
             session_start();
             $dbConnection = mysqli_connect("212.192.29.151", "u88864_T3BYDVo5Nj", "+4i^Q6Pfwm@OzghvSw1V6rwt", "s88864_Events");
@@ -24,7 +25,7 @@
             }
 
          
-            ?>
+            ?></div>
             <table>
                 <tr>
                     <td>

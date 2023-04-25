@@ -7,6 +7,7 @@
 
     <body style="background-color:#36393F;">
         <h1 id="eventName">Event Name</h1>
+        <div style="font-family:discord; color:white; background-color: #2f3136; border-style: solid; border-color:black; border-radius: 5px; padding: 2%; margin: 2%; width:10%;">
         <?php
         session_start();
         $dbConnection = mysqli_connect("212.192.29.151", "u88864_T3BYDVo5Nj", "+4i^Q6Pfwm@OzghvSw1V6rwt", "s88864_Events");
@@ -23,7 +24,7 @@
                     echo "Logged in as: $uname<br>";
                 }
             }
-        ?>
+        ?></div>
         <table>
                 <tr>
                     <td>
@@ -126,7 +127,7 @@
                     $eventid = $_POST['submitEventField'];
                     $submit = $_POST['submitTimeField'];
                     //$submitZero = $_POST['submitZero'];
-                    sprintf("%255s", $submit);
+                    //sprintf("%255s", $submit);
 
                 if(empty($eventid) || empty($_SESSION['sessionID']) || empty($submit)){
                     echo "Please fill out all fields";
@@ -299,6 +300,8 @@ $(document).ready(function(){
         submitTime(startS,endS,availabilityArr)
         $("#submitZero").val($("#submitTimeField").val().length);
         console.log($("#submitTimeField").val());
+        console.log(typeof "#submitTimeField");
+        console.log(typeof submitString);
     });
     $("#submitEventField").val(eventId);
 
