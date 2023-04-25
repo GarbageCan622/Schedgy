@@ -24,6 +24,22 @@
                 }
             }
         ?>
+        <table>
+                <tr>
+                    <td>
+                        <p style="font-family:discord; color:white;"><a href="login.php">Login</a></p>
+                    </td>
+                    <td>
+                        <p style="font-family:discord; color:white;"><a href="eventCreator.php">Create New Event</a></p>
+                    </td>
+                    <!-- <td>
+                        <p style="font-family:discord; color:white;"><a href="../HTML/weeklyEvent.html">Weekly Event</a></p>
+                    </td> -->
+                    <td>
+                        <p style="font-family:discord; color:white;"><a href="../SQL/specificDayEvent.php">View Events</a></p>
+                    </td>
+                </tr>
+            </table>
         <div>
            <br><br>
             <form action="" method="post">
@@ -38,7 +54,7 @@
         if(isset($_POST['submit'])){
             $eventid = $_POST['eventid'];
 
-        $query = 'select * from event where event_id ='.$eventid;
+        $query = 'select * from event where event.owner_id ='.$_SESSION['sessionID'].'& event.event_id='.$eventid;
         $result = mysqli_query($dbConnection, $query);
             if (mysqli_num_rows($result) > 0) {
                 while($row = mysqli_fetch_assoc($result)) {
@@ -59,7 +75,7 @@
                 }
             }
             } else {
-                echo "<br>No active Events<br>";
+                echo "<br>You are not the author of this event!<br>";
             }
         ?>
 
@@ -67,7 +83,7 @@
 
 
 
-        <div class="availableCharts flexbox">
+        <!-- <div class="availableCharts flexbox">
             <div class="grids flex">
                 <div id="chartToFill">
                     <table id="personalTimeTable" class="avalibityChart timeSelect"></table>           
@@ -78,16 +94,16 @@
                     <table id="groupTimeTable" class="avalibityChart timeSelect"></table>
                 </div>
             </div>
-        </div>
+        </div> -->
 
         
 
         
-        <div id="submitDiv">
+        <!-- <div id="submitDiv">
             <input type="button" name="submittime" value="Submit time" id="submitButton" class="genericButton" style="font-size:12px;">
-        </div>
+        </div> -->
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script> -->
         <!-- <script src="../SCRIPTS/createSpecificDate.js" ></script> -->
     </body>
 </html>

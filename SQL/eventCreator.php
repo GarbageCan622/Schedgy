@@ -158,17 +158,18 @@
         <?php
             $result="";
             if(isset($_POST['CreateEvent'])) {
-                if(isset($_COOKIE['start']) || isset($_COOKIE['end'])){
+                // if(isset($_COOKIE['start']) || isset($_COOKIE['end'])){
                 $id = $_POST['event_id'];
                 $eventname = $_POST['event_name'];
                 $description = $_POST['description'];   
-                $start = $_COOKIE['start'];
-                $end = $_COOKIE['end'];
-                }
-                if (empty($id) || empty($_SESSION['sessionID']) || empty($eventname) || empty($description) || empty($start) || empty($end)) {
+                $daterange = $_POST['daterange'];
+                $starttime = $_POST['NoEarlierThan'];
+                $endtime = $_POST['NoLaterThan'];
+                //}
+                if (empty($id) || empty($_SESSION['sessionID']) || empty($eventname) || empty($description) || empty($daterange) || empty($starttime) || empty($endtime)) {
                     echo "Data required in all fields";
                 } else {
-                    $query = 'insert into event (event_id, owner_id, event_name, description, start, end) values (' . $id . ',' .$_SESSION['sessionID']. ',"' .$eventname. '","' .$description. '","' .$start. '","' .$end. '")';                    
+                    $query = 'insert into event (event_id, owner_id, event_name, description, date, start_time, end_time) values (' . $id . ',' .$_SESSION['sessionID']. ',"' .$eventname. '","' .$description. '","' .$daterange. '","' .$starttime. '","' .$endtime. '")';                    
                     $result = mysqli_query($dbConnection, $query);
                     $createauthor = 'insert into owner_of values (' .$id. ',"' .$_SESSION['sessionID'].'")';
                     $author_result = mysqli_query($dbConnection, $createauthor);
