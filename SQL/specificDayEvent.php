@@ -49,30 +49,6 @@
             </form>
         </div>
         <br> <br> <br> <br> 
-
-        
-        <div class="availableCharts flexbox">
-            <div class="grids flex">
-                <div id="chartToFill">
-                    <table id="personalTimeTable" class="avalibityChart timeSelect"></table>           
-                </div>
-            </div>
-            <div class="grids flex">
-                <div id="liveFeed">
-                    <table id="groupTimeTable" class="avalibityChart timeSelect"></table>
-                </div>
-            </div>
-        </div>
-        <br>
-        <br>
-        
-      <div id="submitDiv">
-        <form action="" method="post">
-            <input type="text" id="submitTimeField" name="submitTimeField" style="display:none;" readonly>
-            <input type="submit" name="submitButton" value="Submit Time" id="submitButton" class="genericButton" style="font-size:12px;">
-        </form>
-        </div> 
-
         <?php
         if(isset($_POST['submit'])){
             $eventid = $_POST['eventid'];
@@ -116,7 +92,32 @@
                 }else{
                     echo "<br>You are not the author of this event!<br>";
                     }
-            
+            ?>
+
+        
+        <div class="availableCharts flexbox">
+            <div class="grids flex">
+                <div id="chartToFill">
+                    <table id="personalTimeTable" class="avalibityChart timeSelect"></table>           
+                </div>
+            </div>
+            <div class="grids flex">
+                <div id="liveFeed">
+                    <table id="groupTimeTable" class="avalibityChart timeSelect"></table>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        
+      <div id="submitDiv">
+        <form action="" method="post">
+            <input type="text" id="submitTimeField" name="submitTimeField" style="display:none;" readonly>
+            <input type="submit" name="submitButton" value="Submit Time" id="submitButton" class="genericButton" style="font-size:12px;">
+        </form>
+        </div> 
+
+            <?php
                 if(isset($_POST['submitButton'])){
                     $submit = $_POST['submitTimeField'];
                 if(empty($_SESSION['sessionID'] || empty($eventid) || empty($submit))){
