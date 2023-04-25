@@ -83,6 +83,29 @@ class SpecificDateEvent{
 
 
 $("#EventForm").submit(function(event){
+  require("dotenv").config();
+  const webhookId = process.env.WEBHOOK_ID;
+  const webhookToken = process.env.WEBHOOK_TOKEN;
+  const webhookURL = 'https://discord.com/api/webhooks/${webhookId}/${webhookToken}';
+  const messageContent = "A new calendar event has been created on the Schedgy website @everyone";
+  const message = {content: messageContent};
+
+  fetch(webhookURL, {
+    method: "POST",
+    headers: {"Content-Type": "application.json"},
+    body: JSON.stringify(message)    
+  })
+  .then(response => {
+    if (response.status == 204) {
+      console.log("Message was sent");
+    } else {
+      console.log("Error: message NOT sent");
+    }
+  })
+  .catch(error => {
+    console.log("Error: " + error);
+  })
+  
   var NameSubmit = $("#NewEventName").val();
   var NoEarlierThanSubmit = $("#NoEarlierThan").val();
   var NoLaterThanSubmit = $("#NoLaterThan").val();
