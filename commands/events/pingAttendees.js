@@ -14,8 +14,12 @@ getMembers = function(event_id, callerID) {
 	// Check if user of command is the owner of the event
     con.query("SELECT author_id FROM owner_of WHERE event_id = " + String(event_id),
       function (err, rows) { 
-        if (rows[0].author_id != callerID) {
-          return reject(new Error("You do not own the event associated with ID: " + String(event_id)));
+        if (rows === undefined || rows.length == 0) {
+          return reject(new Error("No event found with ID: " + String(event_id)));
+        } else {
+          if (rows[0].author_id != callerID) {
+            return reject(new Error("You do not own the event associated with ID: " + String(event_id)));
+          }
         }
     })
     let searchQuery = "SELECT uid FROM event, member_of, users WHERE event.event_id = member_of.event_id AND event.event_id = " + String(event_id) + " AND guest_id = uid";
