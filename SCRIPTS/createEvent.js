@@ -83,6 +83,7 @@ class SpecificDateEvent{
 
 
 $("#EventForm").submit(function(event){
+  /*
   require("dotenv").config();
   const webhookId = process.env.WEBHOOK_ID;
   const webhookToken = process.env.WEBHOOK_TOKEN;
@@ -105,7 +106,24 @@ $("#EventForm").submit(function(event){
   .catch(error => {
     console.log("Error: " + error);
   })
-  
+  */
+  const request = newXMLHttpRequest();
+  require("dotenv").config();
+  const webhookId = process.env.WEBHOOK_ID;
+  const webhookToken = process.env.WEBHOOK_TOKEN;
+  const webhookURL = `https://discord.com/api/webhooks/${webhookId}/${webhookToken}`;
+  request.open("POST", webhookURL);
+
+  request.setRequestHeader('Content-type', 'application/json');
+
+  const params = {
+    username: "Schedgy",
+    avatar_url: "",
+    content: "A new calendar event has been created on the Schedgy website @everyone"
+  }
+
+  request.send(JSON.stringify(params));
+
   var NameSubmit = $("#NewEventName").val();
   var NoEarlierThanSubmit = $("#NoEarlierThan").val();
   var NoLaterThanSubmit = $("#NoLaterThan").val();

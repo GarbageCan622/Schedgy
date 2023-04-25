@@ -14,5 +14,10 @@
     "@testing-library/jest-dom": "^5.16.5",
     "jest": "^27.5.1",
     "jest-dom": "^4.0.0"
+  },
+  "dependencies": {
+    "discord.js": "^14.9.0",
+    "dotenv": "^16.0.3",
+    "mysql2": "^3.2.4"
   }
 }
