@@ -1,5 +1,5 @@
 // sendWebhook.test.js
-
+const XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
 const sendWebhook = require('./sendWebhook');
 
 test('sendWebhook sends a request to the correct URL', () => {
