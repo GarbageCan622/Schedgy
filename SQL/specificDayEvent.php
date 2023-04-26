@@ -74,6 +74,7 @@
                 <input type="text" id="submitEventField" name="submitEventField">
                 <input type="button" name="fillTextbox" value="Submit Time" id="fillTextbox" class="genericButton" style="font-size:12px;">
                 <input type="submit" name="submitButton" value="Confirm Time?" id="submitButton" class="genericButton" style="font-size:12px;">
+                <input type="submit" name="updateButton" value="Update Time" id="submitButton" class="genericButton" style="font-size:12px;">
             </form>
         </section>
 
@@ -102,7 +103,7 @@
                             "<br>---------------------------------------------------------<br>";*/
                     } 
                 }   
-                $query2 = 'select availability_string from member_of where member_of.event_id ='.$eventid;
+                $query2 = 'select availability_string from member_of,owner_of where member_of.event_id ='.$eventid.' or owner_of.event_id ='.$eventid;
                 $result2 = mysqli_query($dbConnection, $query2);
                     if (mysqli_num_rows($result2) > 0) {
                         $availability = array();
@@ -139,6 +140,22 @@
                 }else{
                     echo "";
                 }
+                }
+            }
+
+            if(isset($_POST['updateButton'])){
+                $eventid = $_POST['submitEventField'];
+                $submit = $_POST['submitTimeField'];
+
+                if(empty($eventid) || empty($_SESSION['sessionID']) || empty($submit)){
+                    echo "Please Select Time";
+                }else{
+                    $query4 = 'update member_of set availability_string ='.$submit.' where member_of.event_id ='.$eventid.' and member_of.guest_id='.$_SESSION['sessionID'];
+                    $result4 = mysqli_query($dbConnection, $query4);
+
+                    if(!$result4){
+                        echo "<br>Could Not Update Time";
+                    }
                 }
             }
         ?>
