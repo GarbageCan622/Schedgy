@@ -23,7 +23,7 @@ function sendWebhook() {
       console.log("Error: " + error);
     })
     */
-    const request = newXMLHttpRequest();
+    const request = new XMLHttpRequest();
     require("dotenv").config();
     const webhookId = process.env.WEBHOOK_ID;
     const webhookToken = process.env.WEBHOOK_TOKEN;
