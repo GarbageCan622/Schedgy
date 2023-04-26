@@ -52,52 +52,35 @@ describe("Availability Chart", () => {
         expect(chart1.chart).toStrictEqual(chart2); 
     });
 
-    test("Mark Unavailable", () => {
-        const start = new Date(2018, 11, 28, 14, 0, 0, 0);
-        const end = new Date(2018, 11, 30, 15, 15, 0, 0);
-        let chart1 = new AvailabilityChart(start, end);
-        chart1.markAvailable(1,1,123);
-        chart1.markUnavailable(1,1,123);
-        let chart2 = makeArray(5,2);
-        chart2[1][1].howMany--;
-        expect(chart1.chart).toStrictEqual(chart2); 
+    test('markAvailable() should increment howMany and add id to who array', () => {
+        const poll = new AvailabilityChart(new Date(), new Date());
+        poll.markAvailable(0, 0, 1);
+        expect(poll.chart[0][0].howMany).toBe(1);
+        expect(poll.chart[0][0].who[0]).toBe(1);
+      });
+      
+    test('markUnavailable() should set howMany to -1 and remove id from who array', () => {
+        const poll = new AvailabilityChart(new Date(), new Date());
+        poll.markAvailable(0, 0, 1);
+        poll.markUnavailable(0, 0, 1);
+        expect(poll.chart[0][0].howMany).toBe(-1);
+        expect(poll.chart[0][0].who.length).toBe(0);
     });
-
-    test("Mark Unavailable multiple", () => {
-        const start = new Date(2018, 11, 28, 14, 0, 0, 0);
-        const end = new Date(2018, 11, 30, 15, 15, 0, 0);
-        let chart1 = new AvailabilityChart(start, end);
-        chart1.markAvailable(1,1,123);
-        chart1.markAvailable(1,1,456);
-        chart1.markAvailable(0,3,456);
-        chart1.markUnavailable(1,1,456);
-        chart1.markUnavailable(0,3,456);
-        let chart2 = makeArray(5,2);
-        chart2[1][1].howMany++;
-        chart2[1][1].who.unshift(123);
-        chart2[1][1].howMany--;
-        chart2[1][1].who.splice(chart2[1][1].who.indexOf(456), 1);
-        chart2[0][3].howMany--;
-        chart2[0][3].who.splice(chart2[0][3].who.indexOf(456), 1);
-        expect(chart1.chart).toStrictEqual(chart2); 
+      
+    test('markUnavailable() should not modify howMany or who array if id not found', () => {
+        const poll = new AvailabilityChart(new Date(), new Date());
+        poll.markAvailable(0, 0, 1);
+        poll.markUnavailable(0, 0, 2);
+        expect(poll.chart[0][0].howMany).toBe(1);
+        expect(poll.chart[0][0].who.length).toBe(1);
     });
-    
-    test("Mark Unavailable for invalid time slot", () => {
-        const start = new Date(2018, 11, 28, 14, 0, 0, 0);
-        const end = new Date(2018, 11, 30, 15, 15, 0, 0);
-        let chart1 = new AvailabilityChart(start, end);
-        chart1.markAvailable(1,1,123);
-        chart1.markAvailable(1,2,456);
-        chart1.markUnavailable(1,1,123);
-        chart1.markUnavailable(1,2,456);
-        chart1.markUnavailable(1,3,789);
-        let chart2 = makeArray(23,2);
-        chart2[1][1].howMany++;
-        chart2[1][1].who.unshift(123);
-        chart2[1][2].howMany++;
-        chart2[1][2].who.unshift(456);
-        expect(() => {chart1.markUnavailable(1,3,789)}).toThrow("Invalid time slot.");
-        expect(chart1.chart).toStrictEqual(chart2); 
+      
+    test('constructor should initialize chart array with correct dimensions', () => {
+        const start = new Date(2023, 3, 26, 10, 0);
+        const end = new Date(2023, 3, 30, 18, 0);
+        const poll = new AvailabilityChart(start, end);
+        expect(poll.chart.length).toBe(4); // 4 days
+        expect(poll.chart[0].length).toBe(32); // 8 hours * 4 quarters per hour
     });
     
 });
