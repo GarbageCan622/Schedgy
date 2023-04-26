@@ -39,6 +39,9 @@
                     <td>
                         <p style="font-family:discord; color:white;"><a href="../SQL/specificDayEvent.php">View Events</a></p>
                     </td>
+                    <td>
+                        <p style="font-family:discord; color:white;"><a href="../SQL/invite.php">Send Invite</a></p>
+                    </td>
                 </tr>
             </table>
         <div>
@@ -102,7 +105,9 @@
                             "Ending at: $end<br>" .
                             "<br>---------------------------------------------------------<br>";*/
                     } 
-                }   
+                }
+
+                
                 $query2 = 'select availability_string from member_of,owner_of where member_of.event_id ='.$eventid.' or owner_of.event_id ='.$eventid;
                 $result2 = mysqli_query($dbConnection, $query2);
                     if (mysqli_num_rows($result2) > 0) {
@@ -122,7 +127,7 @@
                         echo "<br>You do not have permission to view this event!<br>";
                         }
                     }
-
+                
 
                 if(isset($_POST['submitButton'])){
                     $eventid = $_POST['submitEventField'];
