@@ -11,6 +11,7 @@ jobs:
       run: |
         npm install --save-dev jest
         npm install --save-dev @testing-library/jest-dom
+        npm install xmlhttprequest
         chmod +x node_modules/.bin/jest
     - name: Run tests
       run: npm run test
