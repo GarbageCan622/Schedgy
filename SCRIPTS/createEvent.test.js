@@ -1,6 +1,3 @@
-// Import jQuery
-import $ from 'jquery';
-
 // Import testing libraries
 import { fireEvent, screen } from '@testing-library/dom';
 import '@testing-library/jest-dom';
