@@ -212,6 +212,7 @@ function createSpecificDateGroupChart(start, end, groupArr){
         groupAvaliblity[i][j] = 0;
         for(k=0; k < groupArr.length; k++){           
             tempAvalibilityString = groupArr[k];
+            tempAvalibilityString = tempAvalibilityString.slice(1);
             if(tempAvalibilityString[index] == 1){
                 groupAvaliblity[i][j] = groupAvaliblity[i][j] + 1;
             }
@@ -234,7 +235,7 @@ function submitTime(start, end, availabilityArr){
     var days = Math.floor((end.getTime() - start.getTime())/(1000*3600*24))
     var time = (end.getHours() - start.getHours());
     var limit = (days+1) * (time + 1);
-    var submitString = "";
+    var submitString = "1";
     for(i=0; i<limit; i++){
        if ($('#checkboxDate' + i).is(':checked')){
         submitString+= '1';
