@@ -1,3 +1,5 @@
+const XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
+
 function sendWebhook() {
     /*
     require("dotenv").config();
