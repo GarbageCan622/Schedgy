@@ -3,21 +3,22 @@ const XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
 const sendWebhook = require('./sendWebhook');
 
 test('sendWebhook sends a request to the correct URL', () => {
-  const openSpy = jest.spyOn(XMLHttpRequest.prototype, 'open');
+  const openSpy = jest.spyOn(new XMLHttpRequest(), 'open');
   sendWebhook();
   expect(openSpy).toHaveBeenCalledWith('POST', 'https://discord.com/api/webhooks/WEBHOOK_ID/WEBHOOK_TOKEN');
   openSpy.mockRestore();
 });
 
+
 test('sendWebhook sets the correct request header', () => {
-  const setRequestHeaderSpy = jest.spyOn(XMLHttpRequest.prototype, 'setRequestHeader');
+  const setRequestHeaderSpy = jest.spyOn(new XMLHttpRequest(), 'setRequestHeader');
   sendWebhook();
   expect(setRequestHeaderSpy).toHaveBeenCalledWith('Content-type', 'application/json');
   setRequestHeaderSpy.mockRestore();
 });
 
 test('sendWebhook sends the correct payload', () => {
-  const sendSpy = jest.spyOn(XMLHttpRequest.prototype, 'send');
+  const sendSpy = jest.spyOn(new XMLHttpRequest(), 'send');
   sendWebhook();
   expect(sendSpy).toHaveBeenCalledWith('{"username":"Schedgy","avatar_url":"","content":"A new calendar event has been created on the Schedgy website @everyone"}');
   sendSpy.mockRestore();
