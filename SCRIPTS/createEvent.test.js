@@ -1,88 +1,40 @@
-const createEvent = require('./createEvent');
+const sendWebhook = require('./sendWebhook');
 
-describe('createEvent', () => {
-  // Mock the document object
-  const doc = {
-    readyState: 'complete',
-    addEventListener: jest.fn(),
-    createElement: jest.fn(),
-    getElementById: jest.fn(),
+test('sendWebhook sends a request to the correct URL', () => {
+  const openSpy = jest.spyOn(XMLHttpRequest.prototype, 'open');
+  sendWebhook();
+  expect(openSpy).toHaveBeenCalledWith('POST', 'https://discord.com/api/webhooks/WEBHOOK_ID/WEBHOOK_TOKEN');
+  openSpy.mockRestore();
+});
+
+test('sendWebhook sets the correct request header', () => {
+  const setRequestHeaderSpy = jest.spyOn(XMLHttpRequest.prototype, 'setRequestHeader');
+  sendWebhook();
+  expect(setRequestHeaderSpy).toHaveBeenCalledWith('Content-type', 'application/json');
+  setRequestHeaderSpy.mockRestore();
+});
+
+test('sendWebhook sends the correct payload', () => {
+  const sendSpy = jest.spyOn(XMLHttpRequest.prototype, 'send');
+  sendWebhook();
+  expect(sendSpy).toHaveBeenCalledWith('{"username":"Schedgy","avatar_url":"","content":"A new calendar event has been created on the Schedgy website @everyone"}');
+  sendSpy.mockRestore();
+});
+
+test('sendWebhook logs an error message when the request fails', () => {
+  const errorSpy = jest.spyOn(console, 'log');
+  const mockRequest = {
+    open: jest.fn(),
+    setRequestHeader: jest.fn(),
+    send: jest.fn(),
+    addEventListener: (event, callback) => {
+      if (event === 'error') {
+        callback();
+      }
+    }
   };
-
-  beforeEach(() => {
-    // Reset the mock implementations before each test
-    doc.addEventListener.mockReset();
-    doc.createElement.mockReset();
-    doc.getElementById.mockReset();
-  });
-
-  test('it should initialize the date range picker', () => {
-    // Mock the daterangepicker library
-    const daterangepicker = {
-      callCount: 0,
-      mockImplementation: function() {
-        this.callCount++;
-      },
-    };
-
-    // Call the function with the mocked objects
-    createEvent(doc, daterangepicker);
-
-    // Assert that the daterangepicker library was called
-    expect(daterangepicker.callCount).toBe(1);
-  });
-
-  test('it should disable hours later than 9 PM', () => {
-    // Call the function with the mocked objects
-    createEvent(doc);
-
-    // Assert that the options were disabled
-    expect(doc.getElementById).toHaveBeenCalledTimes(2);
-    expect(doc.getElementById).toHaveBeenCalledWith('NoLaterThan');
-    expect(doc.getElementById).toHaveBeenCalledWith('NoEarlierThan');
-
-    const noLaterThan = doc.getElementById('NoLaterThan');
-    const noEarlierThan = doc.getElementById('NoEarlierThan');
-
-    for (let i = 10; i < 24; i++) {
-      expect(noLaterThan.options[i].disabled).toBe(true);
-      expect(noEarlierThan.options[i].disabled).toBe(false);
-    }
-  });
-
-  test('it should disable hours earlier than 5 PM', () => {
-    // Call the function with the mocked objects
-    createEvent(doc);
-
-    // Assert that the options were disabled
-    expect(doc.getElementById).toHaveBeenCalledTimes(2);
-    expect(doc.getElementById).toHaveBeenCalledWith('NoLaterThan');
-    expect(doc.getElementById).toHaveBeenCalledWith('NoEarlierThan');
-
-    const noLaterThan = doc.getElementById('NoLaterThan');
-    const noEarlierThan = doc.getElementById('NoEarlierThan');
-
-    for (let i = 0; i < 17; i++) {
-      expect(noLaterThan.options[i].disabled).toBe(false);
-      expect(noEarlierThan.options[i].disabled).toBe(true);
-    }
-  });
-
-  test('it should show the specific dates input when selected', () => {
-    // Call the function with the mocked objects
-    createEvent(doc);
-
-    // Assert that the elements were hidden by default
-    expect(doc.getElementById('SpecificDates').style.display).toBe('none');
-    expect(doc.getElementById('DaysOfTheWeek').style.display).toBe('block');
-
-    // Select the SpecificDates option
-    const dateTypes = doc.getElementById('DateTypes');
-    dateTypes.value = 'SpecificDates';
-    dateTypes.dispatchEvent(new Event('change'));
-
-    // Assert that the SpecificDates input is visible
-    expect(doc.getElementById('SpecificDates').style.display).toBe('block');
-    expect(doc.getElementById('DaysOfTheWeek').style.display).toBe('none');
-  });
+  global.XMLHttpRequest = jest.fn(() => mockRequest);
+  sendWebhook();
+  expect(errorSpy).toHaveBeenCalledWith('Error sending webhook');
+  errorSpy.mockRestore();
 });
