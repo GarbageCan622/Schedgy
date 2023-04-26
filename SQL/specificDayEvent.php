@@ -108,7 +108,7 @@
                 }
 
                 
-                $query2 = 'select availability_string from member_of,owner_of where member_of.event_id ='.$eventid.' or owner_of.event_id ='.$eventid;
+                $query2 = 'select m.availability_string, a.availability_string from member_of as m,owner_of as a where m.event_id ='.$eventid.' or a.event_id ='.$eventid.'';
                 $result2 = mysqli_query($dbConnection, $query2);
                     if (mysqli_num_rows($result2) > 0) {
                         $availability = array();

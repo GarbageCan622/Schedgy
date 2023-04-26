@@ -67,7 +67,7 @@
                 if (empty($id) || empty($eventid)) {
                     echo "Data required in all fields";
                 } else {
-                    $query = 'insert into member_of (event_id, guest_id) values (' . $eventid . ',' . $id .')';
+                    $query = 'insert into member_of values (' . $eventid . ',' . $id .',0)';
                     $result = mysqli_query($dbConnection, $query);
 
                     if(!$result){

@@ -172,7 +172,7 @@
                 } else {
                     $query = 'insert into event (event_id, owner_id, event_name, description, date, start_time, end_time) values (' . $id . ',' .$_SESSION['sessionID']. ',"' .$eventname. '","' .$description. '","' .$daterange. '","' .$starttime. '","' .$endtime. '")';                    
                     $result = mysqli_query($dbConnection, $query);
-                    $createauthor = 'insert into owner_of values (' .$id. ',"' .$_SESSION['sessionID'].'")';
+                    $createauthor = 'insert into owner_of values (' .$id. ',' .$_SESSION['sessionID'].', 0)';
                     $author_result = mysqli_query($dbConnection, $createauthor);
                     //$addmember = 'insert into member_of (event_id, guest_id) values (' .$id. ',"' .$_SESSION['sessionID'].'")';
                     //$addmember_result = mysqli_query($dbConnection,$addmember);

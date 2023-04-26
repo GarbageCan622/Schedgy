@@ -85,7 +85,7 @@
                     <br>
                     <div style="color:white; font-family:discord;">
                     <?php
-                    $query = 'select * from event,member_of where event.event_id = member_of.event_id & member_of.guest_id ='.$_SESSION['sessionID'];
+                    $query = 'select * from event,member_of where event.event_id = member_of.event_id and member_of.guest_id ='.$_SESSION['sessionID'];
                     $result = mysqli_query($dbConnection, $query);
                         if (mysqli_num_rows($result) > 0) {
                             while($row = mysqli_fetch_assoc($result)) {
