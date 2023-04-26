@@ -1,6 +1,6 @@
 // sendWebhook.test.js
 
-const sendWebhook = require('./createEvent');
+const sendWebhook = require('./sendWebhook');
 
 test('sendWebhook sends a request to the correct URL', () => {
   const openSpy = jest.spyOn(XMLHttpRequest.prototype, 'open');
