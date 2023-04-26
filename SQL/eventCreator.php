@@ -52,8 +52,8 @@
                     <tr>
                         <td align="center" colspan="2">
                             <h2 style="font-family:discord; color:white;">Fill out the following form to create an Event</h2>
-                            <h3 style="font-family:discord; color:white;">After all values are filled, click Create Event to be brought to your "Schedgy Events Homepage"</h3>
-                            <p style="font-family:discord; color:white;"><a href="eventHomePage.php">View Active Events</a></p>
+                            <h3 style="font-family:discord; color:white;">After all values are filled, click Create Event</h3>
+                            <p style="font-family:discord; color:white;"><a href="eventHomePage.php">Event Homepage</a></p>
                             <br>
                             <form action="" method="post" style="width:100%; margin:20px 0px 20px 0px;">
                                 <label for="event_name" style="font-family:discord;color:white;font-size:30px;">Enter new Event Name: </label>
@@ -174,8 +174,8 @@
                     $result = mysqli_query($dbConnection, $query);
                     $createauthor = 'insert into owner_of values (' .$id. ',"' .$_SESSION['sessionID'].'")';
                     $author_result = mysqli_query($dbConnection, $createauthor);
-                    $addmember = 'insert into member_of (event_id, guest_id) values (' .$id. ',"' .$_SESSION['sessionID'].'")';
-                    $addmember_result = mysqli_query($dbConnection,$addmember);
+                    //$addmember = 'insert into member_of (event_id, guest_id) values (' .$id. ',"' .$_SESSION['sessionID'].'")';
+                    //$addmember_result = mysqli_query($dbConnection,$addmember);
                 }
                     if (!$result) {
                         echo "<br>Could not create new event!<br>";
