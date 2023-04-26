@@ -47,6 +47,7 @@
                 <div style="background-color: #2f3136;border-style: solid;border-color:black;border-radius: 5px;padding: 2%;margin: 2%;">
                     <h2 style="text-align:center; font-family:discord; color:white;">My Events</h2>
                     <br>
+                    <div style="color:white; font-family:discord;">
                     <?php
                     $query = 'select * from event where event.owner_id = '.$_SESSION['sessionID'];
                     $result = mysqli_query($dbConnection, $query);
@@ -72,13 +73,14 @@
                         } else {
                             echo "<br>No active Events<br>";
                         }
-                        ?>
+                        ?></div>
                 </div>
             </div>
             <div class="column">
                 <div style="background-color: #2f3136;border-style: solid;border-color:black;border-radius: 5px;padding: 2%;margin: 2%;">
                     <h2 style="text-align:center; font-family:discord; color:white;">Invited Events</h2>
                     <br>
+                    <div style="color:white; font-family:discord;">
                     <?php
                     $query = 'select * from event,member_of where event.event_id = member_of.event_id & member_of.guest_id ='.$_SESSION['sessionID'];
                     $result = mysqli_query($dbConnection, $query);
@@ -104,7 +106,7 @@
                         } else {
                             echo "<br>No active Events<br>";
                         }
-                        ?>
+                        ?></div>
                 </div>
             </div>
     </body>

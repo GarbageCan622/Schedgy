@@ -69,9 +69,9 @@
         
         <section class="section">
             <form action="" method="post">
-                <input type="text" id="submitTimeField" name="submitTimeField">
-                <input type="text" id="submitZero" name="submitZero">
-                <input type="text" id="submitEventField" name="submitEventField">
+                <input type="text" id="submitTimeField" name="submitTimeField" style="display:none">
+                <input type="text" id="submitZero" name="submitZero" style="display:none;">
+                <input type="text" id="submitEventField" name="submitEventField" style="display:none;">
                 <input type="button" name="fillTextbox" value="Submit Time" id="fillTextbox" class="genericButton" style="font-size:12px;">
                 <input type="submit" name="submitButton" value="Confirm Time?" id="submitButton" class="genericButton" style="font-size:12px;">
                 <input type="submit" name="updateButton" value="Update Time" id="submitButton" class="genericButton" style="font-size:12px;">
