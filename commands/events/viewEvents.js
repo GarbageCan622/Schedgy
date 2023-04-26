@@ -26,7 +26,7 @@ getEvents = function(callerID) {
 )}
 
 resultsToString = function(results){
-  let out = "Link to site: <link-here> \t| "
+  let out = ""
   for (var i in results) {
     //console.log(results[i].uname);
     out = out.concat("Name: " + results[i].event_name + "\t ID: "+ results[i].event_id + " \t| ");
@@ -38,7 +38,7 @@ resultsToString = function(results){
 module.exports = {
 	data: new SlashCommandBuilder()
 	    .setName('viewevents')
-		.setDescription('List of event name and id pairs, and a link to page with the same information'),
+		.setDescription('List of event name and id pairs'),
 	async execute(interaction) {
         let temp = "Error"
         let callerID = interaction.user.id;
