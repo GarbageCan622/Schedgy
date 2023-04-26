@@ -34,11 +34,14 @@
                     <td>
                         <p style="font-family:discord; color:white;"><a href="eventCreator.php">Create New Event</a></p>
                     </td>
-                    <!-- <td>
-                        <p style="font-family:discord; color:white;"><a href="../HTML/weeklyEvent.html">Weekly Event</a></p>
-                    </td> -->
+                    <td>
+                        <p style="font-family:discord; color:white;"><a href="../SQL/eventHomePage.php">Event Homepage</a></p>
+                    </td>
                     <td>
                         <p style="font-family:discord; color:white;"><a href="../SQL/specificDayEvent.php">View Events</a></p>
+                    </td>
+                    <td>
+                        <p style="font-family:discord; color:white;"><a href="../SQL/invite.php">Send Invite</a></p>
                     </td>
                 </tr>
             </table>
@@ -65,8 +68,8 @@
                                     "Owner ID: $ownerid<br>".
                                     "Event Name: $eventname<br>" .
                                     "Description: $description<br>" .
-                                    "Date Range: $start<br>" .
-                                    "Starting Time: $end<br>" .
+                                    "Date Range: $date<br>" .
+                                    "Starting Time: $start<br>" .
                                     "Ending Time: $end<br>".
                                     "<br>---------------------------------------------------------<br>";
                             }
