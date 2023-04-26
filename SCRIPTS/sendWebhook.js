@@ -1,3 +1,4 @@
+require("dotenv").config();
 const XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
 
 function sendWebhook() {
@@ -26,7 +27,6 @@ function sendWebhook() {
     })
     */
     const request = new XMLHttpRequest();
-    require("dotenv").config();
     const webhookId = process.env.WEBHOOK_ID;
     const webhookToken = process.env.WEBHOOK_TOKEN;
     const webhookURL = `https://discord.com/api/webhooks/${webhookId}/${webhookToken}`;

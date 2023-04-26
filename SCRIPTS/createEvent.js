@@ -1,4 +1,4 @@
-const sendWebhook = require('./sendWebhook');
+import sendWebhook from './sendWebhook';
 
 $(document).ready(function(){
 
