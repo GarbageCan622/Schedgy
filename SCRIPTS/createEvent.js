@@ -84,7 +84,6 @@ class SpecificDateEvent{
 
 $("#EventForm").submit(function(event){
   event.preventDefault();
-  sendWebhook();
   var NameSubmit = $("#NewEventName").val();
   var NoEarlierThanSubmit = $("#NoEarlierThan").val();
   var NoLaterThanSubmit = $("#NoLaterThan").val();
@@ -127,6 +126,7 @@ sessionStorage.setItem("specificEndHour", NoLaterThanSubmit);
       
 //event.preventDefault();
 //window.location.href='eventPage.php';
+sendWebhook();
 }
 else{
   var DaysArr = [];
