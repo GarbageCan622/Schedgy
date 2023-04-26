@@ -1,3 +1,92 @@
+// Import jQuery
+import $ from 'jquery';
+
+// Import testing libraries
+import { fireEvent, screen } from '@testing-library/dom';
+import '@testing-library/jest-dom';
+
+// Import your code
+import './createEvent.js';
+
+describe('createEvent', () => {
+  // Test case 1: Submit event should send webhook message
+  test('submit event sends webhook message', () => {
+    // Create a test element
+    const testElement = document.createElement('form');
+    testElement.id = 'EventForm';
+
+    // Add the test element to the document
+    document.body.appendChild(testElement);
+
+    // Fire a submit event on the test element
+    fireEvent.submit(testElement);
+
+    // Check that the correct message is logged to the console
+    expect(console.log).toHaveBeenCalledWith('Webhook message sent successfully');
+  });
+
+  // Test case 2: Should set request headers correctly
+  test('request headers are set correctly', () => {
+    // Set up a mock XMLHttpRequest object
+    const mockRequest = {
+      open: jest.fn(),
+      setRequestHeader: jest.fn(),
+      addEventListener: jest.fn(),
+      send: jest.fn()
+    };
+    window.XMLHttpRequest = jest.fn(() => mockRequest);
+
+    // Fire a submit event on the form
+    $('#EventForm').submit();
+
+    // Check that the request headers were set correctly
+    expect(mockRequest.setRequestHeader).toHaveBeenCalledWith('Content-type', 'application/json');
+  });
+
+  // Test case 3: Should send correct webhook message
+  test('sends correct webhook message', () => {
+    // Set up a mock XMLHttpRequest object
+    const mockRequest = {
+      open: jest.fn(),
+      setRequestHeader: jest.fn(),
+      addEventListener: jest.fn(),
+      send: jest.fn()
+    };
+    window.XMLHttpRequest = jest.fn(() => mockRequest);
+
+    // Fire a submit event on the form
+    $('#EventForm').submit();
+
+    // Check that the correct webhook message was sent
+    expect(mockRequest.send).toHaveBeenCalledWith(expect.stringMatching(/"username":"Schedgy"/));
+    expect(mockRequest.send).toHaveBeenCalledWith(expect.stringMatching(/"content":"A new calendar event has been created on the Schedgy website @everyone"/));
+  });
+
+  // Test case 4: Should handle errors when sending webhook message
+  test('handles errors when sending webhook message', () => {
+    // Set up a mock XMLHttpRequest object that always errors
+    const mockRequest = {
+      open: jest.fn(),
+      setRequestHeader: jest.fn(),
+      addEventListener: (eventName, callback) => {
+        if (eventName === 'error') {
+          callback();
+        }
+      },
+      send: jest.fn()
+    };
+    window.XMLHttpRequest = jest.fn(() => mockRequest);
+
+    // Fire a submit event on the form
+    $('#EventForm').submit();
+
+    // Check that the correct error message is logged to the console
+    expect(console.log).toHaveBeenCalledWith('Error sending webhook message');
+  });
+});
+
+
+/*
 const createEvent = require('./createEvent')
 
 describe('createEvent', () => {
@@ -84,3 +173,4 @@ describe('createEvent', () => {
       expect(mockLog).toHaveBeenCalledWith('Error sending webhook message');
     });
   });
+  */
