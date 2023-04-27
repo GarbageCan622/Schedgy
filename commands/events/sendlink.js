@@ -3,7 +3,7 @@ const { SlashCommandBuilder } = require('discord.js');
 //'Link to site: [Schedgy\'s Site](https://garbagecan622.github.io/Schedgy/)'
 
 const linkMessage = {
-	site: 'https://garbagecan622.github.io/Schedgy/SQL/login.php',
+	site: 'https://garbagecan622.github.io/Schedgy/',
 	message: 'Link to site: [Schedgy\'s Site]'
 };
 
