@@ -9,7 +9,7 @@ var con = mysql.createConnection({
 });
 
 
-getMembers = function(event_id, callerID) {
+getUnresponded = function(event_id, callerID) {
   return new Promise(function(resolve, reject){
 	// Check if user of command is the owner of the event
     con.query("SELECT author_id FROM owner_of WHERE event_id = " + String(event_id),
@@ -22,9 +22,9 @@ getMembers = function(event_id, callerID) {
           }
         }
     })
-    let pingSearchQuery = "SELECT uid FROM event, member_of, users WHERE event.event_id = member_of.event_id AND event.event_id = " + String(event_id) + " AND guest_id = uid";
+    let unrespondedSearchQuery = "SELECT uid, availability_string FROM event, member_of, users WHERE event.event_id = member_of.event_id AND event.event_id = " + String(event_id) + " AND guest_id = uid";
     con.query(
-      pingSearchQuery, 
+        unrespondedSearchQuery, 
       function (err, rows) { 
         if(rows === undefined || rows.length == 0){
           return reject(new Error("Event has no members"));
@@ -35,11 +35,13 @@ getMembers = function(event_id, callerID) {
   )}
 )}
 
-pingAllToString = function(results){
+unrespondedToString = function(results){
   let out = ""
   for (var i in results) {
-    //console.log(results[i].uname);
-    out = out.concat("<@" + results[i].uid + "> ");
+    //console.log(results[i]);
+    if(results[i].availability_string == '0') {
+        out = out.concat("<@" + results[i].uid + "> ");
+    }
   }
   return out;
 }
@@ -47,24 +49,26 @@ pingAllToString = function(results){
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName('pingattendees')
-		.setDescription('Ping all members of an event you own. Use /viewevents to find this number.')
+		.setName('pingunresponded')
+		.setDescription('Ping all members of an event you own, who have not yet responded')
     .addStringOption(option =>
         option
           .setName('event_id')
-          .setDescription('The number ID of your event.')
+          .setDescription('The number ID of your event. Use /viewevents to find this number.')
           .setRequired(true)
       ),
 	async execute(interaction) {
     let temp = "Error"
     let callerID = interaction.user.id;
-    //callerID = 1; 
-    await getMembers(interaction.options.getString('event_id'), callerID)
+    //callerID = 1;
+    await getUnresponded(interaction.options.getString('event_id'), callerID)
       .then(function(results){
-        temp = pingAllToString(results)
+        console.log("1");
+        temp = unrespondedToString(results)
         interaction.reply(String(temp));
       })
       .catch(function(err){ // Catch block for errors / rejects
+        console.log("2");
         temp = err;
         interaction.reply({content: String(temp), ephemeral: true});
       });
