@@ -29,6 +29,7 @@
         <div class="container">
             <h1>Welcome to Schedgy Event Creator</h1>
         </div>
+        <div style="font-family:discord; color:white; background-color: #2f3136; border-style: solid; border-color:black; border-radius: 5px; padding: 2%; margin: 2%; width:10%;">
         <?php
             session_start();
             $dbConnection = mysqli_connect("212.192.29.151", "u88864_T3BYDVo5Nj", "+4i^Q6Pfwm@OzghvSw1V6rwt", "s88864_Events");
@@ -45,14 +46,14 @@
                      echo "Logged in as: $username<br>";
                  }
              }
-        ?>
+        ?></div>
             <table width="100%" cellpadding="0" cellspacing="0">
                 <tbody>   
                     <tr>
                         <td align="center" colspan="2">
                             <h2 style="font-family:discord; color:white;">Fill out the following form to create an Event</h2>
-                            <h3 style="font-family:discord; color:white;">After all values are filled, click Create Event to be brought to your "Schedgy Events Homepage"</h3>
-                            <p style="font-family:discord; color:white;"><a href="eventHomePage.php">View Active Events</a></p>
+                            <h3 style="font-family:discord; color:white;">After all values are filled, click Create Event</h3>
+                            <p style="font-family:discord; color:white;"><a href="eventHomePage.php">Event Homepage</a></p>
                             <br>
                             <form action="" method="post" style="width:100%; margin:20px 0px 20px 0px;">
                                 <label for="event_name" style="font-family:discord;color:white;font-size:30px;">Enter new Event Name: </label>
@@ -171,8 +172,10 @@
                 } else {
                     $query = 'insert into event (event_id, owner_id, event_name, description, date, start_time, end_time) values (' . $id . ',' .$_SESSION['sessionID']. ',"' .$eventname. '","' .$description. '","' .$daterange. '","' .$starttime. '","' .$endtime. '")';                    
                     $result = mysqli_query($dbConnection, $query);
-                    $createauthor = 'insert into owner_of values (' .$id. ',"' .$_SESSION['sessionID'].'")';
+                    $createauthor = 'insert into owner_of values (' .$id. ',' .$_SESSION['sessionID'].', 0)';
                     $author_result = mysqli_query($dbConnection, $createauthor);
+                    //$addmember = 'insert into member_of (event_id, guest_id) values (' .$id. ',"' .$_SESSION['sessionID'].'")';
+                    //$addmember_result = mysqli_query($dbConnection,$addmember);
                 }
                     if (!$result) {
                         echo "<br>Could not create new event!<br>";
