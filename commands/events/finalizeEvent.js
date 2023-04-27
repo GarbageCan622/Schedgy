@@ -43,8 +43,7 @@ finalizeToString = function(results){
   let eventStart = results[0].start_time;
   let eventEnd = results[0].end_time;
 
-  console.log(results[0].availability_string.length)
-  console.log(eventDate, eventDays, eventStart, eventEnd, eventTime)
+  //console.log(eventDate, eventDays, eventStart, eventEnd, eventTime)
   
   let availabilityRaw = "0b" + results[0].availability_string;
   for (var i in results) {
@@ -100,7 +99,30 @@ finalizeToString = function(results){
         position = lengths[i][0];
     }
   }
-  console.log(potentialTimes[position], max);
+
+
+  timeLoop = new Date(eventDate.substring(0,10));
+  tempTimeLoop = timeLoop;
+  let starter;
+  let index = 0;
+  for(i=0; i<=eventTime; i++) {
+    for(j=0; j<eventDays;j++) {
+      if (index == potentialTimes[position]) {
+        starter = Number(eventStart) + i;
+        tempTimeLoop.setDate(tempTimeLoop.getDate() + j-1);
+        i = eventTime;
+        j = eventDays;
+      }
+      index++;
+    }
+  }
+  let temp = 'am'
+  if (starter > 12) {
+    starter -= 12;
+    temp = 'pm'
+  }
+  out = "Your event will take place on " + tempTimeLoop.toDateString() + " at " + starter + " " + temp;
+  //console.log(potentialTimes[position], max);
   return out;
 }
 
@@ -118,7 +140,7 @@ module.exports = {
 	async execute(interaction) {
     let temp = "Error"
     let callerID = interaction.user.id;
-    callerID = 152885142552051713;
+    //callerID = 152885142552051713;
     await getAvailability(interaction.options.getString('event_id'), callerID)
       .then(function(results){
         temp = finalizeToString(results)
@@ -129,7 +151,10 @@ module.exports = {
     if (temp == "Some members of your event have not yet responded. You can ping them with /pingunresponded to let them know.") {
         interaction.reply({ content: String(temp), ephemeral: true });
     } else {
-        interaction.reply({ content: String(temp), ephemeral: true });
+        //interaction.reply({ content: String(temp) });
+        const message = await interaction.reply({ content: String(temp), fetchReply: true });
+        message.react('👍');
+        message.react('👎');
     }
 	},
 };
