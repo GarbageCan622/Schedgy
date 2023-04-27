@@ -12,9 +12,9 @@ var con = mysql.createConnection({
 getEvents = function(callerID) {
   return new Promise(function(resolve, reject){
 	// Check if user of command is the owner of the event
-    let eventsSearchQuery = "SELECT event_id, event_name FROM event WHERE owner_id = " + String(callerID);
+    let searchQuery = "SELECT event_id, event_name FROM event WHERE owner_id = " + String(callerID);
     con.query(
-      eventsSearchQuery, 
+      searchQuery, 
       function (err, rows) { 
         if(rows === undefined || rows.length == 0){
           return reject(new Error("You have no events"));
@@ -25,7 +25,7 @@ getEvents = function(callerID) {
   )}
 )}
 
-eventsToString = function(results){
+resultsToString = function(results){
   let out = ""
   for (var i in results) {
     //console.log(results[i].uname);
@@ -42,15 +42,13 @@ module.exports = {
 	async execute(interaction) {
         let temp = "Error"
         let callerID = interaction.user.id;
-        //callerID = 1;
         await getEvents(callerID)
         .then(function(results){
-            temp = eventsToString(results);
-            interaction.reply(String(temp));
+            temp = resultsToString(results)
         })
         .catch(function(err){ // Catch block for errors / rejects
             temp = err;
-            interaction.reply({content: String(temp), ephemeral: true});
         });
+        interaction.reply(String(temp));
 	},
 };
