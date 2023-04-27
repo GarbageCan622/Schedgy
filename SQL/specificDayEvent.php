@@ -69,15 +69,15 @@
         </div>
         <br>
         <br>
-        
+        <h3 style="color:white;">Press Submit Time before Confirm Submission for proper processing</h3>
         <section class="section">
             <form action="" method="post">
                 <input type="text" id="submitTimeField" name="submitTimeField" style="display:none">
                 <input type="text" id="submitZero" name="submitZero" style="display:none;">
                 <input type="text" id="submitEventField" name="submitEventField" style="display:none;">
-                <input type="button" name="fillTextbox" value="Submit Time" id="fillTextbox" class="genericButton" style="font-size:12px;">
-                <input type="submit" name="submitButton" value="Confirm Time?" id="submitButton" class="genericButton" style="font-size:12px;">
-                <input type="submit" name="updateButton" value="Update Time" id="submitButton" class="genericButton" style="font-size:12px;">
+                <input type="button" name="fillTextbox" value="Submit Time" id="fillTextbox" class="genericButton" style="font-size:12px; width: 20%;">
+                <input type="submit" name="submitButton" value="Confirm Time?" id="submitButton" class="genericButton" style="display:none;">
+                <input type="submit" name="updateButton" value="Confirm submission" id="submitButton" class="genericButton" style="font-size:12px;">
             </form>
         </section>
 
