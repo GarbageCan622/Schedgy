@@ -22,9 +22,9 @@ getMembers = function(event_id, callerID) {
           }
         }
     })
-    let pingSearchQuery = "SELECT uid FROM event, member_of, users WHERE event.event_id = member_of.event_id AND event.event_id = " + String(event_id) + " AND guest_id = uid";
+    let searchQuery = "SELECT uid FROM event, member_of, users WHERE event.event_id = member_of.event_id AND event.event_id = " + String(event_id) + " AND guest_id = uid";
     con.query(
-      pingSearchQuery, 
+      searchQuery, 
       function (err, rows) { 
         if(rows === undefined || rows.length == 0){
           return reject(new Error("Event has no members"));
@@ -35,7 +35,7 @@ getMembers = function(event_id, callerID) {
   )}
 )}
 
-pingAllToString = function(results){
+resultsToString = function(results){
   let out = ""
   for (var i in results) {
     //console.log(results[i].uname);
@@ -48,7 +48,7 @@ pingAllToString = function(results){
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('pingattendees')
-		.setDescription('Ping all members of an event you own. Use /viewevents to find this number.')
+		.setDescription('Ping all members of an event you own')
     .addStringOption(option =>
         option
           .setName('event_id')
@@ -58,15 +58,13 @@ module.exports = {
 	async execute(interaction) {
     let temp = "Error"
     let callerID = interaction.user.id;
-    //callerID = 1; 
     await getMembers(interaction.options.getString('event_id'), callerID)
       .then(function(results){
-        temp = pingAllToString(results)
-        interaction.reply(String(temp));
+        temp = resultsToString(results)
       })
       .catch(function(err){ // Catch block for errors / rejects
         temp = err;
-        interaction.reply({content: String(temp), ephemeral: true});
       });
+    interaction.reply(String(temp));
 	},
 };

@@ -63,7 +63,7 @@
             </div>
             <div class="grids flex">
                 <div id="liveFeed">
-                    <table id="groupTimeTable" class="avalibityChart timeSelect"></table>
+                    <table id="groupTimeTable" class="avalibityChart timeSelect" style="color:white; text-align:center;"></table>
                 </div>
             </div>
         </div>
@@ -108,12 +108,12 @@
                 }
 
                 
-                $query2 = 'select m.availability_string, a.availability_string from member_of as m,owner_of as a where m.event_id ='.$eventid.' or a.event_id ='.$eventid.'';
+                $query2 = 'select availability_string from member_of where event_id ='.$eventid;
                 $result2 = mysqli_query($dbConnection, $query2);
                     if (mysqli_num_rows($result2) > 0) {
                         $availability = array();
-                        while($row = mysqli_fetch_array($result2)) {
-                            array_push($availability, $row['availability_string']);                                   
+                        while($row2 = mysqli_fetch_array($result2)) {
+                            array_push($availability, $row2['availability_string']);                                   
                     
                                 /* echo "Event ID: $eventid<br>" .
                                     "Owner ID: $ownerid<br>".
